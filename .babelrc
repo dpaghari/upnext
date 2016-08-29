@@ -1,6 +1,8 @@
 
 {
   "plugins" : [
-    "react-html-attrs"
-  ]
+    "react-html-attrs",
+    "transform-class-properties"
+  ],
+  "presets" : ["react", "es2015"]
 }
