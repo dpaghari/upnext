@@ -4,23 +4,27 @@
 
   #eventList {
     display: flex;
-    
+
     .event {
       display: flex;
       flex-direction: column;
-      padding: 40px;
+      padding: 50px;
       border: 1px solid $notSoDark;
       border-radius: 50%;
       color: $notSoDark;
       text-align: center;
-      width: 200px;
-      height: 200px;
+      // width: 200px;
+      // height: 200px;
       align-items: center;
       justify-content: center;
       margin: 0px 20px;
+        .event-header {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
 
     }
   }
-
-
 }
