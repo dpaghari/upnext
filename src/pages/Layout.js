@@ -1,4 +1,5 @@
 import React from 'react';
+import EventList from "../components/EventList";
 
 
 export default class Layout extends React.Component {
@@ -14,6 +15,7 @@ export default class Layout extends React.Component {
     return (
       <div class="site-wrapper">
            {this.props.children}
+           <EventList/>
       </div>
 
     );

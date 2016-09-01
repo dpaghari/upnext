@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     './scss/style.scss',
-    './src/client',
+    './src/index.js',
     'webpack-dev-server/client?http://127.0.0.1:8080/'
   ],
   output: {
