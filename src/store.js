@@ -1,66 +1,51 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+// Middleware
 
-const middleware = applyMiddleware();
-
-// Handles actions relating to user information
-const userReducer = (initState = {}, action) => {
-  switch (action.type) {
-    case "CHANGE_NAME": {
-      state = {
-        ...state,
-        name: action.payload
-      };
-      break;
-    }
-    case "CHANGE_EMAIL": {
-      state = {
-        ...state,
-        age: action.payload
-      };
-      break;
-    }
-  }
-  return state;
-};
-
-// Handles actions relating to event information
-const eventsReducer = (initState = [], action) => {
-  switch (action.type) {
-    case "CREATE_EVENT" : {
-      state = {
-        ...state,
-        name: action.payload
-      }
-    }
-    case "GET_ALL_EVENTS" : {
-      state = {
-        ...state,
-        events: action.payload
-      }
-    }
-  }
-  return state;
-};
+import logger from "redux-logger";
+import thunk from "redux-thunk";
+import promise from "redux-promise-middleware"
 
 
-const reducers = combineReducers({
-  user: userReducer,
-  tweets: eventsReducer
-});
+const middleware = applyMiddleware(promise(), thunk, logger());
 
-const store = createStore(reducers);
+import reducer from "./reducers";
 
 
-store.subscribe(()=> {
-  console.log("store changed", store.getState());
-});
+export default createStore(reducer, middleware);
+
+
+
+
+
+// const reducers = combineReducers({
+//   user: userReducer,
+//   events: eventsReducer
+// });
+
+
+// store.subscribe(()=> {
+//   console.log("store changed", store.getState());
+// });
+
+
+//thunk
+// store.dispatch(
+// {
+//   type: "FETCH_EVENTS",
+//   payload: axios.get("http://rest.learncode.academy/api/wstern/users")
+// }
+//   // axios.get("http://rest.learncode.academy/api/wstern/users")
+//   //      .then((response) => dispatch({type: "RECEIVED_EVENTS", payload: response.data}));
+//   //      .catch((error)=> dispatch(type: "ERROR_FETCH_EVENTS", payload: error));
+// );
+
 
 // Call actions for stores
-store.dispatch({
-  type: "CHANGE_NAME",
-  payload: "Dan"
-});
-store.dispatch({
-  type: "CHANGE_AGE",
-  payload: 25
-});
+// store.dispatch({
+//   type: "CHANGE_NAME",
+//   payload: "Dan"
+// });
+// store.dispatch({
+//   type: "CHANGE_AGE",
+//   payload: 25
+// });

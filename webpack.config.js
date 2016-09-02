@@ -3,7 +3,7 @@ var path = require('path');
 
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   entry: [
     'babel-polyfill',
     './scss/style.scss',
@@ -29,7 +29,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-runtime']
+          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-runtime', 'transform-decorators-legacy']
         }
       },
       {

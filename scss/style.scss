@@ -9,10 +9,7 @@
 
 
 // Reset
-html,
-body,
-ul,
-ol {
+* {
   margin: 0;
   padding: 0;
 }
@@ -27,10 +24,21 @@ body {
 }
 
 .site-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  min-height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  z-index: -1;
+  // &:before {
+  //   background: $notSoDark;
+  //   width: 100%;
+  //   display: block;
+  //   content: "";
+  //   height: 2px;
+  //   position: absolute;
+  // }
 }

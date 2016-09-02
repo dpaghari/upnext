@@ -1,29 +1,38 @@
 #Events {
   display: flex;
   flex-direction: row;
-
+  .eventLine {
+    position: absolute;
+    width: 100%;
+    background: $notSoDark;
+    content: "";
+  }
   #eventList {
     display: flex;
 
     .event {
-      display: flex;
+      display: block;
       flex-direction: column;
       padding: 50px;
       border: 1px solid $notSoDark;
       border-radius: 50%;
       color: $notSoDark;
       text-align: center;
-      // width: 200px;
-      // height: 200px;
       align-items: center;
       justify-content: center;
       margin: 0px 20px;
-        .event-header {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+
+      .event-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          max-width: 250px;
+          min-height: 250px;
+
         }
+      }
 
     }
   }
