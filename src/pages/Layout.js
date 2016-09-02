@@ -1,7 +1,11 @@
 import React from 'react';
+
 import EventList from "../components/EventList";
+import EventForm from "../components/EventForm";
+
 import { connect } from "react-redux";
 import { fetchEvents, createEvent } from "../actions/eventsActions";
+
 
 // Wrap store around Top level component
 @connect((store) => {
@@ -45,15 +49,7 @@ export default class Layout extends React.Component {
 
     return (
       <div class="site-wrapper">
-        <form onSubmit={this.addEvent.bind(this)}>
-        <input name="eventName" ref="eventName" type="text" placeholder="Event Name"/>
-        <input name="eventLocation" ref="eventLocation" type="text" placeholder="Event Location"/>
-        <input name="eventDate" ref="eventDate" type="date"/>
-        <input name="eventImg" ref="eventImg" type="text"/>
-        <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-
-        <button onClick={this.addEvent.bind(this)}>Add Event</button>
-        </form>
+        <EventForm addEvent={this.addEvent.bind(this)}/>
         <EventList events={events.eventList}/>
       </div>
 

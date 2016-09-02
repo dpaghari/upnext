@@ -11,18 +11,25 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, date, details, location } = this.props;
+    let { imgURL, name, date, details, location, friends } = this.props;
     let { onHover } = this.state;
     if (onHover) {
       return (
         <li class="event" onMouseLeave={this.toggleHover.bind(this)}>
-          <div class="event-header">
-            <img src={imgURL}/>
-            <span class="event-headline">{name}</span>
-            <span class="event-date">{date}</span>
-            <span class="event-loc">{location}</span>
-
-            <p class="event-detail">{details}</p>
+          <div class="event-wrapper">
+            <div class="event-header">
+              <img src={imgURL}/>
+              <span class="event-headline">{name}</span>
+              <span class="event-date">{date}</span>
+            </div>
+            <div class="event-expand">
+              <span class="event-loc">{location}</span>
+              <p class="event-detail">{details}</p>
+              <span class="friends-going">Going:</span>
+              <div class="event-friends">
+                {this.renderFriends()}
+              </div>
+            </div>
           </div>
         </li>
       );
@@ -39,10 +46,15 @@ export default class EventEntry extends React.Component {
     }
   }
 
+  renderFriends() {
+    return _.map(this.props.friends, (friend, index) => <a key={index} href={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></a>);
+  }
+
   toggleHover(e) {
     this.state.onHover = !this.state.onHover;
     this.setState({
       onHover: this.state.onHover
-    })
+    });
+
   }
 }

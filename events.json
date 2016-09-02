@@ -4,7 +4,19 @@
       "name" : "Go to Yosemite",
       "date": "August 31, 2016",
       "location" : "Yosemite Park",
-      "details": "Going to Yosemite cause its super cool"
+      "details": "Going to Yosemite cause its super cool",
+      "friends" : [
+        {
+          "name" : "Nick Smith",
+          "profile_url" : "profiles/nick_smith",
+          "profile_picture" : ""
+        },
+        {
+          "name" : "John Bentley",
+          "profile_url" : "supercoolevents.com/john_bentley",
+          "profile_picture" : ""
+        }
+      ]
     }
     ,
 
@@ -13,7 +25,19 @@
       "name" : "Waffle Game Night",
       "date": "Sept 1, 2016",
       "location" : "The Wind Tunnel",
-      "details": "Coz why not"
+      "details": "Coz why not",
+      "friends" : [
+        {
+          "name" : "Kelsey Raczak",
+          "profile_url" : "supercoolevents.com/kelsey_raczak",
+          "profile_picture" : ""
+        },
+        {
+          "name" : "Emily Anderson",
+          "profile_url" : "supercoolevents.com/emily_anderson",
+          "profile_picture" : ""
+        }
+      ]
     }
     ,
 
@@ -22,6 +46,30 @@
       "name" : "Go Ham",
       "date": "Sept 2, 2016",
       "location" : "Life",
-      "details": "Coz it's tasty"
+      "details": "Coz it's tasty",
+      "friends" : [
+        {
+          "name" : "Nick Smith",
+          "profile_url" : "supercoolevents.com/nick_smith",
+          "profile_picture" : ""
+        },
+        {
+          "name" : "John Bentley",
+          "profile_url" : "supercoolevents.com/john_bentley",
+          "profile_picture" : ""
+        },
+        {
+          "name" : "Kelsey Raczak",
+          "profile_url" : "supercoolevents.com/kelsey_raczak",
+          "profile_picture" : ""
+        },
+        {
+          "name" : "Emily Anderson",
+          "profile_url" : "supercoolevents.com/emily_anderson",
+          "profile_picture" : ""
+        }
+      ]
     }
+
+
 ]

@@ -15,7 +15,7 @@
       flex-direction: column;
       padding: 50px;
       border: 1px solid $notSoDark;
-      border-radius: 50%;
+      // border-radius: 50%;
       color: $notSoDark;
       text-align: center;
       align-items: center;
@@ -31,6 +31,21 @@
           max-width: 250px;
           min-height: 250px;
 
+        }
+      }
+      .event-expand {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .event-friends {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 50px;
+          width: 50px;
         }
       }
 
