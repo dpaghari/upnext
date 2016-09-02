@@ -6,7 +6,7 @@ export function fetchEvents() {
          .then((response) =>  {
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",
-             payload : response.data;
+             payload : response.data
            });
          })
          .catch((error) => {
@@ -19,12 +19,17 @@ export function fetchEvents() {
   };
 }
 
-export function createEvent() {
-  return {
-    type: "EVENT_CREATED",
-    payload: {
-      name: "New Event",
-      date: "Sept 2, 2016"
-    }
+export function createEvent({ name, date, location, details, imgURL }) {
+  return (dispatch) => {
+    dispatch({
+      type: "CREATE_EVENT",
+      payload: {
+        name,
+        date,
+        location,
+        details,
+        imgURL
+      }
+    });
   }
 }

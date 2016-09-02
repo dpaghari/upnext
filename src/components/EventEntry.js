@@ -11,7 +11,7 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, date, details } = this.props;
+    let { imgURL, name, date, details, location } = this.props;
     let { onHover } = this.state;
     if (onHover) {
       return (
@@ -20,6 +20,8 @@ export default class EventEntry extends React.Component {
             <img src={imgURL}/>
             <span class="event-headline">{name}</span>
             <span class="event-date">{date}</span>
+            <span class="event-loc">{location}</span>
+
             <p class="event-detail">{details}</p>
           </div>
         </li>
