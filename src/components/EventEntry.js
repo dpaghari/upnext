@@ -50,7 +50,14 @@ export default class EventEntry extends React.Component {
   }
 
   renderFriends() {
-    return _.map(this.props.friends, (friend, index) => <Link key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>);
+
+    return _.map(this.props.friends, (friend, index) => {
+    if(friend.profile_picture !== "")
+      return <Link key={index} to={friend.profile_url} class="friend-thumb"><img src={friend.profile_picture}/></Link>
+    else
+      return <Link key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
+
+    });
   }
 
   toggleHover(e) {

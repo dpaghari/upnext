@@ -12,7 +12,7 @@ export default class Login extends React.Component {
         <form id="Login-Form" onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" ref="user_name" placeholder="Username"/>
           <input type="password" ref="user_pw" placeholder="Password"/>
-          <input type="submit" value="Login"/>
+          <button type="submit" onClick={this.handleSubmit.bind(this)}>Login</button>
           {<p><em>Just use un:Daniel and pw:hescool1 for now ;) </em></p>}
         </form>
       </div>
@@ -22,7 +22,7 @@ export default class Login extends React.Component {
   handleSubmit(e) {
     const { user_name, user_pw } = this.refs;
 
-    // e.preventDefault();
+    e.preventDefault();
     this.props.dispatch(authUser({
       username: user_name.value,
       password: user_pw.value

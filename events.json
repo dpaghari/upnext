@@ -14,6 +14,11 @@
         {
           "name" : "John Bentley",
           "profile_url" : "profiles/john_bentley",
+          "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+        },
+        {
+          "name" : "Nathan Nichols-Roy",
+          "profile_url" : "profiles/nathan_nicholsroy",
           "profile_picture" : ""
         }
       ]
@@ -30,7 +35,7 @@
         {
           "name" : "Kelsey Raczak",
           "profile_url" : "profiles/kelsey_raczak",
-          "profile_picture" : ""
+          "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/13015516_10209025196448835_645490049520586616_n.jpg?oh=92b6894f9aa1ff7cafd3fa0a2d2c1b0e&oe=584535B5"
         },
         {
           "name" : "Emily Anderson",
@@ -56,12 +61,12 @@
         {
           "name" : "John Bentley",
           "profile_url" : "profiles/john_bentley",
-          "profile_picture" : ""
+          "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
         },
         {
           "name" : "Kelsey Raczak",
           "profile_url" : "profiles/kelsey_raczak",
-          "profile_picture" : ""
+          "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/13015516_10209025196448835_645490049520586616_n.jpg?oh=92b6894f9aa1ff7cafd3fa0a2d2c1b0e&oe=584535B5"
         },
         {
           "name" : "Emily Anderson",

@@ -22,6 +22,7 @@ render(<Provider store={store}>
     <IndexRoute component={Home}/>
     <Route path="/detail/:eventId" component={Detail}></Route>
     <Route path="/profiles/:userId" component={Profile}></Route>
+    <Route path="/?" component={Home}/>
     </Route>
   </Router>
   </Provider>,
