@@ -34,6 +34,7 @@ export default class EventForm extends React.Component {
   addEvent(e) {
     e.preventDefault();
     const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
+
     let newEvent = {
       name: eventName.value,
       date: eventDate.value,

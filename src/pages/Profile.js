@@ -1,9 +1,9 @@
 import React from 'react';
-//
+
 // import Header from "../components/Header";
 // import EventList from "../components/EventList";
 // import EventForm from "../components/EventForm";
-
+//
 // import { connect } from "react-redux";
 // import { fetchEvents } from "../actions/eventsActions";
 
@@ -15,27 +15,25 @@ import React from 'react';
 //   appState: store.appState
 // };
 // })
-export default class Layout extends React.Component {
+export default class Profile extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
+  componentWillMount() {
+  }
+
+
+
 
   render() {
-
-    // const { users, events } = this.props;
-    // if(!events.eventList.length) {
-    //   return <button onClick={this.fetchEvents.bind(this)}>Get Events</button>;
-    // }
-
     return (
-      <div class="site-wrapper">
-        {this.props.children}
+      <div class="DetailView">
+        <h1>Profile View</h1>
       </div>
 
     );
   }
-
 
 }

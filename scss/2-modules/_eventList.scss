@@ -28,6 +28,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .event-headline {
+          font-size: 25px;
+          font-weight: bold;
+        }
         img {
           max-width: 250px;
           min-height: 250px;

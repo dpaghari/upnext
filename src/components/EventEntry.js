@@ -1,5 +1,6 @@
 import React from "react";
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import { Link } from "react-router";
 
 export default class EventEntry extends React.Component {
   constructor(props) {
@@ -17,11 +18,13 @@ export default class EventEntry extends React.Component {
       return (
         <li class="event" onMouseLeave={this.toggleHover.bind(this)}>
           <div class="event-wrapper">
+            <Link to="/detail/test">
             <div class="event-header">
               <img src={imgURL}/>
               <span class="event-headline">{name}</span>
               <span class="event-date">{date}</span>
             </div>
+            </Link>
             <div class="event-expand">
               <span class="event-loc">{location}</span>
               <p class="event-detail">{details}</p>
@@ -47,7 +50,7 @@ export default class EventEntry extends React.Component {
   }
 
   renderFriends() {
-    return _.map(this.props.friends, (friend, index) => <a key={index} href={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></a>);
+    return _.map(this.props.friends, (friend, index) => <Link key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>);
   }
 
   toggleHover(e) {
