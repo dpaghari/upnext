@@ -18,12 +18,12 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-  gulp.src('scss/*.sass')
+  gulp.src('scss/*.scss')
     .pipe(sass({
       includePaths: ['./scss', './node_modules/support-for/sass/']
 
     }).on('error', sass.logError))
-    .pipe(cssnano())
+    // .pipe(cssnano())
     .pipe(gulp.dest('css'));
     // .pipe(livereload());
 });

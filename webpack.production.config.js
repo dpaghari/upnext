@@ -3,11 +3,12 @@ var path = require('path');
 module.exports = {
   devtool: 'source-map',
   entry: [
+    'babel-polyfill',
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'dan.js'
+    path: path.join(__dirname),
+    filename: 'bundle.js'
   },
   resolve: {
     modulesDirectories: ['node_modules', 'src'],
@@ -22,7 +23,7 @@ module.exports = {
         // loader: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
         query: {
           presets: ['react', 'es2015'],
-          plugins: ['react-html-attrs', 'transform-class-properties']
+          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-runtime', 'transform-decorators-legacy']
         }
       }
     ]
