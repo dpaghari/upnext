@@ -13,7 +13,7 @@
         },
         {
           "name" : "John Bentley",
-          "profile_url" : "supercoolevents.com/john_bentley",
+          "profile_url" : "profiles/john_bentley",
           "profile_picture" : ""
         }
       ]
@@ -29,12 +29,12 @@
       "friends" : [
         {
           "name" : "Kelsey Raczak",
-          "profile_url" : "supercoolevents.com/kelsey_raczak",
+          "profile_url" : "profiles/kelsey_raczak",
           "profile_picture" : ""
         },
         {
           "name" : "Emily Anderson",
-          "profile_url" : "supercoolevents.com/emily_anderson",
+          "profile_url" : "profiles/emily_anderson",
           "profile_picture" : ""
         }
       ]
@@ -50,22 +50,22 @@
       "friends" : [
         {
           "name" : "Nick Smith",
-          "profile_url" : "supercoolevents.com/nick_smith",
+          "profile_url" : "profiles/nick_smith",
           "profile_picture" : ""
         },
         {
           "name" : "John Bentley",
-          "profile_url" : "supercoolevents.com/john_bentley",
+          "profile_url" : "profiles/john_bentley",
           "profile_picture" : ""
         },
         {
           "name" : "Kelsey Raczak",
-          "profile_url" : "supercoolevents.com/kelsey_raczak",
+          "profile_url" : "profiles/kelsey_raczak",
           "profile_picture" : ""
         },
         {
           "name" : "Emily Anderson",
-          "profile_url" : "supercoolevents.com/emily_anderson",
+          "profile_url" : "profiles/emily_anderson",
           "profile_picture" : ""
         }
       ]

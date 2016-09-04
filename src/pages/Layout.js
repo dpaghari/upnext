@@ -1,16 +1,18 @@
 import React from 'react';
 
+import ActionBar from "../components/ActionBar";
 import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
 
 import { connect } from "react-redux";
-import { fetchEvents, createEvent } from "../actions/eventsActions";
+import { fetchEvents } from "../actions/eventsActions";
 
 
 // Wrap store around Top level component
 @connect((store) => {
 return {
-  events: store.events
+  events: store.events,
+  appState: store.appState
 };
 })
 export default class Layout extends React.Component {
@@ -26,33 +28,33 @@ export default class Layout extends React.Component {
     this.props.dispatch(fetchEvents());
   }
 
-  addEvent(e) {
-    e.preventDefault();
-    const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
-    let newEvent = {
-      name: eventName.value,
-      date: eventDate.value,
-      location: eventLocation.value,
-      details: eventDetails.value,
-      imgURL: eventImg.value
-    };
-    this.props.dispatch(createEvent(newEvent));
-  }
+
 
   render() {
 
     const { users, events } = this.props;
-    console.log(events);
     if(!events.eventList.length) {
       return <button onClick={this.fetchEvents.bind(this)}>Get Events</button>;
     }
 
     return (
       <div class="site-wrapper">
-        <EventForm addEvent={this.addEvent.bind(this)}/>
+        <ActionBar dispatch={this.props.dispatch.bind(this)}/>
+        {this.renderEventForm()}
         <EventList events={events.eventList}/>
       </div>
 
     );
+  }
+
+  renderEventForm() {
+    // console.log(this.props);
+    const { appState } = this.props;
+    if(appState) {
+      if(appState.eventForm)
+      return <EventForm dispatch={this.props.dispatch.bind(this)}/>;
+      else
+      return null;
+    }
   }
 }
