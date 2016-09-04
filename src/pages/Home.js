@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from "../components/Header";
+import Login from "../components/Login";
 import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
 
@@ -11,6 +12,7 @@ import { fetchEvents } from "../actions/eventsActions";
 // Wrap store around Top level component
 @connect((store) => {
 return {
+  users: store.users,
   events: store.events,
   appState: store.appState
 };
@@ -32,19 +34,23 @@ export default class Home extends React.Component {
 
   render() {
 
-    const { users, events } = this.props;
+    const { users, events, appState } = this.props;
     if(!events.eventList.length) {
       return <button onClick={this.fetchEvents.bind(this)}>Get Events</button>;
     }
-
-    return (
-      <div class="Home">
+    if(appState.loggedIn){
+      return (
+        <div class="Home">
         <Header dispatch={this.props.dispatch.bind(this)}/>
         {this.renderEventForm()}
         <EventList events={events.eventList}/>
-      </div>
+        </div>
 
-    );
+      );
+    }
+    else {
+      return <Login dispatch={this.props.dispatch.bind(this)}/>
+    }
   }
 
   renderEventForm() {

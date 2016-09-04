@@ -1,5 +1,12 @@
+const initialState = {
+  users : [],
+  current_user_id : null
+};
+
+
+
 // Handles actions relating to user information
-export default function usersReducer(state = {}, action) {
+export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case "CHANGE_NAME": {
       state = {
@@ -15,6 +22,22 @@ export default function usersReducer(state = {}, action) {
       };
       break;
     }
+    case "FETCH_USERS_FULFILLED": {
+      ;
+      state = {
+        ...state,
+        users: action.payload
+      };
+      break;
+    }
+    case "FETCH_USERS_REJECTED": {
+      state = {
+        ...state,
+        error: action.payload
+      };
+      break;
+    }
+
   }
   return state;
 };

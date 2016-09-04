@@ -1,0 +1,26 @@
+[
+    {
+      "username" : "Daniel",
+      "password" : "hescool1"
+    }
+    ,
+    {
+      "username" : "John",
+      "password" : "hescool2"
+    }
+    ,
+    {
+      "username" : "Nick",
+      "password" : "hescool3"
+    }
+    ,
+    {
+      "username" : "Kelsey",
+      "password" : "shescool1"
+    }
+    ,
+    {
+      "username" : "Emily",
+      "password" : "shescool2"
+    }
+]

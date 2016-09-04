@@ -1,4 +1,5 @@
 const initialState = {
+  loggedIn: false,
   eventForm : false
 };
 
@@ -11,6 +12,13 @@ export default function reducer (state = initialState, action) {
         eventForm: action.payload
       };
       break;
+    }
+
+    case "AUTH_SUCCESS" : {
+      state = {
+        ...state,
+        loggedIn: action.payload
+      }
     }
   }
 
