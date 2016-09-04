@@ -21,6 +21,6 @@ export default class EventList extends React.Component {
   }
 
   renderEvents() {
-    return _.map(this.props.events, (evnt, index) => <EventEntry key={index} {...evnt}/>);
+    return _.map(this.props.events, (evnt, index) => <EventEntry key={index} {...evnt} dispatch={this.props.dispatch}/>);
   }
 }

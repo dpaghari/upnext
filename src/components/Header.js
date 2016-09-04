@@ -1,6 +1,6 @@
 import React from "react";
 import ActionBar from "./ActionBar";
-import Greeting from "./Greeting";
+
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -10,8 +10,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div id="Header">
-        <Greeting/>
-        <ActionBar dispatch={this.props.dispatch}/>
+        <ActionBar currentPage={this.props.currentPage} dispatch={this.props.dispatch}/>
       </div>
     );
   }

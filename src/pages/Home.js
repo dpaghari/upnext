@@ -1,26 +1,29 @@
 import React from 'react';
 
 import Header from "../components/Header";
+import Greeting from "../components/Greeting";
 import Login from "../components/Login";
 import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
 
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { fetchEvents } from "../actions/eventsActions";
+//
+//
+// // Wrap store around Top level component
+// @connect((store) => {
+// return {
+//   users: store.users,
+//   events: store.events,
+//   appState: store.appState
+// };
+// })
 
-
-// Wrap store around Top level component
-@connect((store) => {
-return {
-  users: store.users,
-  events: store.events,
-  appState: store.appState
-};
-})
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props);
   }
 
   componentWillMount() {
@@ -28,36 +31,37 @@ export default class Home extends React.Component {
   }
 
   fetchEvents() {
-    this.props.dispatch(fetchEvents());
+    this.props.store.dispatch(fetchEvents());
   }
 
 
 
   render() {
 
-    const { users, events, appState } = this.props;
+    const { users, events, appState, dispatch } = this.props.store;
 
     if(appState.loggedIn){
       return (
         <div class="Home">
-        <Header dispatch={this.props.dispatch.bind(this)}/>
+        <Greeting/>
+        <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
         {this.renderEventForm()}
-        <EventList events={events.eventList}/>
+        <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
         </div>
 
       );
     }
     else {
-      return <Login dispatch={this.props.dispatch.bind(this)}/>
+      return <Login dispatch={dispatch.bind(this)}/>
     }
   }
 
   renderEventForm() {
     // console.log(this.props);
-    const { appState } = this.props;
+    const { appState, dispatch } = this.props.store;
     if(appState) {
       if(appState.eventForm)
-      return <EventForm dispatch={this.props.dispatch.bind(this)}/>;
+      return <EventForm dispatch={dispatch.bind(this)}/>;
       else
       return null;
     }

@@ -1,21 +1,33 @@
 import React from 'react';
+import Header from '../components/Header';
+import { fetchEvents } from "../actions/eventsActions";
 
 export default class Detail extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props);
   }
 
   componentWillMount() {
+    this.props.store.dispatch(fetchEvents());
   }
   render() {
+    const eventId = this.props.params.eventId;
+    const { appState, dispatch, events, users } = this.props.store;
+    const currentEvent = events.eventList[eventId];
+    console.log(currentEvent);
+    const { name, imgURL, details, location, date } = currentEvent;
+    
     return (
       <div class="DetailView">
+      <Header currentPage={appState.currentPage} dispatch={dispatch} />
         <div class="detail-event-info">
-        <h1>Detail View</h1>
-        <img src="" alt="PLACEHOLDER IMAGE"/>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1>{name}</h1>
+        <p>{date}</p>
+        <img src={imgURL} alt="PLACEHOLDER IMAGE"/>
+        <p>{location}</p>
+        <p>{details}</p>
         </div>
         <div class="detail-message-board">
           <ul class="message-board-list">

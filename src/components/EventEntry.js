@@ -1,6 +1,8 @@
 import React from "react";
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import { Link } from "react-router";
+import { changePage } from "../actions/appStateActions";
+
 
 export default class EventEntry extends React.Component {
   constructor(props) {
@@ -12,13 +14,14 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, date, details, location, friends } = this.props;
+    let { imgURL, name, date, details, location, friends, id } = this.props;
     let { onHover } = this.state;
+    let pathToDetails = "/detail/" + id;
     if (onHover) {
       return (
         <li class="event" onMouseLeave={this.toggleHover.bind(this)}>
           <div class="event-wrapper">
-            <Link to="/detail/test">
+            <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
             <div class="event-header">
               <img src={imgURL}/>
               <span class="event-headline">{name}</span>
@@ -53,11 +56,19 @@ export default class EventEntry extends React.Component {
 
     return _.map(this.props.friends, (friend, index) => {
     if(friend.profile_picture !== "")
-      return <Link key={index} to={friend.profile_url} class="friend-thumb"><img src={friend.profile_picture}/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={friend.profile_url} class="friend-thumb"><img src={friend.profile_picture}/></Link>
     else
-      return <Link key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
 
     });
+  }
+
+  handleEventClick() {
+    this.props.dispatch(changePage("detail"));
+  }
+
+  handleFriendClick() {
+    this.props.dispatch(changePage("profiles"));
   }
 
   toggleHover(e) {

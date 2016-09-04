@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import Header from "../components/Header";
+import Header from "../components/Header";
 // import EventList from "../components/EventList";
 // import EventForm from "../components/EventForm";
 //
@@ -25,11 +25,10 @@ export default class Profile extends React.Component {
   }
 
 
-
-
   render() {
     return (
       <div class="DetailView">
+        <Header currentPage={this.props.currentPage} dispatch={this.props.dispatch} />
         <h1>Profile View</h1>
       </div>
 

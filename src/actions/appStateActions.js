@@ -14,3 +14,12 @@ export function hideEventForm() {
     });
   }
 }
+
+export function changePage(pageName) {
+  return (dispatch) => {
+    dispatch({
+      type: "CHANGE_PAGE",
+      payload: pageName
+    })
+  };
+}
