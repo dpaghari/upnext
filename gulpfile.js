@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     cssnano = require('gulp-cssnano'),
     webpack = require('webpack'),
-    WebpackDevServer = require('webpack-dev-server');
+    WebpackDevServer = require('webpack-dev-server'),
+    autoprefixer = require('gulp-autoprefixer');
     // livereload = require('gulp-livereload');
 
 gulp.task('scripts', function () {
@@ -23,7 +24,8 @@ gulp.task('styles', function () {
       includePaths: ['./scss', './node_modules/support-for/sass/']
 
     }).on('error', sass.logError))
-    // .pipe(cssnano())
+    .pipe(autoprefixer())
+    .pipe(cssnano())
     .pipe(gulp.dest('css'));
     // .pipe(livereload());
 });
