@@ -24,6 +24,7 @@ export default class Home extends React.Component {
   }
 
   componentWillMount() {
+    this.fetchEvents();
   }
 
   fetchEvents() {
@@ -35,9 +36,7 @@ export default class Home extends React.Component {
   render() {
 
     const { users, events, appState } = this.props;
-    if(!events.eventList.length) {
-      return <button onClick={this.fetchEvents.bind(this)}>Get Events</button>;
-    }
+
     if(appState.loggedIn){
       return (
         <div class="Home">

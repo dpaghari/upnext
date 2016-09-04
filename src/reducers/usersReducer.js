@@ -1,6 +1,8 @@
 const initialState = {
   users : [],
-  current_user_id : null
+  current_user_id : null,
+  fetchedUsers: false,
+  fetching: false
 };
 
 

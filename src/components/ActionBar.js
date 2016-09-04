@@ -1,5 +1,6 @@
 import React from "react";
 import { showEventForm } from "../actions/appStateActions.js";
+import { logOut } from "../actions/usersActions.js";
 
 export default class ActionBar extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class ActionBar extends React.Component {
           <li class="u-action"><a href="#">Event Map</a></li>
           <li class="u-action"><a href="#">Memories</a></li>
           <li class="u-action"><a href="#">Settings</a></li>
-          <li class="u-action"><a href="#">Logout</a></li>
+          <li class="u-action"><a onClick={this.handleLogout.bind(this)}href="#">Logout</a></li>
 
         </ul>
       </div>
@@ -24,6 +25,9 @@ export default class ActionBar extends React.Component {
 
   handleAddEvent(e) {
     this.props.dispatch(showEventForm());
+  }
+  handleLogout(e) {
+    this.props.dispatch(logOut());
   }
 
 

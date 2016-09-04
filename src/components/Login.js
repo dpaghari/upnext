@@ -13,6 +13,7 @@ export default class Login extends React.Component {
           <input type="text" ref="user_name" placeholder="Username"/>
           <input type="password" ref="user_pw" placeholder="Password"/>
           <input type="submit" value="Login"/>
+          {<p><em>Just use un:Daniel and pw:hescool1 for now ;) </em></p>}
         </form>
       </div>
     );

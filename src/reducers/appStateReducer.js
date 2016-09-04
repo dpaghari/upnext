@@ -20,6 +20,12 @@ export default function reducer (state = initialState, action) {
         loggedIn: action.payload
       }
     }
+    case "LOGOUT_USER" : {
+      state = {
+        ...state,
+        loggedIn: action.payload
+      }
+    }
   }
 
   return state;
