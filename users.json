@@ -1,26 +1,41 @@
 [
     {
+      "id" : 0,
       "username" : "Daniel",
-      "password" : "hescool1"
+      "password" : "hescool1",
+      "profile_url" : "profiles/john_bentley",
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
     }
     ,
     {
+      "id" : 1,
       "username" : "John",
-      "password" : "hescool2"
+      "password" : "hescool2",
+      "profile_url" : "profiles/john_bentley",
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
     }
     ,
     {
+      "id" : 2,
       "username" : "Nick",
-      "password" : "hescool3"
+      "password" : "hescool3",
+      "profile_url" : "profiles/john_bentley",
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
     }
     ,
     {
+      "id" : 3,
       "username" : "Kelsey",
-      "password" : "shescool1"
+      "password" : "shescool1",
+      "profile_url" : "profiles/john_bentley",
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
     }
     ,
     {
+      "id" : 4,
       "username" : "Emily",
-      "password" : "shescool2"
+      "password" : "shescool2",
+      "profile_url" : "profiles/john_bentley",
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
     }
 ]

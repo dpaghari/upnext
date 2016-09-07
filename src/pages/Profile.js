@@ -1,20 +1,8 @@
 import React from 'react';
 
 import Header from "../components/Header";
-// import EventList from "../components/EventList";
-// import EventForm from "../components/EventForm";
-//
-// import { connect } from "react-redux";
-// import { fetchEvents } from "../actions/eventsActions";
+import { fetchUsers } from "../actions/usersActions";
 
-
-// Wrap store around Top level component
-// @connect((store) => {
-// return {
-//   events: store.events,
-//   appState: store.appState
-// };
-// })
 export default class Profile extends React.Component {
 
   constructor(props) {
@@ -22,14 +10,26 @@ export default class Profile extends React.Component {
   }
 
   componentWillMount() {
+    this.props.store.dispatch(fetchUsers());
   }
 
 
   render() {
+    const { users, dispatch } = this.props.store;
+    const currentUserID = users.current_user_id;
+    const userId = this.props.params.userId;
     return (
-      <div class="DetailView">
+      <div class="ProfileView">
         <Header currentPage={this.props.currentPage} dispatch={this.props.dispatch} />
-        <h1>Profile View</h1>
+        <div class="userInfo">
+          <h1>Profile View</h1>
+          <img class="profiles-prof-picture" src={users.users[currentUserID].profile_picture}/>
+          <p class="profiles-prof-bio"></p>
+        </div>
+        <div class="publicEvents">
+          <ul class="profile-prof-events">
+          </ul>
+        </div>
       </div>
 
     );

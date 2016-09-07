@@ -5,25 +5,12 @@ import Greeting from "../components/Greeting";
 import Login from "../components/Login";
 import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
-
-// import { connect } from "react-redux";
 import { fetchEvents } from "../actions/eventsActions";
-//
-//
-// // Wrap store around Top level component
-// @connect((store) => {
-// return {
-//   users: store.users,
-//   events: store.events,
-//   appState: store.appState
-// };
-// })
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   componentWillMount() {

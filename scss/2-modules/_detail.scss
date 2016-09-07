@@ -1,0 +1,38 @@
+#DetailView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .detail-event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  hr {
+    width: 80%;
+  }
+
+  .detail-message-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .message-board-msg {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid #555;
+      padding: 20px;
+      width: 100%;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      .user-comment {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+}

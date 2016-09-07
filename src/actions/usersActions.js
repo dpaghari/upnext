@@ -50,3 +50,23 @@ export function logOut() {
     });
   };
 }
+
+
+export function fetchUsers() {
+  return (dispatch) => {
+    axios.get("../../users.json")
+         .then((response) =>  {
+           dispatch({
+             type: "FETCH_USERS_FULFILLED",
+             payload : response.data
+           });
+         })
+         .catch((error) => {
+           dispatch({
+             type: "FETCH_USERS_REJECTED",
+             payload: error
+           })
+         });
+
+  };
+}

@@ -1,5 +1,5 @@
 import React from "react";
-const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+// const ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import { Link } from "react-router";
 import { changePage } from "../actions/appStateActions";
 

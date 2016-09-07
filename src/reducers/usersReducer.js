@@ -24,10 +24,20 @@ export default function usersReducer(state = initialState, action) {
       };
       break;
     }
+    case "FETCH_USERS_PENDING": {
+      ;
+      state = {
+        ...state,
+        fetching: true,
+        users: action.payload
+      };
+      break;
+    }
     case "FETCH_USERS_FULFILLED": {
       ;
       state = {
         ...state,
+        fetchedUsers: true,
         users: action.payload
       };
       break;
@@ -35,6 +45,7 @@ export default function usersReducer(state = initialState, action) {
     case "FETCH_USERS_REJECTED": {
       state = {
         ...state,
+        fetchedUsers: false,
         error: action.payload
       };
       break;
