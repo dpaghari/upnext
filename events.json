@@ -1,6 +1,6 @@
 [
     {
-      "id" : "0",
+      "id" : 0,
       "imgURL" : "https://www.nps.gov/yose/planyourvisit/images/dr-tunnel-view-pp-bigweb_1.jpg",
       "name" : "Go to Yosemite",
       "date": "8/31/2016",
@@ -8,26 +8,23 @@
       "details": "Going to Yosemite cause its super cool",
       "friends" : [
         {
+          "id": 2,
           "name" : "Nick Smith",
-          "profile_url" : "profiles/nick_smith",
+          "profile_url" : "nick_smith",
           "profile_picture" : ""
         },
         {
+          "id": 1,
           "name" : "John Bentley",
-          "profile_url" : "profiles/john_bentley",
+          "profile_url" : "john_bentley",
           "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
-        },
-        {
-          "name" : "Nathan Nichols-Roy",
-          "profile_url" : "profiles/nathan_nicholsroy",
-          "profile_picture" : ""
         }
       ]
     }
     ,
 
     {
-      "id" : "1",
+      "id" : 1,
       "imgURL" : "https://upload.wikimedia.org/wikipedia/commons/5/5b/Waffles_with_Strawberries.jpg",
       "name" : "Waffle Game Night",
       "date": "9/1/2016",
@@ -35,13 +32,15 @@
       "details": "Coz why not",
       "friends" : [
         {
+          "id": 3,
           "name" : "Kelsey Raczak",
-          "profile_url" : "profiles/kelsey_raczak",
+          "profile_url" : "kelsey_raczak",
           "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/13015516_10209025196448835_645490049520586616_n.jpg?oh=92b6894f9aa1ff7cafd3fa0a2d2c1b0e&oe=584535B5"
         },
         {
+          "id": 4,
           "name" : "Emily Anderson",
-          "profile_url" : "profiles/emily_anderson",
+          "profile_url" : "emily_anderson",
           "profile_picture" : ""
         }
       ]
@@ -49,7 +48,7 @@
     ,
 
     {
-      "id" : "2",
+      "id" : 2,
       "imgURL" : "https://pbs.twimg.com/profile_images/458967373488201729/Sck3mZXC_400x400.jpeg",
       "name" : "Go Ham",
       "date": "9/2/2016",
@@ -57,23 +56,27 @@
       "details": "Coz it's tasty",
       "friends" : [
         {
+          "id": 2,
           "name" : "Nick Smith",
-          "profile_url" : "profiles/nick_smith",
+          "profile_url" : "nick_smith",
           "profile_picture" : ""
         },
         {
+          "id": 1,
           "name" : "John Bentley",
-          "profile_url" : "profiles/john_bentley",
+          "profile_url" : "john_bentley",
           "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
         },
         {
+          "id": 3,
           "name" : "Kelsey Raczak",
-          "profile_url" : "profiles/kelsey_raczak",
+          "profile_url" : "kelsey_raczak",
           "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/13015516_10209025196448835_645490049520586616_n.jpg?oh=92b6894f9aa1ff7cafd3fa0a2d2c1b0e&oe=584535B5"
         },
         {
+          "id": 4,
           "name" : "Emily Anderson",
-          "profile_url" : "profiles/emily_anderson",
+          "profile_url" : "emily_anderson",
           "profile_picture" : ""
         }
       ]

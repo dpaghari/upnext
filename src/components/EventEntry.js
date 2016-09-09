@@ -53,12 +53,12 @@ export default class EventEntry extends React.Component {
   }
 
   renderFriends() {
-
     return _.map(this.props.friends, (friend, index) => {
+    let pathToFriend = "/profiles/" + friend.id;
     if(friend.profile_picture !== "")
-      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={friend.profile_url} class="friend-thumb"><img src={friend.profile_picture}/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={pathToFriend} class="friend-thumb"><img src={friend.profile_picture}/></Link>
     else
-      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={friend.profile_url} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={pathToFriend} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
 
     });
   }

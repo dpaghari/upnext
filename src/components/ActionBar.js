@@ -8,14 +8,15 @@ export default class ActionBar extends React.Component {
     super(props);
   }
 
+  // TO-DO: Link to current-user's profile, currently hardcoded
   render() {
     const { currentPage } = this.props;
     if(currentPage === "home"){
       return (
         <div id="ActionBar">
         <ul class="actionList">
-        <li class="u-action"><a onClick={this.handleAddEvent.bind(this)}href="#">Add Event</a></li>
-        <li class="u-action"><a href="#">Profile</a></li>
+        <li class="u-action"><a onClick={this.handleAddEvent.bind(this)} href="#">Add Event</a></li>
+        <li class="u-action"><Link onClick={this.handleGoToProfile.bind(this)} to="/profiles/0">Profile</Link></li>
         <li class="u-action"><a href="#">Event Map</a></li>
         <li class="u-action"><a href="#">Memories</a></li>
         <li class="u-action"><a href="#">Settings</a></li>
@@ -28,7 +29,7 @@ export default class ActionBar extends React.Component {
       return(
         <div id="ActionBar">
         <ul class="actionList">
-        <li class="u-action"><Link onClick={this.handleGoToEvents.bind(this)} to="/home">Events</Link></li>
+        <li class="u-action"><Link onClick={this.handleGoToEvents.bind(this)} to="/">Events</Link></li>
         <li class="u-action"><a href="#">Profile</a></li>
         <li class="u-action"><a href="#">Event Map</a></li>
         <li class="u-action"><a href="#">Memories</a></li>
@@ -48,6 +49,9 @@ export default class ActionBar extends React.Component {
   }
   handleLogout(e) {
     this.props.dispatch(logOut());
+  }
+  handleGoToProfile(e) {
+    this.props.dispatch(changePage("profiles"));
   }
 
 

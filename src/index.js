@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { Provider } from "react-redux";
+// import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { IndexRoute, Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
@@ -22,7 +22,6 @@ render(<Provider store={store}>
     <IndexRoute component={Home}/>
     <Route path="/detail/:eventId" component={Detail}></Route>
     <Route path="/profiles/:userId" component={Profile}></Route>
-    <Route path="/*" component={Home}/>
     </Route>
   </Router>
   </Provider>,

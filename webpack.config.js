@@ -9,7 +9,7 @@ module.exports = {
     './scss/style.scss',
     './src/index.js',
     // './src/server.js',
-    'webpack-dev-server/client?http://127.0.0.1:8081/'
+    'webpack-dev-server/client?http://127.0.0.1:8080/'
   ],
   output: {
     path: path.join(__dirname, 'public'),
