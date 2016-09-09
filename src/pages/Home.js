@@ -29,7 +29,7 @@ export default class Home extends React.Component {
 
     if(appState.loggedIn){
       return (
-        <div class="Home">
+        <div id="Home">
         <Greeting/>
         <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
         {this.renderEventForm()}

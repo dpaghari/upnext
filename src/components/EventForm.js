@@ -1,7 +1,7 @@
 import React from "react";
 import { createEvent } from "../actions/eventsActions";
 import { hideEventForm } from "../actions/appStateActions";
-var GoogleMapsLoader = require('google-maps'); // only for common js environments
+const GoogleMapsLoader = require('google-maps'); // only for common js environments
 GoogleMapsLoader.KEY = 'AIzaSyALT683365k3JbNnmRDLUNY-PfFEyJDKiM';
 GoogleMapsLoader.LIBRARIES = ['places'];
 

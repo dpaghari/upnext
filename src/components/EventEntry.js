@@ -21,6 +21,7 @@ export default class EventEntry extends React.Component {
       return (
         <li class="event" onMouseLeave={this.toggleHover.bind(this)}>
           <div class="event-wrapper">
+            {this.renderStatusBadge()}
             <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
             <div class="event-header">
               <img src={imgURL}/>
@@ -44,6 +45,7 @@ export default class EventEntry extends React.Component {
     else {
       return (
       <li class="event" onMouseEnter={this.toggleHover.bind(this)}>
+        {this.renderStatusBadge()}
         <div class="event-header">
           <span class="event-headline">{name}</span>
           <span class="event-date">{date}</span>
@@ -80,4 +82,19 @@ export default class EventEntry extends React.Component {
     });
 
   }
+
+  renderStatusBadge() {
+    const { status } = this.props;
+    if(status === "finished"){
+      return (
+        <span class="event-finished">Finished</span>
+      );
+    }
+    else {
+      return(
+        <span class="event-upcoming">Upcoming</span>
+      );
+    }
+  }
+
 }

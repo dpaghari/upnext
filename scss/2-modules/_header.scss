@@ -4,10 +4,12 @@
   justify-content: space-around;
   padding: 10px;
   width: 100%;
-  
+
 
   #ActionBar {
     height: 100%;
+    border-bottom: 1px solid $notSoDark;
+    padding: 10px;
     .actionList {
       height: 100%;
       align-items: center;
