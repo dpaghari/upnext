@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import { fetchEvents } from "../actions/eventsActions";
+import MessageBoard from "../components/MessageBoard";
 
 export default class Detail extends React.Component {
 
@@ -16,7 +17,7 @@ export default class Detail extends React.Component {
     const eventId = this.props.params.eventId;
     const { appState, dispatch, events, users } = this.props.store;
     const currentEvent = events.eventList[eventId];
-    // console.log(currentEvent);
+    console.log(events.eventList[eventId].comments);
     const { name, imgURL, details, location, date } = currentEvent;
 
     return (
@@ -30,38 +31,7 @@ export default class Detail extends React.Component {
         <p>{details}</p>
         </div>
         <hr/>
-        <div class="detail-message-board">
-          <ul class="message-board-list">
-            <li class="message-board-msg">
-              <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
-              <div class="user-comment">
-                <p>User Name</p>
-                <p>User Comment</p>
-              </div>
-            </li>
-            <li class="message-board-msg">
-              <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
-              <div class="user-comment">
-                <p>User Name</p>
-                <p>User Comment</p>
-              </div>
-            </li>
-            <li class="message-board-msg">
-              <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
-              <div class="user-comment">
-                <p>User Name</p>
-                <p>User Comment</p>
-              </div>
-            </li>
-            <li class="message-board-msg">
-              <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
-              <div class="user-comment">
-                <p>User Name</p>
-                <p>User Comment</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <MessageBoard dispatch={dispatch} messages={events.eventList[eventId].comments}/>
       </div>
     );
   }

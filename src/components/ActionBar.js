@@ -15,9 +15,9 @@ export default class ActionBar extends React.Component {
         <ul class="actionList">
         <li class="u-action">{this.renderEventLink()}</li>
         <li class="u-action"><Link to="/profiles/0" onClick={this.handleGoToProfile.bind(this)}>Profile</Link></li>
-        <li class="u-action"><Link to="/eventmap">Event Map</Link></li>
-        <li class="u-action"><Link to="/memories">Memories</Link></li>
-        <li class="u-action"><Link to="/settings">Settings</Link></li>
+        <li class="u-action"><Link to="/eventmap" onClick={this.handleGoToMap.bind(this)}>Event Map</Link></li>
+        <li class="u-action"><Link to="/memories" onClick={this.handleGoToMemories.bind(this)}>Memories</Link></li>
+        <li class="u-action"><Link to="/settings" onClick={this.handleGoToSettings.bind(this)}>Settings</Link></li>
         <li class="u-action"><Link to="#" onClick={this.handleLogout.bind(this)}>Logout</Link></li>
         </ul>
         </div>
@@ -35,6 +35,15 @@ export default class ActionBar extends React.Component {
   }
   handleGoToProfile(e) {
     this.props.dispatch(changePage("profiles"));
+  }
+  handleGoToMap(e) {
+    this.props.dispatch(changePage("eventmap"));
+  }
+  handleGoToMemories(e) {
+    this.props.dispatch(changePage("memories"));
+  }
+  handleGoToSettings(e) {
+    this.props.dispatch(changePage("settings"));
   }
 
   renderEventLink() {

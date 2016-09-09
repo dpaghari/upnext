@@ -4,7 +4,9 @@
       "username" : "Daniel",
       "password" : "hescool1",
       "profile_url" : "john_bentley",
-      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg",
+      "bio" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "rank" : "Adventurer"
     }
     ,
     {
@@ -12,7 +14,10 @@
       "username" : "John",
       "password" : "hescool2",
       "profile_url" : "john_bentley",
-      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg",
+      "bio" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "rank" : "Greenhorn"
+
     }
     ,
     {
@@ -20,7 +25,9 @@
       "username" : "Nick",
       "password" : "hescool3",
       "profile_url" : "john_bentley",
-      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg",
+      "bio" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "rank" : "Journeyman"
     }
     ,
     {
@@ -28,7 +35,9 @@
       "username" : "Kelsey",
       "password" : "shescool1",
       "profile_url" : "john_bentley",
-      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg",
+      "bio" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "rank" : "Novice"
     }
     ,
     {
@@ -36,6 +45,8 @@
       "username" : "Emily",
       "password" : "shescool2",
       "profile_url" : "john_bentley",
-      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
+      "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg",
+      "bio" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "rank" : "Journeyman"
     }
 ]

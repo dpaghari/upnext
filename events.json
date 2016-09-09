@@ -19,6 +19,22 @@
           "profile_url" : "john_bentley",
           "profile_picture" : "https://scontent.fsnc1-1.fna.fbcdn.net/t31.0-8/12828494_10154047005290127_5766187602953981194_o.jpg"
         }
+      ],
+      "comments" : [
+        {
+          "user" : "Daniel",
+          "message" : "Should we reserve a camping spot?"
+        }
+        ,
+        {
+          "user" : "John",
+          "message" : "Probably, should do it soon since it gets packed"
+        }
+        ,
+        {
+          "user" : "Nick",
+          "message" : "Yeah people usually reserve this like a year in advance lol"
+        }
       ]
     }
     ,

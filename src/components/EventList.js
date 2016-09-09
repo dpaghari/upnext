@@ -1,6 +1,6 @@
 import React from "react";
 import _ from "lodash";
-import EventEntry from "./eventEntry"
+import EventEntry from "./EventEntry"
 
 export default class EventList extends React.Component {
   constructor(props) {
