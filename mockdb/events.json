@@ -3,6 +3,12 @@
       "id" : 0,
       "imgURL" : "https://www.nps.gov/yose/planyourvisit/images/dr-tunnel-view-pp-bigweb_1.jpg",
       "name" : "Go to Yosemite",
+      "host" : {
+        "id": 2,
+        "name" : "Nick Smith",
+        "profile_url" : "nick_smith",
+        "profile_picture" : ""
+      },
       "date": "8/31/2016",
       "location" : "Yosemite Park",
       "details": "Going to Yosemite cause its super cool",
@@ -43,6 +49,12 @@
       "id" : 1,
       "imgURL" : "https://upload.wikimedia.org/wikipedia/commons/5/5b/Waffles_with_Strawberries.jpg",
       "name" : "Waffle Game Night",
+      "host" : {
+        "id": 2,
+        "name" : "Nick Smith",
+        "profile_url" : "nick_smith",
+        "profile_picture" : ""
+      },
       "date": "9/1/2016",
       "location" : "The Wind Tunnel",
       "details": "Coz why not",
@@ -67,6 +79,12 @@
       "id" : 2,
       "imgURL" : "https://pbs.twimg.com/profile_images/458967373488201729/Sck3mZXC_400x400.jpeg",
       "name" : "Go Ham",
+      "host" : {
+        "id": 2,
+        "name" : "Nick Smith",
+        "profile_url" : "nick_smith",
+        "profile_picture" : ""
+      },
       "date": "9/2/2016",
       "location" : "Life",
       "details": "Coz it's tasty",

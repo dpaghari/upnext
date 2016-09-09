@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function authUser({username, password}) {
   return (dispatch) => {
-    axios.get("../../users.json")
+    axios.get("../../mockdb/users.json")
          .then((response) =>  {
            dispatch({
              type: "FETCH_USERS_FULFILLED",
@@ -54,7 +54,7 @@ export function logOut() {
 
 export function fetchUsers() {
   return (dispatch) => {
-    axios.get("../../users.json")
+    axios.get("../../mockdb/users.json")
          .then((response) =>  {
            dispatch({
              type: "FETCH_USERS_FULFILLED",

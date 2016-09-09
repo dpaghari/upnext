@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function fetchEvents() {
   return (dispatch) => {
-    axios.get("../../events.json")
+    axios.get("../../mockdb/events.json")
          .then((response) =>  {
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",

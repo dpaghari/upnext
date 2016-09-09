@@ -14,7 +14,7 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, date, details, location, friends, id } = this.props;
+    let { imgURL, name, host, date, details, location, friends, id } = this.props;
     let { onHover } = this.state;
     let pathToDetails = "/detail/" + id;
     if (onHover) {
@@ -26,6 +26,7 @@ export default class EventEntry extends React.Component {
               <img src={imgURL}/>
               <span class="event-headline">{name}</span>
               <span class="event-date">{date}</span>
+              <span class="event-host">Host: {host.name}</span>
             </div>
             </Link>
             <div class="event-expand">
@@ -46,6 +47,7 @@ export default class EventEntry extends React.Component {
         <div class="event-header">
           <span class="event-headline">{name}</span>
           <span class="event-date">{date}</span>
+          <span class="event-host">Host: {host.name}</span>
         </div>
       </li>
       );
