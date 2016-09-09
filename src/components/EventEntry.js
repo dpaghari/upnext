@@ -26,10 +26,10 @@ export default class EventEntry extends React.Component {
               <img src={imgURL}/>
               <span class="event-headline">{name}</span>
               <span class="event-date">{date}</span>
-              <span class="event-host">Host: {host.name}</span>
             </div>
             </Link>
             <div class="event-expand">
+              <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}><span class="event-host">Host: {host.name}</span></Link>
               <span class="event-loc">{location}</span>
               <p class="event-detail">{details}</p>
               <span class="friends-going">Going:</span>
@@ -58,9 +58,9 @@ export default class EventEntry extends React.Component {
     return _.map(this.props.friends, (friend, index) => {
     let pathToFriend = "/profiles/" + friend.id;
     if(friend.profile_picture !== "")
-      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={pathToFriend} class="friend-thumb"><img src={friend.profile_picture}/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} title={friend.name} key={index} to={pathToFriend} class="friend-thumb"><img src={friend.profile_picture}/></Link>
     else
-      return <Link onClick={this.handleFriendClick.bind(this)} key={index} to={pathToFriend} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
+      return <Link onClick={this.handleFriendClick.bind(this)} title={friend.name} key={index} to={pathToFriend} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
 
     });
   }
