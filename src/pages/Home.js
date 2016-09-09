@@ -48,7 +48,11 @@ export default class Home extends React.Component {
     const { appState, dispatch } = this.props.store;
     if(appState) {
       if(appState.eventForm)
-      return <EventForm dispatch={dispatch.bind(this)}/>;
+      return (
+        <div class="lightbox">
+        <EventForm dispatch={dispatch.bind(this)}/>;
+        </div>
+      );
       else
       return null;
     }

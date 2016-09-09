@@ -1,5 +1,43 @@
-#EventForm {
-  margin: 20px;
-  border: 1px solid $notSoDark;
-  padding: 10px;
+.lightbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  #EventForm {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 20px;
+    border: 1px solid $notSoDark;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    height: auto;
+    button.addEvent {
+      width: 100%;
+      box-shadow: 0px 2px 2px $notSoDark;
+    }
+    a.closeEventForm {
+      position: absolute;
+      top: 3%;
+      right: 20%;
+      color: white;
+      text-decoration: none;
+    }
+    strong {
+      margin: 10px 0px;
+      color: $notSoDark;
+    }
+    label {
+      margin: 5px;
+      display: inline-block;
+      input[type="radio"] {
+        margin-left: 10px;
+      }
+    }
+  }
 }

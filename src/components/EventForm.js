@@ -20,13 +20,21 @@ export default class EventForm extends React.Component {
   render() {
     return (
       <form id="EventForm" onSubmit={this.addEvent.bind(this)}>
-      <a href="" onClick={this.handleHideEventForm.bind(this)}>Close</a>
+      <strong>Add New Event</strong>
+      <a class="closeEventForm" href="" onClick={this.handleHideEventForm.bind(this)}>Close</a>
       <input name="eventName" ref="eventName" type="text" placeholder="Event Name"/>
       <input name="eventLocation" ref="eventLocation" type="text" placeholder="Event Location"/>
       <input name="eventDate" ref="eventDate" type="date"/>
       <input name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
       <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-      <button onClick={this.addEvent.bind(this)}>Add Event</button>
+      <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
+      <label for="eventType">Private
+      <input name="eventType" ref="eventType" type="radio" value="private"/>
+      </label>
+      <label for="eventType">Public
+      <input name="eventType" ref="eventType" type="radio" value="public"/>
+      </label>
+      <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
       </form>
     );
   }
