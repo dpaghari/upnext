@@ -10,35 +10,18 @@ export default class ActionBar extends React.Component {
 
   // TO-DO: Link to current-user's profile, currently hardcoded
   render() {
-    const { currentPage } = this.props;
-    if(currentPage === "home"){
       return (
         <div id="ActionBar">
         <ul class="actionList">
-        <li class="u-action"><a onClick={this.handleAddEvent.bind(this)} href="#">Add Event</a></li>
-        <li class="u-action"><Link onClick={this.handleGoToProfile.bind(this)} to="/profiles/0">Profile</Link></li>
-        <li class="u-action"><a href="#">Event Map</a></li>
-        <li class="u-action"><a href="#">Memories</a></li>
-        <li class="u-action"><a href="#">Settings</a></li>
-        <li class="u-action"><a onClick={this.handleLogout.bind(this)}href="#">Logout</a></li>
+        <li class="u-action">{this.renderEventLink()}</li>
+        <li class="u-action"><Link to="/profiles/0" onClick={this.handleGoToProfile.bind(this)}>Profile</Link></li>
+        <li class="u-action"><Link to="/eventmap">Event Map</Link></li>
+        <li class="u-action"><Link to="/memories">Memories</Link></li>
+        <li class="u-action"><Link to="/settings">Settings</Link></li>
+        <li class="u-action"><Link to="#" onClick={this.handleLogout.bind(this)}>Logout</Link></li>
         </ul>
         </div>
       );
-    }
-    else {
-      return(
-        <div id="ActionBar">
-        <ul class="actionList">
-        <li class="u-action"><Link onClick={this.handleGoToEvents.bind(this)} to="/">Events</Link></li>
-        <li class="u-action"><a href="#">Profile</a></li>
-        <li class="u-action"><a href="#">Event Map</a></li>
-        <li class="u-action"><a href="#">Memories</a></li>
-        <li class="u-action"><a href="#">Settings</a></li>
-        <li class="u-action"><a onClick={this.handleLogout.bind(this)}href="#">Logout</a></li>
-        </ul>
-        </div>
-      );
-    }
   }
 
   handleAddEvent(e) {
@@ -54,5 +37,14 @@ export default class ActionBar extends React.Component {
     this.props.dispatch(changePage("profiles"));
   }
 
+  renderEventLink() {
+    const { currentPage } = this.props;
+    if(currentPage === "home"){
+      return <a onClick={this.handleAddEvent.bind(this)} href="#">Add Event</a>;
+    }
+    else {
+      return <Link onClick={this.handleGoToEvents.bind(this)} to="/">Events</Link>;
+    }
+  }
 
 }
