@@ -9,6 +9,7 @@
         "profile_url" : "nick_smith",
         "profile_picture" : ""
       },
+      "status" : "upcoming",
       "date": "8/31/2016",
       "location" : "Yosemite Park",
       "details": "Going to Yosemite cause its super cool",
@@ -55,6 +56,7 @@
         "profile_url" : "nick_smith",
         "profile_picture" : ""
       },
+      "status" : "upcoming",
       "date": "9/1/2016",
       "location" : "The Wind Tunnel",
       "details": "Coz why not",
@@ -85,6 +87,7 @@
         "profile_url" : "nick_smith",
         "profile_picture" : ""
       },
+      "status" : "finished",
       "date": "9/2/2016",
       "location" : "Life",
       "details": "Coz it's tasty",

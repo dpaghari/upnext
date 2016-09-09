@@ -12,9 +12,9 @@ export default class EventEntry extends React.Component {
       "onHover" : false
     };
   }
-
+  //TO-DO: Use event status to display a badge or something i.e red = finished green = upcoming
   render () {
-    let { imgURL, name, host, date, details, location, friends, id } = this.props;
+    let { imgURL, name, host, date, details, location, friends, id, status } = this.props;
     let { onHover } = this.state;
     let pathToDetails = "/detail/" + id;
     if (onHover) {
