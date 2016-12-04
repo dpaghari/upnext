@@ -16,7 +16,9 @@ export default class EventMap extends React.Component {
       let userIP;
       jsonp("http://jsonip.com/", function(res) {
         userIP = res.ip;
+
         jsonp("http://www.tigeoip.com/?token=8765FRCfs!87&ip=" + userIP, function(innerRes) {
+          
           userCoords.lat = innerRes.latitude;
           userCoords.lng = innerRes.longitude;
           userCoords.city = innerRes.city;
@@ -31,6 +33,7 @@ export default class EventMap extends React.Component {
   componentDidMount() {
     tr_g_u_loc.then((pos)=> {
       const { lat, lng } = pos;
+      console.log(lat, lng);
       GoogleMapsLoader.load(function(google) {
       new google.maps.Map(document.getElementById("EventMap"), {
         center: {lat, lng},
@@ -52,7 +55,7 @@ export default class EventMap extends React.Component {
       <div id="EventMapView">
       <Header currentPage={appState.currentPage} dispatch={dispatch} />
         <div class="eventLocator">
-          <input type="text" name="eventLocator" ref="eventLocator" />
+          <input type="text" name="eventLocator" ref="eventLocator"/>
         </div>
         <div id="EventMap"></div>
       </div>

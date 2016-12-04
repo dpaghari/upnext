@@ -21,7 +21,6 @@
       flex-direction: column;
       padding: 50px;
       border: 1px solid $notSoDark;
-      // border-radius: 50%;
       color: $notSoDark;
       text-align: center;
       align-items: center;
@@ -65,7 +64,7 @@
           font-weight: bold;
         }
         img {
-          max-width: 250px;
+          max-width: 80%;
           min-height: 250px;
         }
       }

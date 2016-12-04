@@ -1,16 +1,51 @@
-const path = require('path');
-const express = require('express');
-const port = 8080;
-const app = express();
+import path from 'path';
+import Express from 'express';
+import React from "react";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import eventapp from './reducers';
+import App from './pages/Layout';
+import { renderToString } from "react-dom/server";
 
-// serve static assets normally
-app.use(express.static(__dirname));
-//
-// // handle every other route with index.html, which will contain
-// // a script tag to your application's JavaScript file(s).
-app.get('/*', function (request, response){
-  response.sendFile(path.resolve(__dirname,  'index.html'))
-});
+const app = Express();
+const port = 3000;
+
+app.use(handleRender);
+
+function handleRender(req, res) {
+  // Create a new Redux store instance
+ const store = createStore(eventApp)
+
+ // Render the component to a string
+ const html = renderToString(
+   <Provider store={store}>
+     <App />
+   </Provider>
+ )
+
+ // Grab the initial state from our Redux store
+ const preloadedState = store.getState()
+
+ // Send the rendered page back to the client
+ res.send(renderFullPage(html, preloadedState))
+}
+
+function renderFullPage(html, preloadedState) {
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <title>Redux Universal Example</title>
+      </head>
+      <body>
+        <div id="app">${html}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
+        </script>
+        <script src="../bundle.js"></script>
+      </body>
+    </html>
+    `
+}
 
 app.listen(port);
-console.log("server started on port " + port)

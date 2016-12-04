@@ -11,7 +11,8 @@ const middleware = applyMiddleware(promise(), thunk, logger());
 
 import reducer from "./reducers";
 
-
+// const preloadedState = window.__PRELOADED_STATE__
+// var currentReducer = preloadedState || reducer;
 export default createStore(reducer, middleware);
 
 

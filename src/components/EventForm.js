@@ -14,7 +14,7 @@ export default class EventForm extends React.Component {
   componentDidMount() {
     GoogleMapsLoader.load(function(google) {
     new google.maps.places.Autocomplete(this.refs.eventLocation);
-  }.bind(this));
+    }.bind(this));
   }
 
   render() {

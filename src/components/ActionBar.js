@@ -6,6 +6,12 @@ import { Link } from "react-router";
 export default class ActionBar extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   headerStyles: {
+    //     "backgroundColor" : "red",
+    //     "padding" : "20px"
+    //   }
+    // };
   }
 
   // TO-DO: Link to current-user's profile, currently hardcoded
@@ -19,6 +25,7 @@ export default class ActionBar extends React.Component {
         <li class="u-action"><Link to="/memories" onClick={this.handleGoToMemories.bind(this)}>Memories</Link></li>
         <li class="u-action"><Link to="/settings" onClick={this.handleGoToSettings.bind(this)}>Settings</Link></li>
         <li class="u-action"><Link to="#" onClick={this.handleLogout.bind(this)}>Logout</Link></li>
+
         </ul>
         </div>
       );
@@ -45,6 +52,16 @@ export default class ActionBar extends React.Component {
   handleGoToSettings(e) {
     this.props.dispatch(changePage("settings"));
   }
+
+  // changeColor() {
+  //   console.log("sup");
+  //   // this.setState({
+  //   //   headerStyles : {
+  //   //     "backgroundColor" : "yellow",
+  //   //     "padding" : "40px"
+  //   //   }
+  //   // });
+  // }
 
   renderEventLink() {
     const { currentPage } = this.props;

@@ -1,17 +1,20 @@
 'use strict';
+var exec = require('child_process').exec, child;
+var colors = require('colors');
+var gulp = require('gulp');
 
-var gulp = require('gulp'),
+
     // browserify = require('browserify'),
-    uglify = require('gulp-uglify'),
-    // source = require('vinyl-source-stream'),
-    // buffer = require('vinyl-buffer'),
-    // sourcemaps = require('gulp-sourcemaps'),
-    gutil = require('gulp-util'),
-    sass = require('gulp-sass'),
-    cssnano = require('gulp-cssnano'),
-    webpack = require('webpack'),
-    WebpackDevServer = require('webpack-dev-server'),
-    autoprefixer = require('gulp-autoprefixer');
+    // uglify = require('gulp-uglify'),
+    // // source = require('vinyl-source-stream'),
+    // // buffer = require('vinyl-buffer'),
+    // // sourcemaps = require('gulp-sourcemaps'),
+    // gutil = require('gulp-util'),
+    // sass = require('gulp-sass'),
+    // cssnano = require('gulp-cssnano'),
+    // webpack = require('webpack'),
+    // WebpackDevServer = require('webpack-dev-server'),
+    // autoprefixer = require('gulp-autoprefixer');
     // livereload = require('gulp-livereload');
 
 gulp.task('scripts', function () {
@@ -61,6 +64,34 @@ gulp.task("webpack-dev-server", function(callback) {
         // callback();
     });
 });
+
+gulp.task('zip_project', function() {
+  child = exec("zip -r ./upnext.zip * -x '*.DS_Store' 'node_modules/*'", function(error, stdout, stderr) {
+    // console.log(stdout.split("\n"));
+    console.log(stdout);
+  });
+  // console.log(typeof child);
+  // child();
+});
+
+gulp.task('clone_project', function() {
+  shell("rsync -av --exclude='node_modules' --exclude='.git' --exclude='*.DS_Store' . ~/Desktop/Daniel/newProj_" + Date.now());
+});
+
+
+function shell(cmd) {
+  console.log(colors.yellow.bold("Running " + cmd));
+  exec(cmd, function(error, stdout, stderr){
+    if(error !== null) {
+      throw colors.red(error);
+    }
+
+    console.log(stdout);
+    console.log(colors.green("Script successful"));
+  });
+}
+
+
 
 // gulp.task('javascript', function () {
 //   // set up the browserify instance on a task basis
