@@ -6,15 +6,15 @@ var gulp = require('gulp');
 
     // browserify = require('browserify'),
     // uglify = require('gulp-uglify'),
-    // // source = require('vinyl-source-stream'),
-    // // buffer = require('vinyl-buffer'),
-    // // sourcemaps = require('gulp-sourcemaps'),
+    // source = require('vinyl-source-stream'),
+    // buffer = require('vinyl-buffer'),
+    // sourcemaps = require('gulp-sourcemaps'),
     // gutil = require('gulp-util'),
-    // sass = require('gulp-sass'),
-    // cssnano = require('gulp-cssnano'),
+    var sass = require('gulp-sass');
+    var cssnano = require('gulp-cssnano');
     // webpack = require('webpack'),
     // WebpackDevServer = require('webpack-dev-server'),
-    // autoprefixer = require('gulp-autoprefixer');
+    var autoprefixer = require('gulp-autoprefixer');
     // livereload = require('gulp-livereload');
 
 gulp.task('scripts', function () {
