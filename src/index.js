@@ -17,8 +17,6 @@ import EventMap from 'pages/EventMap';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-// const preloadedState = window.__PRELOADED_STATE__
-
 render(<Provider store={store}>
   <Router history={history}>
     <Route path="/" component={Layout}>

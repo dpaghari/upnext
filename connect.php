@@ -1,17 +1,15 @@
 <?php
 try{
-	$db = new PDO( 'mysql:host=localhost:8888;
+	$db = new PDO( 'mysql:host=localhost:8889;
                   dbname=upnext;
                   charset=utf8',
                  'root',
-                 '' );
+                 'root' );
 }
 catch(Exception $e){
 	echo "An error has occurred";
 }
 $users = array();
-
-// var_dump($_GET);
 $stmt = $db->prepare("SELECT * FROM un_users");
 $stmt->execute();
 
@@ -28,6 +26,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		$users[] = $userEntry;
 
 }
+
 echo json_encode($users);
 
  ?>
