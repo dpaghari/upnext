@@ -17,7 +17,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 		$userEntry = array(
 			"id" => $row["id"],
-			"name" => $row["name"],
+			"username" => $row["username"],
 			"password" => $row["password"],
 			"profile_url" => $row["profile_url"],
 			"profile_picture" => $row["profile_picture"]
