@@ -1,6 +1,6 @@
 #Events {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   .eventLine {
@@ -9,11 +9,26 @@
     background: $notSoDark;
     content: "";
   }
-  #eventList {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  .eventListContainer {
+    overflow-x: scroll;
+    .eventDateline {
+      display: flex;
+      flex-direction: row;
 
-    
+      .eventMonth {
+        padding: 20px;
+        font-size: 3.5em;
+        margin: 0 200px;
+        font-weight: bold;
+      }
+    }
+    .eventList {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      // overflow-x: scroll;
+
+      // border: 1px solid black;
+    }
   }
 }

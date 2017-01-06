@@ -8,52 +8,38 @@ export default class EventEntry extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      "onHover" : false
-    };
+    // this.state = {
+    //   "onHover" : false
+    // };
   }
   //TO-DO: Use event status to display a badge or something i.e red = finished green = upcoming
   render () {
     let { imgURL, name, host, date, details, location, friends, id, status } = this.props;
-    let { onHover } = this.state;
+    // let { onHover } = this.state;
     let pathToDetails = "/detail/" + id;
-    if (onHover) {
-      return (
-        <li class="event" onMouseLeave={this.toggleHover.bind(this)}>
+    return (
+        <li class="event">
           <div class="event-wrapper">
             {this.renderStatusBadge()}
             <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
             <div class="event-header">
-              <img src={imgURL}/>
               <span class="event-headline">{name}</span>
-              <span class="event-date">{date}</span>
             </div>
             </Link>
-            <div class="event-expand">
-              <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}><span class="event-host">Host: {host.name}</span></Link>
-              <span class="event-loc">{location}</span>
-              <p class="event-detail">{details}</p>
-              <span class="friends-going">Going:</span>
-              <div class="event-friends">
-                {this.renderFriends()}
+            <div class="event-desc">
+              {this.renderHost(host)}
+              <div class="event-info">
+                <span class="event-date">{date}</span>
+                <span class="event-loc">{location}</span>
+                <div class="event-friends">
+                  <span class="friends-going">Going:</span>
+                  {this.renderFriends()}
+                </div>
               </div>
             </div>
           </div>
         </li>
-      );
-    }
-    else {
-      return (
-      <li class="event" onMouseEnter={this.toggleHover.bind(this)}>
-        {this.renderStatusBadge()}
-        <div class="event-header">
-          <span class="event-headline">{name}</span>
-          <span class="event-date">{date}</span>
-          <span class="event-host">Host: {host.name}</span>
-        </div>
-      </li>
-      );
-    }
+    );
   }
 
   renderFriends() {
@@ -67,6 +53,18 @@ export default class EventEntry extends React.Component {
     });
   }
 
+  renderHost(host) {
+    return (
+      <div class="event-host-panel">
+        <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}>
+        <img class="event-host-pic" alt="event-host-picture"/>
+        <span class="event-host-label">Host:</span>
+        <span class="event-host">{host.name}</span>
+        </Link>
+      </div>
+    );
+  }
+
   handleEventClick() {
     this.props.dispatch(changePage("detail"));
   }
@@ -75,13 +73,13 @@ export default class EventEntry extends React.Component {
     this.props.dispatch(changePage("profiles"));
   }
 
-  toggleHover(e) {
-    this.state.onHover = !this.state.onHover;
-    this.setState({
-      onHover: this.state.onHover
-    });
-
-  }
+  // toggleHover(e) {
+  //   this.state.onHover = !this.state.onHover;
+  //   this.setState({
+  //     onHover: this.state.onHover
+  //   });
+  //
+  // }
 
   renderStatusBadge() {
     const { status } = this.props;
