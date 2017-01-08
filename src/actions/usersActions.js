@@ -4,14 +4,14 @@ var userEndpoint = "../../connect.php?";
 // var userEndpoint = "/mockdb/users.json";
 
 export function authUser({username, password}) {
-  // console.log(userEndpoint);
+
   return (dispatch) => {
     axios.get(userEndpoint + "action=users")
          .then((response) =>  {
-          //  console.log(JSON.parse(response));
+
            dispatch({
              type: "FETCH_USERS_FULFILLED",
-             payload : JSON.parse(response.data)
+             payload : response.data
            });
 
            let enteredCreds = {
@@ -43,6 +43,7 @@ export function authUser({username, password}) {
              type: "FETCH_USERS_REJECTED",
              payload: error
            });
+           console.log(error);
          });
   }
 
