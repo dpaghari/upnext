@@ -1,0 +1,26 @@
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Base Styles
+body {
+  font-family: $font-stack;
+  width: 100%;
+  height: 100%;
+  color: $notSoDark;
+  background: white;
+}
+
+main.site-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  background: $mintyGreen;
+}

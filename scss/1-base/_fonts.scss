@@ -1,0 +1,141 @@
+$font-stack: 'Montserrat', sans-serif;
+$font-body-stack: "Montserrat", sans-serif;
+
+
+// make the type responsive ///////////////////////////////////
+html {
+	font-size: 80%;
+
+  @include break-sm {
+    font-size: 90%;
+  }
+
+	@include break-med {
+		font-size: 95%;
+	}
+
+  @include break-lg {
+    font-size: 100%;
+  }
+
+	@include break-xl {
+		font-size: 110%;
+	}
+}
+
+
+%base-font {
+	//  Sleek Font Rendering
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'dlig', 'liga', 'lnum', 'kern';
+	line-height: 1.5;
+}
+
+// ============================
+// SCALED , based on 1em
+$type-scale: (
+// 1.414 Jedi Masters for scale
+    yoda            :   6.478em,
+    mace-windu      :   5.653em,
+    qui-gon-jinn    :   3.998em,
+    obi-wan-kenobi  :   2.827em,
+    luke-skywalker  :   1.999em,
+    ki-adi-mundi    :   1.414em,
+    plo-koon        :   1em,
+    kit-fisto       :   0.8em
+);
+
+// Headings base settings /////////////////////////////////
+$heading-type: (
+  font-family:  'Montserrat', sans-serif,
+  light: 200,
+  regular: 400,
+  bold: 700,
+  black: 900,
+  italic: italic
+) !default;
+
+// base body font /////////////////////////////////
+$body-type: (
+  font-family: 'Montserrat', sans-serif,
+  regular: 300,
+  semi-bold: 500,
+  italic: italic
+) !default;
+
+//extend base font /////////////////////////////////
+h1, h2, h3, h4, h5, h6, p, a, p a, ul, ol, form, blockquote, span {
+	@extend %base-font;
+}
+
+///////////////////////////////////
+// These are my heading-types
+h1, h2, h3, h4, h5, .btn {
+	font-family: map-get($heading-type, font-family);
+	font-weight: map-get($heading-type, black);
+	font-style: normal;
+  text-transform: uppercase;
+}
+
+///////////////////////////////////
+// These are my body-types
+p, li  {
+	font-family: map-get($body-type, font-family);
+	font-weight: map-get($body-type, bold);
+	font-style: normal;
+
+}
+
+//H1/////////////////////////////////
+h1 {
+	font-size: map-get($type-scale, mace-windu);
+	line-height: .95;
+
+	@include break-lg {
+		font-size: map-get($type-scale, yoda);
+	}
+}
+
+//H2/////////////////////////////////
+h2 {
+	font-size: map-get($type-scale, qui-gon-jinn);
+	line-height: 1.2;
+}
+//H3/////////////////////////////////
+h3 {
+	font-size: map-get($type-scale, luke-skywalker);
+	line-height: 1.3;
+}
+//H4/////////////////////////////////
+h4 {
+	font-size: map-get($type-scale, ki-adi-mundi);
+	font-weight: map-get($heading-type, bold);
+  line-height: 1.4;
+}
+
+//H5/////////////////////////////////
+h5 {
+	font-size: map-get($type-scale, kit-fisto);
+	font-weight: map-get($heading-type, bold);
+  line-height: 1.6;
+}
+
+
+a {
+  font-size: map-get($type-scale, plo-koon);
+	font-weight: map-get($heading-type, regular);
+  text-decoration: none;
+}
+
+p {
+  font-size: map-get($type-scale, ki-adi-mundi);
+  font-weight: map-get($body-type, semi-bold);
+}
+
+
+.btn {
+  font-size: map-get($type-scale, plo-koon);
+	font-weight: map-get($heading-type, bold);
+  text-decoration: none;
+}
