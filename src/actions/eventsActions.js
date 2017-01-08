@@ -1,13 +1,13 @@
 import axios from "axios";
 // if I want to display from database
-// var userEndpoint = "../../connect.php?";
-var userEndpoint = "../mockdb/events.json";
+var userEndpoint = "../../connect.php?";
+// var userEndpoint = "../mockdb/events.json";
 
 export function fetchEvents() {
   return (dispatch) => {
     // if I want to display from database
-    // axios.get(userEndpoint + "action=events")
-    axios.get(userEndpoint)
+    axios.get(userEndpoint + "action=events")
+    // axios.get(userEndpoint)
          .then((response) =>  {
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",

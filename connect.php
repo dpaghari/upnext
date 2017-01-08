@@ -77,24 +77,15 @@ function fetchEvents($db) {
 }
 
 function create_new_event($db) {
-	echo $_GET;
 	$name = isset($_GET["name"]) ? $_GET["name"] : "";
 	$img_url = isset($_GET["imgURL"]) ? $_GET["imgURL"] : "";
 	$location = isset($_GET["location"]) ? $_GET["location"] : "";
 	$details = isset($_GET["details"]) ? $_GET["details"] : "";
 
-	// $newEntry = array(
-	// 	"name" => $name,
-	//   "img_url" => $img_url,
-	//   "status" => 0,
-	// 	"location" => $location,
-	// 	"details" => $details
-	// );
-
-
 	$stmt = $db->prepare("INSERT INTO
 		un_events(name, img_url, status, location, details)
   	VALUES(:name, :img_url, :status, :location, :details)");
+
 	$stmt->execute(array(
 		"name" => $name,
 		"img_url" => $img_url,
@@ -102,6 +93,7 @@ function create_new_event($db) {
 		"location" => $location,
 		"details" => $details
 	));
+
 }
 
 
