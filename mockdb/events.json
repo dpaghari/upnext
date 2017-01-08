@@ -7,7 +7,7 @@
         "id": 2,
         "name" : "Nick Smith",
         "profile_url" : "nick_smith",
-        "profile_picture" : ""
+        "profile_picture" : "https://comeonhitme.files.wordpress.com/2013/07/s3-jon-snow.jpg"
       },
       "status" : "upcoming",
       "date": "8/31/2016",
@@ -18,7 +18,7 @@
           "id": 2,
           "name" : "Nick Smith",
           "profile_url" : "nick_smith",
-          "profile_picture" : ""
+          "profile_picture" : "https://comeonhitme.files.wordpress.com/2013/07/s3-jon-snow.jpg"
         },
         {
           "id": 1,
@@ -54,7 +54,7 @@
         "id": 2,
         "name" : "Nick Smith",
         "profile_url" : "nick_smith",
-        "profile_picture" : ""
+        "profile_picture" : "https://comeonhitme.files.wordpress.com/2013/07/s3-jon-snow.jpg"
       },
       "status" : "upcoming",
       "date": "9/1/2016",
@@ -71,7 +71,7 @@
           "id": 4,
           "name" : "Emily Anderson",
           "profile_url" : "emily_anderson",
-          "profile_picture" : ""
+          "profile_picture" : "https://comeonhitme.files.wordpress.com/2013/07/s3-jon-snow.jpg"
         }
       ]
     }
