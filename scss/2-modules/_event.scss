@@ -4,7 +4,6 @@
   width: 50vw;
   display: inline-block;
   flex-direction: column;
-  padding: 5px;
   // border: 2px solid $mintyGreen;
   color: white;
   text-align: center;
@@ -18,7 +17,6 @@
   .event-finished {
     z-index: -1;
     display: block;
-    padding: 5px;
     width: 100px;
     border-radius: 10px 0px;
     color: white;
@@ -30,7 +28,6 @@
   .event-upcoming {
     z-index: -1;
     display: block;
-    padding: 5px;
     width: 100px;
     // height: 20px;
     border-radius: 10px 0px;
@@ -46,20 +43,31 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border-bottom: 2px solid $mintyGreen;
+    border-top: 4px solid $mintyGreen;
     width: 100%;
+    overflow: hidden;
+    height: 20vh;
+    min-height: 220px;
+
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      min-width: 100%;
+      width: 100%;
+    }
 
     .event-headline {
-      color: $notSoDark;
-      font-size: 26px;
-      font-weight: bold;
+      color: #fff;
       width: 100%;
-      padding: 5px;
+      z-index: 2;
     }
-    img {
-      max-width: 80%;
-      min-height: 250px;
-    }
+
   }
 
 
