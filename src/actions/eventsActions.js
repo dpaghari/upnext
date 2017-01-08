@@ -25,6 +25,10 @@ export function fetchEvents() {
 }
 
 export function createEvent({ name , date , location , details , imgURL }) {
+<<<<<<< f34c94e74f96bbfa59d7dc09fe279a0669595896
+=======
+  console.log(name, date, location, details, imgURL);
+>>>>>>> Adding to DB implemented
   return (dispatch) => {
     axios.get(userEndpoint + "action=create_event", {
       params : {
