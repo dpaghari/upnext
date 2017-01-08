@@ -10,7 +10,6 @@ export default class Header extends React.Component {
   render() {
     return (
       <div id="Header">
-        <ActionBar currentPage={this.props.currentPage} dispatch={this.props.dispatch}/>
       </div>
     );
   }

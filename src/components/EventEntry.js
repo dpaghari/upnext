@@ -24,7 +24,7 @@ export default class EventEntry extends React.Component {
             <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
             <div class="event-header">
               <img src={imgURL} alt="yosemite" class=""/>
-              <h4 class="event-headline">{name}</h4>
+              <h2 class="event-headline">{name}</h2>
             </div>
             </Link>
             <div class="event-desc">

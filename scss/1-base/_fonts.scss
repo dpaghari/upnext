@@ -36,14 +36,14 @@ html {
 // SCALED , based on 1em
 $type-scale: (
 // 1.414 Jedi Masters for scale
-    yoda            :   6.478em,
-    mace-windu      :   5.653em,
-    qui-gon-jinn    :   3.998em,
-    obi-wan-kenobi  :   2.827em,
-    luke-skywalker  :   1.999em,
-    ki-adi-mundi    :   1.414em,
-    plo-koon        :   1em,
-    kit-fisto       :   0.8em
+    yoda            :   7.074em,
+    mace-windu      :   2.728em,
+    qui-gon-jinn    :   1.44em,
+    obi-wan-kenobi  :   1.2em,
+    luke-skywalker  :   1em,
+    ki-adi-mundi    :   0.863em,
+    plo-koon        :   0.794em,
+    kit-fisto       :   0.579em
 );
 
 // Headings base settings /////////////////////////////////
@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, .btn {
 	font-family: map-get($heading-type, font-family);
 	font-weight: map-get($heading-type, black);
 	font-style: normal;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 }
 
 ///////////////////////////////////
@@ -109,27 +109,27 @@ h3 {
 }
 //H4/////////////////////////////////
 h4 {
-	font-size: map-get($type-scale, obi-wan-kenobi);
+	font-size: map-get($type-scale, luke-skywalker);
 	font-weight: map-get($heading-type, bold);
   line-height: 1.4;
 }
 
 //H5/////////////////////////////////
 h5 {
-	font-size: map-get($type-scale, kit-fisto);
-	font-weight: map-get($heading-type, bold);
+	font-size: map-get($type-scale, plo-koon);
+	font-weight: map-get($heading-type, regular);
   line-height: 1.6;
 }
 
 label {
 	font-size: map-get($type-scale, kit-fisto);
- 	font-weight: map-get($body-type, light);
-	font-weight: 200;
+	font-weight: 800;
+	text-transform: uppercase;
 }
 
 a {
   font-size: map-get($type-scale, plo-koon);
-	font-weight: map-get($heading-type, regular);
+	font-weight: map-get($heading-type, bold);
   text-decoration: none;
 }
 

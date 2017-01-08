@@ -35,3 +35,10 @@
   @include break-sm {
   // this are mobile styles
   }
+
+
+// transition mixin
+
+  @mixin transition() {
+    transition: .5s all ease;
+  }
