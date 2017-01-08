@@ -92,6 +92,7 @@ function create_new_event($db) {
 		"location" => $location,
 		"details" => $details
 	));
+
 }
 
 

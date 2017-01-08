@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import EventEntry from "./EventEntry"
+import { showEventForm } from "../actions/appStateActions";
 
 export default class EventList extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class EventList extends React.Component {
   renderCreateEvent() {
     return (
       <li class="event">
-        <a href="#" style={{width: "100%"}}>
+        <a href="#" style={{width: "100%"}} onClick={this.handleCreateEvent.bind(this)}>
           <div class="event-header" style={{border: "2px dashed #999", padding: "60px" }}>
             <span class="event-headline">+</span>
           </div>
@@ -46,5 +47,4 @@ export default class EventList extends React.Component {
   renderEventLink() {
     return <a onClick={this.handleCreateEvent.bind(this)} href="#">Add Event</a>;
   }
-
 }
