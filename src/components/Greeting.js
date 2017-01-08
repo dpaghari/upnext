@@ -15,7 +15,7 @@ export default class Greeting extends React.Component {
               <img src="../../img/dan.jpg" alt="Profile Picture"/>
             </div>
           <h5 class="userName">{user}</h5>
-          <label class="currentDate">{today}</label>
+          <label class="currentDate"></label>
         </div>
         <div class="userActions">
           <ul>

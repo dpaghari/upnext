@@ -23,10 +23,12 @@ export default class EventEntry extends React.Component {
             {this.renderStatusBadge()}
             <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
             <div class="event-header">
-              <span class="event-headline">{name}</span>
+              <img src={imgURL} alt="yosemite" class=""/>
+              <h4 class="event-headline">{name}</h4>
             </div>
             </Link>
             <div class="event-desc">
+
               {this.renderHost(host)}
               <div class="event-info">
                 <span class="event-date">{date}</span>
@@ -60,8 +62,10 @@ export default class EventEntry extends React.Component {
       return (
         <div class="event-host-panel">
         <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}>
-        <img class="event-host-pic" alt="event-host-picture"/>
-        <span class="event-host">{host.name}</span>
+          <div class="img-wrapper">
+            <img src="https://comeonhitme.files.wordpress.com/2013/07/s3-jon-snow.jpg" class="event-host-pic" alt="event-host-picture"/>
+          </div>
+        <h5 class="event-host">{host.name}</h5>
         </Link>
         </div>
       );
