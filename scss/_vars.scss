@@ -1,8 +1,41 @@
-$font-stack: 'Montserrat', sans-serif;
-$font-body-stack: "Montserrat", sans-serif;
 
-$notSoDark: #555;
-$agentOrange: #ffc657;
-$darkerAgentOrange: darken($agentOrange, 5%);
-$mintyGreen: #9EE493;
-$lightRed: #c4464d;
+$sidebar-width: 120px;
+
+$space: 30px;
+// media query breakpoint variables
+
+$media-sm : 37.5em;  // 600px
+$media-md : 48em;    // 768px
+$media-lg : 62.5em;  // 1000px
+$media-xl : 100em;   //1600px
+
+@mixin break-sm {
+  @media (min-width: #{$media-sm})  {
+    @content;
+  }
+}
+
+@mixin break-med {
+  @media (min-width: #{$media-sm}) {
+    @content;
+  }
+}
+
+@mixin break-lg {
+  @media (min-width: #{$media-lg}) {
+    @content;
+  }
+}
+
+@mixin break-xl {
+  @media (min-width: #{$media-xl}) {
+    @content;
+  }
+}
+
+
+// now use
+
+  @include break-sm {
+  // this are mobile styles
+  }

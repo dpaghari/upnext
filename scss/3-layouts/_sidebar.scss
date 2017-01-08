@@ -1,0 +1,12 @@
+
+// ---------------------------- //
+// Sidebar styles
+// ---------------------------- //
+.sidebar {
+  height: 100vh;
+  background-color: $deepPurp;
+  width: $sidebar-width;
+  position: absolute;
+  z-index: 99;
+  padding: $space/2;
+}

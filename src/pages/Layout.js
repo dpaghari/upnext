@@ -14,9 +14,9 @@ return {
 export default class Layout extends React.Component {
   render() {
     return (
-      <div class="site-wrapper">
+      <main class="site-wrapper">
         {React.cloneElement(this.props.children, {store: this.props})}
-      </div>
+      </main>
 
     );
   }
