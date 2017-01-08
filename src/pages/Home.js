@@ -38,8 +38,29 @@ export default class Home extends React.Component {
           </section>
           <section class="buzz">
               <ul>
-                <li class=""><a href="#">this will be my buzz up next updates. because I make plans. I do.</a></li>
-                <li class=""><a href="#">this will be my buzz up next updates. because I make plans. I do.</a></li>
+                <li class="">
+                  <a href="#">
+                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
+                    <label>2 min</label>
+                    <h5>this will be my buzz up next updates. because I make plans. I do.</h5>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#">
+                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
+                    <label>yesterday</label>
+                    <h5>Kelsey added pictures to Coachella</h5>
+                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
+
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#">
+                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
+                    <label>Jan 1</label>
+                    <h5>Dan responded YES to Waffle Game Night</h5>
+                  </a>
+                </li>
               </ul>
           </section>
           <section class="upnext-list">
