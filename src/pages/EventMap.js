@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 // import { fetchEvents } from "../actions/eventsActions";
-
+// window["jsonp"] = jsonp;
 const GoogleMapsLoader = require('google-maps'); // only for common js environments
 GoogleMapsLoader.KEY = 'AIzaSyALT683365k3JbNnmRDLUNY-PfFEyJDKiM';
 GoogleMapsLoader.LIBRARIES = ['places'];
@@ -14,11 +14,11 @@ export default class EventMap extends React.Component {
 
       let userCoords = {};
       let userIP;
-      jsonp("http://jsonip.com/", function(res) {
+      jsonp("https://jsonip.com/", function(res) {
         userIP = res.ip;
-
+        // console.log(userIP);
         jsonp("http://www.tigeoip.com/?token=8765FRCfs!87&ip=" + userIP, function(innerRes) {
-          
+
           userCoords.lat = innerRes.latitude;
           userCoords.lng = innerRes.longitude;
           userCoords.city = innerRes.city;

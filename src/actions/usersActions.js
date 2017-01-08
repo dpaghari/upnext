@@ -1,11 +1,11 @@
 import axios from "axios";
 
-var userEndpoint = "/connect.php";
+var userEndpoint = "../../connect.php";
 // var userEndpoint = "/mockdb/users.json";
 
 export function authUser({username, password}) {
   return (dispatch) => {
-    axios.get("../connect.php")
+    axios.get(userEndpoint)
          .then((response) =>  {
            console.log(response);
            dispatch({

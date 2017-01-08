@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -p --config webpack.production.config.js && gulp styles"
+    "build": "webpack -p"
   },
   "author": "Daniel Pagharion",
   "license": "MIT",
