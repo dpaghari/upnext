@@ -85,7 +85,6 @@ function create_new_event($db) {
 	$stmt = $db->prepare("INSERT INTO
 		un_events(name, img_url, status, location, details)
   	VALUES(:name, :img_url, :status, :location, :details)");
-
 	$stmt->execute(array(
 		"name" => $name,
 		"img_url" => $img_url,
