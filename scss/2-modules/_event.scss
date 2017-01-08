@@ -74,19 +74,15 @@
   .event-desc {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding: 5px;
+    padding: $space/3;
     align-items: center;
     .event-host-panel {
       width: 30%;
       a {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 5px;
         color: $notSoDark;
-        font-size: 14px;
+        position: relative;
 
             .img-wrapper {
               height:50px;
@@ -95,18 +91,20 @@
               border-radius: 50%;
               position: relative;
               display: block;
-              margin: 0 auto;
               overflow: hidden;
+              backface-visibility: hidden;
 
               img {
-                min-height: 100%;
-                min-width: 100%;
                 height: 110%;
                 width: auto;
-                @include centerer();
-
+                // @include centerer;
               }
 
+            }
+
+
+            .event-host {
+              text-align: left;
             }
 
           }
@@ -121,12 +119,9 @@
       padding: 10px;
       color: $notSoDark;
       .event-friends {
-        padding: 5px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         text-align: left;
         .event-friendlist {
           display: flex;
@@ -143,10 +138,9 @@
     }
   }
 
-  &:hover {
-    transform: scale(1.1);
-  }
-
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
 
 
 }
