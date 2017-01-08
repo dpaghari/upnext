@@ -1,16 +1,17 @@
 import axios from "axios";
 
-var userEndpoint = "../../connect.php";
+var userEndpoint = "../../connect.php?";
 // var userEndpoint = "/mockdb/users.json";
 
 export function authUser({username, password}) {
+  // console.log(userEndpoint);
   return (dispatch) => {
-    axios.get(userEndpoint)
+    axios.get(userEndpoint + "action=users")
          .then((response) =>  {
-           console.log(response);
+          //  console.log(JSON.parse(response));
            dispatch({
              type: "FETCH_USERS_FULFILLED",
-             payload : response.data
+             payload : JSON.parse(response.data)
            });
 
            let enteredCreds = {

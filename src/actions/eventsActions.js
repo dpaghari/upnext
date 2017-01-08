@@ -1,8 +1,11 @@
 import axios from "axios";
 
+var userEndpoint = "../../connect.php?";
+// var userEndpoint = "../mockdb/events.json";
+
 export function fetchEvents() {
   return (dispatch) => {
-    axios.get("../mockdb/events.json")
+    axios.get(userEndpoint + "action=events")
          .then((response) =>  {
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",
@@ -19,8 +22,20 @@ export function fetchEvents() {
   };
 }
 
-export function createEvent({ name, date, location, details, imgURL }) {
+export function createEvent({ name , date , location , details , imgURL }) {
+  // console.log(name, date, location, details, imgURL);
   return (dispatch) => {
+    axios({
+      method: 'get',
+      url: userEndpoint + "action=create_event",
+      data: {
+        name,
+        date,
+        location,
+        details,
+        imgURL
+      }
+    });
     dispatch({
       type: "CREATE_EVENT",
       payload: {

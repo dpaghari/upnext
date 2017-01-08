@@ -18,11 +18,13 @@
     // align-items: center;
 
     .img-wrapper {
-      height: 60px;
-      width: 60px;
+      height: 70px;
+      width: 70px;
       border: 2px solid $mintyGreen;
       border-radius: 50%;
       position: relative;
+      display: block;
+      margin: 0 auto;
       overflow: hidden;
 
       img {
@@ -36,17 +38,14 @@
 
     }
 
-
-    span {
-      &.userName{
+      .userName {
         width: 100%;
+        text-align: center;
+        padding-top: $space/4
       }
-      &.currentDate {
-        font-size: 12px;
-        margin: 2px 0px;
+      .currentDate {
+        text-align: center;
       }
-      // color: $notSoDark;
-    }
 
   }
 

@@ -89,7 +89,7 @@ p, li  {
 
 //H1/////////////////////////////////
 h1 {
-	font-size: map-get($type-scale, mace-windu);
+	font-size: map-get($type-scale, yoda);
 	line-height: .95;
 
 	@include break-lg {
@@ -99,17 +99,17 @@ h1 {
 
 //H2/////////////////////////////////
 h2 {
-	font-size: map-get($type-scale, qui-gon-jinn);
+	font-size: map-get($type-scale, mace-windu);
 	line-height: 1.2;
 }
 //H3/////////////////////////////////
 h3 {
-	font-size: map-get($type-scale, luke-skywalker);
+	font-size: map-get($type-scale, qui-gon-jinn);
 	line-height: 1.3;
 }
 //H4/////////////////////////////////
 h4 {
-	font-size: map-get($type-scale, ki-adi-mundi);
+	font-size: map-get($type-scale, obi-wan-kenobi);
 	font-weight: map-get($heading-type, bold);
   line-height: 1.4;
 }
@@ -119,6 +119,12 @@ h5 {
 	font-size: map-get($type-scale, kit-fisto);
 	font-weight: map-get($heading-type, bold);
   line-height: 1.6;
+}
+
+label {
+	font-size: map-get($type-scale, kit-fisto);
+ 	font-weight: map-get($body-type, light);
+	font-weight: 200;
 }
 
 a {

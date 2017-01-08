@@ -14,8 +14,8 @@ export default class Greeting extends React.Component {
             <div class="img-wrapper">
               <img src="../../img/dan.jpg" alt="Profile Picture"/>
             </div>
-          <h4 class="userName">{user}</h4>
-          <h5 class="currentDate">{today}</h5>
+          <h5 class="userName">{user}</h5>
+          <label class="currentDate">{today}</label>
         </div>
         <div class="userActions">
           <ul>
