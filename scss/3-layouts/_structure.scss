@@ -11,6 +11,7 @@ html, body {
   height: 100%;
   color: $notSoDark;
   background: white;
+
 }
 
 // yay using all the html5 tags!
@@ -20,4 +21,8 @@ main.site-wrapper {
   width: 100vw;
   background-color: $lightest;
   overflow: hidden;
+}
+
+img {
+  max-width: none;
 }
