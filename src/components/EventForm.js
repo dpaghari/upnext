@@ -50,6 +50,7 @@ export default class EventForm extends React.Component {
       details: eventDetails.value,
       imgURL: eventImg.value
     };
+    console.log(newEvent);
     this.props.dispatch(createEvent(newEvent));
 
     eventName.value = eventDate.value = eventLocation.value = eventDetails.value = eventImg.value = "";

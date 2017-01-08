@@ -19,10 +19,11 @@ switch ($action) {
 
 	case 'events':
 		fetchEvents($db);
-		// create_new_event();
+		break;
 
 	case 'create_event' :
 		create_new_event($db);
+		break;
 	default:
 		# code...
 		break;
@@ -76,26 +77,31 @@ function fetchEvents($db) {
 }
 
 function create_new_event($db) {
-	// echo json_encode($_POST);
-	// die(var_dump($_GET));
+	echo $_GET;
 	$name = isset($_GET["name"]) ? $_GET["name"] : "";
 	$img_url = isset($_GET["imgURL"]) ? $_GET["imgURL"] : "";
 	$location = isset($_GET["location"]) ? $_GET["location"] : "";
 	$details = isset($_GET["details"]) ? $_GET["details"] : "";
 
-	$newEntry = array(
-		"name" => $name,
-	  "img_url" => $img_url,
-	  "status" => 0,
-		"location" => $location,
-		"details" => $details
-	);
+	// $newEntry = array(
+	// 	"name" => $name,
+	//   "img_url" => $img_url,
+	//   "status" => 0,
+	// 	"location" => $location,
+	// 	"details" => $details
+	// );
 
 
 	$stmt = $db->prepare("INSERT INTO
 		un_events(name, img_url, status, location, details)
   	VALUES(:name, :img_url, :status, :location, :details)");
-	$stmt->execute($newEntry);
+	$stmt->execute(array(
+		"name" => $name,
+		"img_url" => $img_url,
+		"status" => 0,
+		"location" => $location,
+		"details" => $details
+	));
 }
 
 

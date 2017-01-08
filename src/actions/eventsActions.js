@@ -23,14 +23,11 @@ export function fetchEvents() {
 }
 
 export function createEvent({ name , date , location , details , imgURL }) {
-  // console.log(name, date, location, details, imgURL);
+  console.log(name, date, location, details, imgURL);
   return (dispatch) => {
-    axios({
-      method: 'get',
-      url: userEndpoint + "action=create_event",
-      data: {
+    axios.get(userEndpoint + "action=create_event", {
+      params : {
         name,
-        date,
         location,
         details,
         imgURL
