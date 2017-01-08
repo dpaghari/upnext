@@ -2,31 +2,48 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  height: 100vh;
+  width: calc(100% - 25vw - 130px);
+  position: absolute;
+  right: 0;
+
   .eventLine {
+    height: 100vh;
     position: absolute;
     width: 100%;
-    background: $notSoDark;
+    // background: $notSoDark;
     content: "";
   }
   .eventListContainer {
+    height: inherit;
+
     overflow-x: scroll;
     .eventDateline {
       display: flex;
       flex-direction: row;
+      height: 30vh;
+      align-items: center;
 
       .eventMonth {
-        padding: 20px;
-        font-size: 3.5em;
-        margin: 0 200px;
-        font-weight: bold;
-        color: white;
+      }
+
+      .eventMonth {
+        position: absolute;
+        right: $space;
+        color: darken($lightest, 5%);
+        display: flex;
+
+
+          h1 {
+            margin-bottom: 0;
+          }
       }
     }
     .eventList {
       display: flex;
       flex-direction: row;
       width: 100%;
+      height: 70vh;
       // overflow-x: scroll;
 
       // border: 1px solid black;

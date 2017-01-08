@@ -37,7 +37,10 @@ export default class Home extends React.Component {
             {this.renderEventForm()}
           </section>
           <section class="buzz">
-            this will be my buzz up next updates. because I make plans. I do.
+              <ul>
+                <li class=""><a href="#">this will be my buzz up next updates. because I make plans. I do.</a></li>
+                <li class=""><a href="#">this will be my buzz up next updates. because I make plans. I do.</a></li>
+              </ul>
           </section>
           <section class="upnext-list">
             <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
