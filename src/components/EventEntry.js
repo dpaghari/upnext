@@ -33,7 +33,9 @@ export default class EventEntry extends React.Component {
                 <span class="event-loc">{location}</span>
                 <div class="event-friends">
                   <span class="friends-going">Going:</span>
-                  {this.renderFriends()}
+                  <ul class="event-friendlist">
+                    {this.renderFriends()}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -58,7 +60,6 @@ export default class EventEntry extends React.Component {
       <div class="event-host-panel">
         <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}>
         <img class="event-host-pic" alt="event-host-picture"/>
-        <span class="event-host-label">Host:</span>
         <span class="event-host">{host.name}</span>
         </Link>
       </div>

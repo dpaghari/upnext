@@ -3,16 +3,18 @@
   min-width: 450px;
   display: inline-block;
   flex-direction: column;
-  padding: 30px;
-  border: 1px solid $notSoDark;
-  color: $notSoDark;
+  padding: 5px;
+  border: 1px solid $darkerAgentOrange;
+  color: white;
   text-align: center;
   align-items: center;
   justify-content: center;
   margin: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0px 2px 2px $notSoDark;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px $darkerAgentOrange;
+  background: white;
   transition: 0.2s all;
+  transform: scale(1);
   .event-finished {
     z-index: -1;
     display: block;
@@ -20,7 +22,7 @@
     width: 100px;
     border-radius: 10px 0px;
     color: white;
-    background: #c4464d;
+    background: $lightRed;
     position: absolute;
     right: 0;
     top: 0;
@@ -33,7 +35,7 @@
     // height: 20px;
     border-radius: 10px 0px;
     color: white;
-    background: #2bc67c;
+    background: $mintyGreen;
     position: absolute;
     right: 0;
     top: 0;
@@ -44,10 +46,15 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    border-bottom: 1px solid $darkerAgentOrange;
+    width: 100%;
+
     .event-headline {
       color: $notSoDark;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: bold;
+      width: 100%;
+      padding: 5px;
     }
     img {
       max-width: 80%;
@@ -60,13 +67,25 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 5px;
+    align-items: center;
     .event-host-panel {
       width: 30%;
       a {
-
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        padding: 5px;
+        color: $notSoDark;
+        font-size: 14px;
+        img {
+          border: 1px solid $darkerAgentOrange;
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
       }
     }
 
@@ -76,18 +95,32 @@
       flex-wrap: wrap;
       justify-content: space-around;
       padding: 10px;
+      color: $notSoDark;
       .event-friends {
+        padding: 5px;
         width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        img {
-          height: 50px;
-          width: 50px;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        text-align: left;
+        .event-friendlist {
+          display: flex;
+          justify-content: center;
+          img {
+            border: 1px solid $darkerAgentOrange;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            margin: 0px 5px;
+          }
         }
       }
     }
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 
 
