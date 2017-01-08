@@ -6,7 +6,7 @@ var userEndpoint = "../../connect.php?";
 export function authUser({username, password}) {
   // console.log(userEndpoint);
   return (dispatch) => {
-    axios.get(userEndpoint + "action=create_event")
+    axios.get(userEndpoint + "action=users")
          .then((response) =>  {
           //  console.log(JSON.parse(response));
            dispatch({
