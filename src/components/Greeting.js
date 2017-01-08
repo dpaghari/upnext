@@ -11,9 +11,9 @@ export default class Greeting extends React.Component {
     return (
       <div id="Greeting">
         <div class="userInfo">
-          <img src="../../img/dan.jpg" alt="Profile Picture"/>
-          <span class="userName">{user}</span>
-          <span class="currentDate">{today}</span>
+            <img src="../../img/dan.jpg" alt="Profile Picture"/>
+          <h4 class="userName">{user}</h4>
+          <h5 class="currentDate">{today}</h5>
         </div>
         <div class="userActions">
           <ul>

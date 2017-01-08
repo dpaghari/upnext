@@ -30,10 +30,19 @@ export default class Home extends React.Component {
     if(appState.loggedIn){
       return (
         <div id="Home">
-        <Greeting/>
-        <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
-        {this.renderEventForm()}
-        <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
+
+          <section class="sidebar">
+            <Greeting/>
+            <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
+            {this.renderEventForm()}
+          </section>
+          <section class="buzz">
+            this will be my buzz up next updates. because I make plans. I do. 
+          </section>
+          <section class="buzz">
+            <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
+          </section>
+
         </div>
 
       );

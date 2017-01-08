@@ -7,3 +7,33 @@ $agentOrange: #ffc657;
 $darkerAgentOrange: darken($agentOrange, 5%);
 $mintyGreen: #9EE493;
 $lightRed: #c4464d;
+
+
+$lightest: #f8f8f8;
+
+
+// other possibles
+/* RGB */
+$gray: rgba(84, 84, 84, 1);
+$platinum: rgba(232, 232, 232, 1);
+// $pewterBlue: rgba(138, 176, 171, 1);
+// $outerSpace: rgba(62, 80, 91, 1);
+// $pineapple: #413C58;
+// $nightBlue: #2D3A62;
+
+$blueGray: #606A99;
+$deepPurp: #3C3E6F;
+$mintyGreen: #9EE493;
+
+
+// base color styles
+%theme-bg-dark{
+
+  h1, h2, h3, h4, h5, label, li, p, a, span {
+      color: #fff;
+  }
+}
+
+.sidebar {
+  @extend %theme-bg-dark;
+}
