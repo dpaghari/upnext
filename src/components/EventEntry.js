@@ -56,14 +56,16 @@ export default class EventEntry extends React.Component {
   }
 
   renderHost(host) {
-    return (
-      <div class="event-host-panel">
+    if(host){
+      return (
+        <div class="event-host-panel">
         <Link onClick={this.handleEventClick.bind(this)} to={"profiles/" + host.profile_url}>
         <img class="event-host-pic" alt="event-host-picture"/>
         <span class="event-host">{host.name}</span>
         </Link>
-      </div>
-    );
+        </div>
+      );
+    }
   }
 
   handleEventClick() {
