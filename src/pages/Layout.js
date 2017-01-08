@@ -17,8 +17,6 @@ export default class Layout extends React.Component {
       <main class="site-wrapper">
         {React.cloneElement(this.props.children, {store: this.props})}
       </main>
-
     );
   }
-
 }
