@@ -11,6 +11,7 @@ export default class EventList extends React.Component {
   render() {
     return (
       <div id="Events">
+        {this.renderEventLink()}
         <span class="eventLine"></span>
         <ul class="eventListContainer">
           <ul class="eventDateline">
@@ -42,5 +43,9 @@ export default class EventList extends React.Component {
 
   handleCreateEvent() {
     this.props.dispatch(showEventForm());
+  }
+
+  renderEventLink() {
+    return <a onClick={this.handleCreateEvent.bind(this)} href="#">Add Event</a>;
   }
 }

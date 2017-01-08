@@ -6,12 +6,7 @@ import { Link } from "react-router";
 export default class ActionBar extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   headerStyles: {
-    //     "backgroundColor" : "red",
-    //     "padding" : "20px"
-    //   }
-    // };
+
   }
 
   // TO-DO: Link to current-user's profile, currently hardcoded
@@ -19,7 +14,6 @@ export default class ActionBar extends React.Component {
       return (
         <div id="ActionBar">
         <ul class="actionList">
-        <li class="u-action">{this.renderEventLink()}</li>
         <li class="u-action"><Link to="/profiles/0" onClick={this.handleGoToProfile.bind(this)}>Profile</Link></li>
         <li class="u-action"><Link to="/eventmap" onClick={this.handleGoToMap.bind(this)}>Event Map</Link></li>
         <li class="u-action"><Link to="/memories" onClick={this.handleGoToMemories.bind(this)}>Memories</Link></li>
@@ -51,26 +45,6 @@ export default class ActionBar extends React.Component {
   }
   handleGoToSettings(e) {
     this.props.dispatch(changePage("settings"));
-  }
-
-  // changeColor() {
-  //   console.log("sup");
-  //   // this.setState({
-  //   //   headerStyles : {
-  //   //     "backgroundColor" : "yellow",
-  //   //     "padding" : "40px"
-  //   //   }
-  //   // });
-  // }
-
-  renderEventLink() {
-    const { currentPage } = this.props;
-    if(currentPage === "home"){
-      return <a onClick={this.handleAddEvent.bind(this)} href="#">Add Event</a>;
-    }
-    else {
-      return <Link onClick={this.handleGoToEvents.bind(this)} to="/">Events</Link>;
-    }
   }
 
 }
