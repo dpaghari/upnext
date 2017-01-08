@@ -87,15 +87,31 @@
         padding: 5px;
         color: $notSoDark;
         font-size: 14px;
-        img {
-          border: 2px solid $mintyGreen;
-          width: 75px;
-          height: 75px;
-          border-radius: 50%;
-          margin-bottom: 10px;
+
+            .img-wrapper {
+              height:50px;
+              width:50px;
+              border: 2px solid $mintyGreen;
+              border-radius: 50%;
+              position: relative;
+              display: block;
+              margin: 0 auto;
+              overflow: hidden;
+
+              img {
+                min-height: 100%;
+                min-width: 100%;
+                height: 110%;
+                width: auto;
+                @include centerer();
+
+              }
+
+            }
+
+          }
+
         }
-      }
-    }
 
     .event-info {
       width: 70%;
