@@ -1,7 +1,7 @@
 import axios from "axios";
 
-var userEndpoint = "../../connect.php?";
-// var userEndpoint = "/mockdb/users.json";
+const userEndpoint = "../../connect.php?";
+// const userEndpoint = "/mockdb/users.json";
 
 export function authUser({username, password}) {
 
@@ -61,7 +61,7 @@ export function logOut() {
 
 export function fetchUsers() {
   return (dispatch) => {
-    axios.get("/connect.php")
+    axios.get("/connect.php?action=users")
          .then((response) =>  {
            console.log("Response", response);
            dispatch({
@@ -72,6 +72,24 @@ export function fetchUsers() {
          .catch((error) => {
            dispatch({
              type: "FETCH_USERS_REJECTED",
+             payload: error
+           })
+         });
+
+  };
+}
+export function fetchUserInfo({userID}) {
+  return (dispatch) => {
+    axios.get(`${userEndpoint}action=get_user&userID=${userID}`)
+         .then((response) =>  {
+           dispatch({
+             type: "FETCH_USERINFO_FULFILLED",
+             payload : response.data
+           });
+         })
+         .catch((error) => {
+           dispatch({
+             type: "FETCH_USERINFO_REJECTED",
              payload: error
            })
          });

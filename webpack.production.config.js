@@ -4,6 +4,7 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'babel-polyfill',
+    './scss/style.scss',
     './src/index.js'
   ],
   output: {
@@ -17,14 +18,20 @@ module.exports = {
   module: {
     loaders: [
       {
+        // Only run .js and .jsx files through Babel
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, "src"),
+        exclude: path.resolve(__dirname, "node_modules"),
+
         loader: 'babel-loader',
-        // loader: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
         query: {
-          presets: ['react', 'es2015'],
+          presets: ['es2015', 'react'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-runtime', 'transform-decorators-legacy']
         }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   },

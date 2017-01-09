@@ -8,7 +8,8 @@ import { fetchEvents } from "../actions/eventsActions";
 return {
   users: store.users,
   events: store.events,
-  appState: store.appState
+  appState: store.appState,
+  userInfo: store.userInfo
 };
 })
 export default class Layout extends React.Component {

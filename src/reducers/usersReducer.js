@@ -2,7 +2,8 @@ const initialState = {
   users : [],
   current_user_id : null,
   fetchedUsers: false,
-  fetching: false
+  fetching: false,
+  fetchedUserInfo: false
 };
 
 
@@ -49,6 +50,21 @@ export default function usersReducer(state = initialState, action) {
         error: action.payload
       };
       break;
+    }
+
+    case "FETCH_USERINFO_FULFILLED" : {
+      state = {
+        ...state,
+        fetchedUserInfo: true,
+        userInfo : action.payload
+      }
+    }
+    case "FETCH_USERINFO_REJECTED" : {
+      state = {
+        ...state,
+        fetchedUserInfo: false,
+        error : action.payload
+      }
     }
 
   }

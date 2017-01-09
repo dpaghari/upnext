@@ -25,7 +25,8 @@ export default class Home extends React.Component {
 
   render() {
 
-    const { users, events, appState, dispatch } = this.props.store;
+    const { users, events, appState, dispatch, userInfo } = this.props.store;
+
 
     if(appState.loggedIn){
       return (
@@ -39,7 +40,7 @@ export default class Home extends React.Component {
           <Buzz dispatch={dispatch.bind(this)} users={users}/>
 
           <section class="upnext-list">
-            <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
+            <EventList userInfo={users.userInfo} dispatch={dispatch.bind(this)} events={events.eventList}/>
           </section>
 
         </div>

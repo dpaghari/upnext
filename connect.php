@@ -24,6 +24,14 @@ switch ($action) {
 	case 'create_event' :
 		create_new_event($db);
 		break;
+	case 'get_user' :
+		get_user_details($db);
+		break;
+	case 'get_friends_info' :
+		get_friends_info($db);
+
+
+
 	default:
 		# code...
 		break;
@@ -54,7 +62,7 @@ function fetchUsers($db) {
 
 function fetchEvents($db) {
 	$events = array();
-	$stmt = $db->prepare("SELECT * from un_events");
+	$stmt = $db->prepare("SELECT * FROM un_events");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		# code...
@@ -95,8 +103,52 @@ function create_new_event($db) {
 
 }
 // Get user details based on given id
-function getUserDetails($db) {
+function get_user_details($db) {
+	$userID = isset($_GET["userID"]) ? $_GET["userID"] : null;
+	if($userID != null){
+		$stmt = $db->prepare("SELECT * FROM un_users WHERE id = :user_id");
+		$stmt->execute(array(
+			"user_id" => $userID
+		));
+		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$userDetails = array(
+				"id" => $row["id"],
+				"username" => $row["username"],
+				"profile_url" => $row["profile_url"],
+				"profile_picture" => $row["profile_picture"],
+				"bio" => $row["bio"],
+				"rank" => $row["rank"]
+			);
+		}
+		echo json_encode($userDetails);
+	}
+}
 
+function get_friends_info($db) {
+	$userID = isset($_GET["friendIDs"]) ? json_decode($_GET["friendIDs"]) : null;
+	
+	$friendsInfo = array();
+	if($userID != null){
+		$enum = implode(",", $userID);
+
+		$stmt = $db->prepare("SELECT * FROM un_users WHERE id IN ($enum)");
+
+		$stmt->execute();
+		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$userDetails = array(
+				"id" => $row["id"],
+				"username" => $row["username"],
+				"profile_url" => $row["profile_url"],
+				"profile_picture" => $row["profile_picture"],
+				"bio" => $row["bio"],
+				"rank" => $row["rank"]
+			);
+
+			$friendsInfo[] = $userDetails;
+
+		}
+		echo json_encode($friendsInfo);
+	}
 }
 
 
