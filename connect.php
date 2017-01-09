@@ -94,6 +94,10 @@ function create_new_event($db) {
 	));
 
 }
+// Get user details based on given id
+function getUserDetails($db) {
+
+}
 
 
  ?>

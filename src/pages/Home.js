@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Buzz from '../components/Buzz';
 import Header from "../components/Header";
 import Greeting from "../components/Greeting";
 import Login from "../components/Login";
@@ -36,33 +36,8 @@ export default class Home extends React.Component {
             <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
             {this.renderEventForm()}
           </section>
-          <section class="buzz">
-              <ul>
-                <li class="">
-                  <a href="#">
-                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
-                    <label>2 min</label>
-                    <h5>this will be my buzz up next updates. because I make plans. I do.</h5>
-                  </a>
-                </li>
-                <li class="">
-                  <a href="#">
-                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
-                    <label>yesterday</label>
-                    <h5>Kelsey added pictures to Coachella</h5>
-                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
+          <Buzz dispatch={dispatch.bind(this)} users={users}/>
 
-                  </a>
-                </li>
-                <li class="">
-                  <a href="#">
-                    <figure><img src="../../img/dan.jpg" alt="Profile Picture"/></figure>
-                    <label>Jan 1</label>
-                    <h5>Dan responded YES to Waffle Game Night</h5>
-                  </a>
-                </li>
-              </ul>
-          </section>
           <section class="upnext-list">
             <EventList dispatch={dispatch.bind(this)} events={events.eventList}/>
           </section>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router";
+
 
 export default class Greeting extends React.Component {
   constructor(props) {
@@ -8,13 +10,16 @@ export default class Greeting extends React.Component {
   render() {
     let user = "Daniel";
     let today = new Date().toDateString();
+    let pathToUser = '/profiles/1';
     return (
       <div id="Greeting">
         <div class="userInfo">
+          <Link to={pathToUser}>
             <figure>
               <img src="../../img/dan.jpg" alt="Profile Picture"/>
             </figure>
           <label class="userName">{user}</label>
+          </Link>
         </div>
         <div class="userActions">
           <ul>
