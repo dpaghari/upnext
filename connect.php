@@ -29,8 +29,10 @@ switch ($action) {
 		break;
 	case 'get_friends_info' :
 		get_friends_info($db);
-
-
+		break;
+	case 'fetch_event' :
+		fetchEventInfo($db);
+		break;
 
 	default:
 		# code...
@@ -57,6 +59,33 @@ function fetchUsers($db) {
 
 	}
 	echo json_encode($users);
+}
+
+function fetchEventInfo($db) {
+	$eventID = isset($_GET["eventID"]) ? $_GET["eventID"] : null;
+
+	// $eventInfo = array();
+	if($eventID != null){
+		$stmt = $db->prepare("SELECT * from un_events WHERE id = $eventID");
+		$stmt->execute();
+
+		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$event = array(
+				"id" => $row["id"],
+				"imgURL" => $row["img_url"],
+				"name" => $row["name"],
+				"host" => $row["host"],
+				"status" => $row["status"],
+				"date" => $row["date"],
+				"location" => $row["location"],
+				"details" => $row["details"],
+				"friends" => $row["friends"],
+				"comments" => $row["comments"]
+			);
+
+		}
+		echo json_encode($event);
+	}
 }
 
 
@@ -126,7 +155,7 @@ function get_user_details($db) {
 
 function get_friends_info($db) {
 	$userID = isset($_GET["friendIDs"]) ? json_decode($_GET["friendIDs"]) : null;
-	
+
 	$friendsInfo = array();
 	if($userID != null){
 		$enum = implode(",", $userID);

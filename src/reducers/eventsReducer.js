@@ -50,6 +50,22 @@ export default function reducer(state = initialState, action) {
       };
       break;
     }
+    case "FETCH_EVENT_INFO_SUCCESS" : {
+      state = {
+        ...state,
+        fetching: false,
+        eventInfo: action.payload
+      };
+      break;
+    }
+    case "FETCH_EVENT_INFO_REJECTED" : {
+      state = {
+        ...state,
+        fetching: false,
+        error: action.payload
+      };
+      break;
+    }
   }
   return state;
 };

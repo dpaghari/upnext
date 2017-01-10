@@ -24,6 +24,26 @@ export function fetchEvents() {
 
   };
 }
+export function fetchEventInfo(id) {
+  return (dispatch) => {
+    // if I want to display from database
+    axios.get(userEndpoint + `action=fetch_event&eventID=${id}`)
+    // axios.get(userEndpoint)
+         .then((response) =>  {
+           dispatch({
+             type: "FETCH_EVENT_INFO_SUCCESS",
+             payload : response.data
+           });
+         })
+         .catch((error) => {
+           dispatch({
+             type: "FETCH_EVENT_INFO_REJECTED",
+             payload: error
+           })
+         });
+
+  };
+}
 
 export function createEvent({ name , date , location , details , imgURL }) {
   return (dispatch) => {

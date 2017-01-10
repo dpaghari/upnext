@@ -3,26 +3,51 @@ import Header from '../components/Header';
 import { fetchEvents } from "../actions/eventsActions";
 import MessageBoard from "../components/MessageBoard";
 
+import axios from "axios";
+import { Link } from "react-router";
+
+
 export default class Detail extends React.Component {
 
   constructor(props) {
     super(props);
+    this.eventInfo = {};
+    this.state = {
+      gotEventInfo : false
+    }
   }
 
   componentWillMount() {
-    this.props.store.dispatch(fetchEvents());
+    const eventID = this.props.params.eventId;
+    this.fetchEventInfo(eventID).then((response) => {
+      this.eventInfo = response.data;
+      this.setState({gotEventInfo : true});
+    });
+  }
+
+  fetchEventInfo(id) {
+    let userEndpoint = "../../connect.php?";
+    return axios.get(userEndpoint + "action=fetch_event&eventID=" + id);
   }
 
   render() {
-    const eventId = this.props.params.eventId;
-    const { appState, dispatch, events, users } = this.props.store;
-    const currentEvent = events.eventList[eventId];
-    console.log(events.eventList[eventId].comments);
-    const { name, imgURL, details, location, date } = currentEvent;
 
+    const { appState, dispatch, events, users } = this.props.store;
     return (
       <div id="DetailView">
-      <Header currentPage={appState.currentPage} dispatch={dispatch} />
+        <Header/>
+        {this.renderDetails()}
+
+        <hr/>
+        <MessageBoard dispatch={dispatch}/>
+      </div>
+    );
+  }
+  renderDetails() {
+    if(this.state.gotEventInfo){
+      const { name, imgURL, details, location, date } = this.eventInfo;
+      console.log(this.eventInfo);
+      return (
         <div class="detail-event-info">
         <h1>{name}</h1>
         <p>{date}</p>
@@ -30,10 +55,11 @@ export default class Detail extends React.Component {
         <p>{location}</p>
         <p>{details}</p>
         </div>
-        <hr/>
-        <MessageBoard dispatch={dispatch} messages={events.eventList[eventId].comments}/>
-      </div>
-    );
+      );
+    }
+    else
+      return null;
   }
+
 
 }

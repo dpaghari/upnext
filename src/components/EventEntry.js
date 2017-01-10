@@ -42,28 +42,28 @@ export default class EventEntry extends React.Component {
     let pathToDetails = "/detail/" + id;
     return (
       <li class="event">
-      <div class="event-wrapper">
-      {this.renderStatusBadge()}
-      <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
-      <div class="event-header">
-      <img src={imgURL} alt="yosemite" class=""/>
-      <h2 class="event-headline">{name}</h2>
-      </div>
-      </Link>
-      <div class="event-desc">
-      {this.renderHost()}
-      <div class="event-info">
-      <span class="event-date">{date}</span>
-      <span class="event-loc">{location}</span>
-      <div class="event-friends">
-      <span class="friends-going">Going:</span>
-      <ul class="event-friendlist">
-      {this.renderFriends()}
-      </ul>
-      </div>
-      </div>
-      </div>
-      </div>
+        <div class="event-wrapper">
+        {this.renderStatusBadge()}
+        <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
+        <div class="event-header">
+        <img src={imgURL} alt="yosemite" class=""/>
+        <h2 class="event-headline">{name}</h2>
+        </div>
+        </Link>
+        <div class="event-desc">
+        {this.renderHost()}
+        <div class="event-info">
+        <span class="event-date">{date}</span>
+        <span class="event-loc">{location}</span>
+        <div class="event-friends">
+        <span class="friends-going">Going:</span>
+        <ul class="event-friendlist">
+        {this.renderFriends()}
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div>
       </li>
     );
   }
@@ -77,7 +77,7 @@ export default class EventEntry extends React.Component {
 
   renderFriends() {
     if(this.state.gotUserInfo){
-      console.log(this.friendsInfo);
+      
       return _.map(JSON.parse(this.props.friends), (friend, index) => {
         let pathToFriend = "/profiles/" + friend;
         let { username, profile_picture } = this.friendsInfo[index];
