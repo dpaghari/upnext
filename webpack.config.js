@@ -7,9 +7,9 @@ module.exports = {
   entry: [
     'babel-polyfill',
     './scss/style.scss',
-    './src/index.js',
+    './src/index.js'
     // './src/server.js',
-    'webpack-dev-server/client?http://127.0.0.1:8080/'
+    // 'webpack-dev-server/client?http://127.0.0.1:8080'
   ],
   output: {
     path: path.join(__dirname, 'public'),

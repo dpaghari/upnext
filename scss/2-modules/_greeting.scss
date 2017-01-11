@@ -1,42 +1,45 @@
-#Greeting {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-around;
-  // border: 1px solid $notSoDark;
-  // width: 200px;
-  // height: 150px;
-  // border-radius: 5px;
-  // margin: 10px 0px;
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  #Greeting {
 
-  .userInfo {
-    // display: flex;
-    // flex-direction: column;
-    // width: 80%;
-    // height: 100%;
-    // padding: 10px;
-    // justify-content: center;
-    // align-items: center;
-
-  figure {
-      height: 55px;
-      width: 55px;
-      border: 2px solid $mintyGreen;
-      border-radius: 50%;
+    .homeBtn {
+      display: inline-block;
+      padding: 5px;
       position: relative;
-      display: block;
-      margin: 0 auto;
-      overflow: hidden;
+      z-index: 4;
+      text-align: center;
+      width: 100%;
+      @include transition();
+      i {
+        font-size: 28px;
+      }
+    }
 
-      img {
-        min-height: 100%;
-        min-width: 100%;
-        height: 110%;
-        width: auto;
-        @include centerer();
+    .userInfo {
+
+      figure {
+        height: 55px;
+        width: 55px;
+        border: 2px solid $mintyGreen;
+        border-radius: 50%;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        overflow: hidden;
+
+        img {
+          min-height: 100%;
+          min-width: 100%;
+          height: 110%;
+          width: auto;
+          @include centerer();
+
+        }
 
       }
-
-    }
 
       .userName {
         width: 100%;
@@ -47,70 +50,72 @@
         text-align: center;
       }
 
-  }
+    }
 
-  .userActions {
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    .userActions {
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
 
-    ul {
-      margin-left: 0;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: inherit;
+      ul {
+        margin-left: 0;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: inherit;
 
 
-      li {
-        transition: 0.2s all;
-        width: 100%;
-        padding: $space/3;
+        li {
+          transition: 0.2s all;
+          width: 100%;
+          padding: $space/3;
 
-        a {
+          a {
 
-          i {
-            font-size: 25px;
-            color: darken($deepPurp, 10%);
-            text-align: center;
-            width: 100%;
+            i {
+              font-size: 25px;
+              color: darken($deepPurp, 10%);
+              text-align: center;
+              width: 100%;
+              @include transition();
+            }
+
+          }
+
+          &:hover i {
             @include transition();
+            transform: scale(1.1);
+            color: $mintyGreen;
+
+            &:last-child i {
+              color: darken($deepPurp, 10%);
+            }
           }
 
-        }
+          &:last-child {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 70px;
+            background-color: $mintyGreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        &:hover i {
-          @include transition();
-          transform: scale(1.1);
-          color: $mintyGreen;
-
-          &:last-child i {
-            color: darken($deepPurp, 10%);
-          }
-        }
-
-        &:last-child {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 70px;
-          background-color: $mintyGreen;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          i {
+            i {
               font-size: 30px;
               color: $deepPurp;
-          }
+            }
 
+          }
         }
       }
     }
   }
+
 }

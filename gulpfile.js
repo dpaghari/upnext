@@ -35,7 +35,7 @@ gulp.task('styles', function () {
 
 gulp.task('sass:watch', function () {
   // livereload.listen();
-  gulp.watch('scss/*.sass', ['styles']);
+  gulp.watch('scss/*.scss', ['styles']);
 });
 
 gulp.task("webpack", function(callback) {

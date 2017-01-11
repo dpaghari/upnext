@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import { fetchEvents } from "../actions/eventsActions";
 import MessageBoard from "../components/MessageBoard";
+import Sidebar from "../components/Sidebar";
 
 import axios from "axios";
 import { Link } from "react-router";
@@ -35,7 +36,7 @@ export default class Detail extends React.Component {
     const { appState, dispatch, events, users } = this.props.store;
     return (
       <div id="DetailView">
-        <Header/>
+        <Sidebar />
         {this.renderDetails()}
 
         <hr/>

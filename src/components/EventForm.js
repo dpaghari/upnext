@@ -18,24 +18,38 @@ export default class EventForm extends React.Component {
   }
 
   render() {
+    var headline = "What's Happening?";
     return (
-      <form id="EventForm" onSubmit={this.addEvent.bind(this)}>
-      <strong>Add New Event</strong>
-      <a class="closeEventForm" href="" onClick={this.handleHideEventForm.bind(this)}>Close</a>
-      <input name="eventName" ref="eventName" type="text" placeholder="Event Name"/>
-      <input name="eventLocation" ref="eventLocation" type="text" placeholder="Event Location"/>
-      <input name="eventDate" ref="eventDate" type="date"/>
-      <input name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
-      <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-      <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
-      <label for="eventType">Private
-      <input name="eventType" ref="eventType" type="radio" value="private"/>
-      </label>
-      <label for="eventType">Public
-      <input name="eventType" ref="eventType" type="radio" value="public"/>
-      </label>
-      <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
+      <div id="EventForm">
+      <strong>{headline}</strong>
+      <a class="closeEventForm" href="" onClick={this.handleHideEventForm.bind(this)}><i class="fa fa-close"></i></a>
+      <form onSubmit={this.addEvent.bind(this)}>
+        <div class="eventMainInfo">
+          <fieldset>
+          <input name="eventName" ref="eventName" type="text" placeholder="My New Event"/>
+          <input name="eventLocation" ref="eventLocation" type="text" placeholder="San Francisco, CA"/>
+          <input name="eventDate" ref="eventDate" type="date"/>
+          </fieldset>
+          <img src="" class="eventImgPreview"/>
+        </div>
+        <div class="eventDescription">
+        <fieldset>
+        <input name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
+        <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
+        <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
+        </fieldset>
+        <fieldset>
+        <label for="eventType">Private
+        <input name="eventType" ref="eventType" type="radio" value="private"/>
+        </label>
+        <label for="eventType">Public
+        <input name="eventType" ref="eventType" type="radio" value="public"/>
+        </label>
+        </fieldset>
+        </div>
+        <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
       </form>
+      </div>
     );
   }
 

@@ -5,7 +5,6 @@
 $notSoDark: #555;
 $agentOrange: #ffc657;
 $darkerAgentOrange: darken($agentOrange, 5%);
-$mintyGreen: #9EE493;
 $lightRed: #c4464d;
 
 
@@ -20,8 +19,8 @@ $platinum: rgba(214, 214, 214, 1);
 // $outerSpace: rgba(62, 80, 91, 1);
 // $pineapple: #413C58;
 // $nightBlue: #2D3A62;
-
 $lightBlueGray: #7883b5;
+$lighterBlueGray: lighten($lightBlueGray, 10%);
 $blueGray: #606A99;
 $deepPurp: #3C3E6F;
 $mintyGreen: #9EE493;

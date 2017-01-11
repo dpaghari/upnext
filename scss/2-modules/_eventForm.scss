@@ -14,33 +14,110 @@
     z-index: 3;
     display: flex;
     flex-direction: column;
-    background: white;
+    background: $lighterBlueGray;
+    color: $notSoDark;
     margin: 20px;
     border: 1px solid $notSoDark;
-    padding: 10px;
-    width: 50%;
+    padding: 10px 5px;
+    width: 60%;
     text-align: center;
-    height: auto;
+    // height: 75vh;
+    border-radius: 5px;
+
+    form {
+      background: white;
+      border-radius: 5px;
+    }
 
     button.addEvent {
-      width: 100%;
-      box-shadow: 0px 2px 2px $notSoDark;
+      margin: 10px 0px;
+      width: 40%;
+      padding: 25px;
+      box-shadow: 0px 1px 1px darken($mintyGreen, 5%);
+      background-color: $mintyGreen;
+      @include transition();
+      &:hover {
+        background-color: darken($mintyGreen, 10%);
+      }
     }
-    
+
+    input {
+      border-color: #e2e2e6;
+    }
+    .eventMainInfo {
+      display: flex;
+      justify-content: space-around;
+      background: $lighterBlueGray;
+      margin-bottom: 20px;
+      fieldset {
+        flex-shrink: 1;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      margin-bottom: 20px;
+      input[name="eventName"] {
+        margin-right: 10px;
+      }
+      input[name="eventLocation"] {
+
+        margin-right: 10px;
+      }
+      input[name="eventDate"] {
+
+        margin-right: 10px;
+      }
+    }
+    .eventDescription {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0px 1px 1px #ffe;
+      fieldset {
+        padding: 5px;
+        width: 100%;
+        input[name="eventInvites"] {
+          margin-top: 30px;
+        }
+      }
+
+    }
+    img {
+      flex-grow: 1;
+      width: 300px;
+      float: right;
+      height: 200px;
+      margin-right: 10px;
+
+    }
+
     a.closeEventForm {
       position: absolute;
       top: 3%;
-      right: 20%;
-      color: white;
+      right: 21%;
+      color: $deepPurp;
       text-decoration: none;
+      i {
+        font-size: 24px;
+        color: $deepPurp;
+        &:hover{
+          color: $mintyGreen;
+        }
+      }
+
     }
     strong {
+      font-size: 28px;
       margin: 10px 0px;
-      color: $notSoDark;
+      color: #ffe;
     }
     label {
       margin: 5px;
       display: inline-block;
+      font-size: 20px;
+      color: $notSoDark;
       input[type="radio"] {
         margin-left: 10px;
       }

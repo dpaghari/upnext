@@ -5,6 +5,7 @@ import Greeting from "../components/Greeting";
 import Login from "../components/Login";
 import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
+import Sidebar from "../components/Sidebar";
 import { fetchEvents } from "../actions/eventsActions";
 
 export default class Home extends React.Component {
@@ -32,11 +33,7 @@ export default class Home extends React.Component {
       return (
         <div id="Home">
 
-          <section class="sidebar">
-            <Greeting/>
-            <Header currentPage={appState.currentPage} dispatch={dispatch.bind(this)}/>
-            {this.renderEventForm()}
-          </section>
+          <Sidebar appState={appState} dispatch={dispatch} />
           <Buzz dispatch={dispatch.bind(this)} users={users}/>
 
           <section class="upnext-list">
@@ -52,18 +49,5 @@ export default class Home extends React.Component {
     }
   }
 
-  renderEventForm() {
-    // console.log(this.props);
-    const { appState, dispatch } = this.props.store;
-    if(appState) {
-      if(appState.eventForm)
-      return (
-        <div class="lightbox">
-        <EventForm dispatch={dispatch.bind(this)}/>;
-        </div>
-      );
-      else
-      return null;
-    }
-  }
+  
 }
