@@ -34,7 +34,7 @@ export default class EventForm extends React.Component {
         </div>
         <div class="eventDescription">
         <fieldset>
-        <input name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
+        <input onBlur={this.handleImgUpload.bind(this)} name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
         <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
         <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
         </fieldset>
@@ -51,6 +51,10 @@ export default class EventForm extends React.Component {
       </form>
       </div>
     );
+  }
+
+  handleImgUpload(e) {
+    document.querySelector(".eventImgPreview").setAttribute("src", e.target.value);
   }
 
   addEvent(e) {
