@@ -140,6 +140,12 @@
     }
   }
 
+  .event-detail {
+    p {
+      color: lighten($notSoDark, 20%);
+    }
+  }
+
   // &:hover {
   //   transform: scale(1.1);
   // }

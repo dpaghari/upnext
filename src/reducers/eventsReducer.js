@@ -10,11 +10,13 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "CREATE_EVENT" : {
       let newEntry = {
+        id: action.payload.id,
         name: action.payload.name,
-        date: action.payload.date,
+        event_date: action.payload.event_date,
         location: action.payload.location,
         details: action.payload.details,
-        imgURL: action.payload.imgURL
+        imgURL: action.payload.imgURL,
+        host: action.payload.host
       };
       let newEventList = [];
       newEventList.push(newEntry);

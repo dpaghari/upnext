@@ -19,7 +19,7 @@ export default class EventEntry extends React.Component {
   }
 
   componentWillMount() {
-    let { imgURL, name, host, date, details, location, friends, id, status } = this.props;
+    let { imgURL, name, host, event_date, details, location, friends, id, status } = this.props;
     let hostP = this.fetchUser(host);
     let friendsP = this.fetchFriendsInfo(friends);
     Promise.all([hostP, friendsP]).then((responses) => {
@@ -38,41 +38,42 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, host, date, details, location, friends, id, status } = this.props;
-    let pathToDetails = '/detail/1';
-    if(id) {
-      pathToDetails = "/detail/" + id;
-    }
+    let { imgURL, name, host, event_date, details, location, friends, id, status } = this.props;
+    let pathToDetails = `/detail/${id}`;
 
     return (
       <li class="event">
         <div class="event-wrapper">
-        {this.renderStatusBadge()}
-        <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
-        <div class="event-header">
-        <img src={imgURL} alt="yosemite" class=""/>
-        <h2 class="event-headline">{name}</h2>
-        </div>
-        </Link>
-        <div class="event-desc">
-        {this.renderHost()}
-        <div class="event-info">
-        <span class="event-date">{date}</span>
-        <span class="event-loc">{location}</span>
-        <div class="event-friends">
-        <span class="friends-going">Going:</span>
-        <ul class="event-friendlist">
-        {this.renderFriends()}
-        </ul>
-        </div>
-        </div>
-        </div>
-        </div>
+          {this.renderStatusBadge()}
+          <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
+          <div class="event-header">
+            <img src={imgURL} alt="yosemite" class=""/>
+            <h2 class="event-headline">{name}</h2>
+          </div>
+          </Link>
+          <div class="event-desc">
+            {this.renderHost()}
+            <div class="event-info">
+              <span class="event-date">{event_date}</span>
+              <span class="event-loc">{location}</span>
+              <div class="event-friends">
+                <span class="friends-going">Going:</span>
+                <ul class="event-friendlist">
+                {this.renderFriends()}
+                </ul>
+              </div>{/* end event-friends*/}
+            </div>{/* end event-info*/}
+          </div>{/* end event-desc*/}
+          <div class="event-detail">
+            <p>{details}</p>
+          </div>{/* end event-detail*/}
+        </div>{/* end event-wrapper*/}
       </li>
     );
   }
   renderHost() {
-    if(this.state.gotUserInfo)
+    console.log(this.userInfo);
+    if(this.state.gotUserInfo && this.userInfo)
       return <EventHost dispatch={this.props.dispatch} userInfo={this.userInfo}/>
     else
       return null;

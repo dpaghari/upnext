@@ -24,16 +24,16 @@ export default class Sidebar extends React.Component {
 
   renderEventForm() {
     // console.log(this.props);
-    const { appState, dispatch } = this.props;
+    const { appState, dispatch, users } = this.props;
     if(appState) {
       if(appState.eventForm)
       return (
         <div class="lightbox">
-        <EventForm dispatch={dispatch}/>;
+          <EventForm users={users} dispatch={dispatch}/>;
         </div>
       );
       else
-      return null;
+        return null;
     }
   }
 }

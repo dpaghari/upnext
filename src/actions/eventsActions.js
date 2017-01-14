@@ -45,25 +45,30 @@ export function fetchEventInfo(id) {
   };
 }
 
-export function createEvent({ name , date , location , details , imgURL }) {
+export function createEvent({ name , event_date , location , details , imgURL, host }) {
   return (dispatch) => {
-    axios.get(userEndpoint + "action=create_event", {
-      params : {
-        name,
-        location,
-        details,
-        imgURL
-      }
+    var data = {
+      name,
+      host,
+      location,
+      details,
+      imgURL,
+      event_date
+    };
+    axios.post(userEndpoint + "action=create_event", data).then((response) => {
+      // console.log(response.data);
+      dispatch({
+        type: "CREATE_EVENT",
+        payload: {
+          id: response.data,
+          host,
+          name,
+          event_date,
+          location,
+          details,
+          imgURL
+        }
+      });
     });
-    dispatch({
-      type: "CREATE_EVENT",
-      payload: {
-        name,
-        date,
-        location,
-        details,
-        imgURL
-      }
-    });
-  }
+  };
 }

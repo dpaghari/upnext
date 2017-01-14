@@ -29,15 +29,15 @@ export default class Home extends React.Component {
     const { users, events, appState, dispatch, userInfo } = this.props.store;
 
 
+
     if(appState.loggedIn){
       return (
         <div id="Home">
 
-          <Sidebar appState={appState} dispatch={dispatch} />
+          <Sidebar users={users} appState={appState} dispatch={dispatch} />
           <Buzz dispatch={dispatch.bind(this)} users={users}/>
-
           <section class="upnext-list">
-            <EventList userInfo={users.userInfo} dispatch={dispatch.bind(this)} events={events.eventList}/>
+            <EventList users={users} userInfo={users.userInfo} dispatch={dispatch.bind(this)} events={events.eventList}/>
           </section>
 
         </div>
@@ -49,5 +49,5 @@ export default class Home extends React.Component {
     }
   }
 
-  
+
 }

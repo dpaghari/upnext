@@ -114,22 +114,34 @@ function fetchEvents($db) {
 }
 
 function create_new_event($db) {
-	$name = isset($_GET["name"]) ? $_GET["name"] : "";
-	$img_url = isset($_GET["imgURL"]) ? $_GET["imgURL"] : "";
-	$location = isset($_GET["location"]) ? $_GET["location"] : "";
-	$details = isset($_GET["details"]) ? $_GET["details"] : "";
+
+	$_POST = json_decode(file_get_contents('php://input'), true);
+
+	$name = isset($_POST["name"]) ? $_POST["name"] : null;
+	$img_url = isset($_POST["imgURL"]) ? $_POST["imgURL"] : null;
+	$location = isset($_POST["location"]) ? $_POST["location"] : null;
+	$details = isset($_POST["details"]) ? $_POST["details"] : null;
+	$host = isset($_POST["host"]) ? $_POST["host"] : null;
+	$event_date = isset($_POST["event_date"]) ? $_POST["event_date"] : null;
+
+	echo json_encode($event_date);
 
 	$stmt = $db->prepare("INSERT INTO
-		un_events(name, img_url, status, location, details)
-  	VALUES(:name, :img_url, :status, :location, :details)");
+		un_events(name, img_url, status, location, details, host, event_date)
+  	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date)");
 	$stmt->execute(array(
 		"name" => $name,
 		"img_url" => $img_url,
+		"host" => $host,
 		"status" => 0,
+		"event_date" => $event_date,
 		"location" => $location,
 		"details" => $details
 	));
- 	// To-do: Respond with inserted event's id 
+	$stmt = $db->prepare("SELECT LAST_INSERT_ID()");
+	$stmt->execute();
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	echo json_encode($row["LAST_INSERT_ID()"]);
 }
 // Get user details based on given id
 function get_user_details($db) {

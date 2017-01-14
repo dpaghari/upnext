@@ -8,6 +8,13 @@ export default class EventList extends React.Component {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+      if(this.props !== nextProps) {
+        return true;
+      }
+      else return false;
+  }
+
   render() {
 
     return (
@@ -28,7 +35,7 @@ export default class EventList extends React.Component {
   }
 
   renderEvents() {
-    return _.map(this.props.events, (evnt, index) => <EventEntry key={index} {...evnt} dispatch={this.props.dispatch} userInfo={this.props.userInfo}/>);
+    return _.map(this.props.events, (evnt, index) => <EventEntry key={index} {...evnt} dispatch={this.props.dispatch} userInfo={this.props.userInfo} users={this.props.users}/>);
   }
   renderCreateEvent() {
     return (
