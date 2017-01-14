@@ -72,7 +72,6 @@ export default class EventEntry extends React.Component {
     );
   }
   renderHost() {
-    console.log(this.userInfo);
     if(this.state.gotUserInfo && this.userInfo)
       return <EventHost dispatch={this.props.dispatch} userInfo={this.userInfo}/>
     else

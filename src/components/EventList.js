@@ -6,10 +6,17 @@ import { showEventForm } from "../actions/appStateActions";
 export default class EventList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      "displayMonth" : "January"
+    };
+    this.marker = 470;
+    this.month = 0;
+    this.ticking = false;
+    this.monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-      if(this.props !== nextProps) {
+      if(this.props !== nextProps || this.state !== nextState) {
         return true;
       }
       else return false;
@@ -21,14 +28,14 @@ export default class EventList extends React.Component {
       <div id="Events">
         {this.renderEventLink()}
         <span class="eventLine"></span>
-        <ul class="eventListContainer">
+        <ul onScroll={this.handleScroll.bind(this)}  class="eventListContainer">
           <ul class="eventDateline">
-              <li class="eventMonth"><h1>January</h1></li>
+              <li class="eventMonth"><h1>{this.state.displayMonth}</h1></li>
           </ul>
-          <div class="eventList">
+          <ul class="eventList">
             {this.renderEvents()}
             {this.renderCreateEvent()}
-          </div>
+          </ul>
         </ul>
       </div>
     );
@@ -48,6 +55,30 @@ export default class EventList extends React.Component {
       </li>
     );
   }
+
+  handleScroll(e) {
+
+    let last_known_scroll_position = e.target.scrollLeft;
+
+    if (!this.ticking) {
+    window.requestAnimationFrame(() => {
+      // doSomething(last_known_scroll_position);
+
+      // To-do: logic for changing month based on event in range
+      if(last_known_scroll_position > this.marker) {
+
+      this.marker = this.marker + 470;
+      this.month++;
+      // this.month = last_known_scroll_position % 470;
+      console.log(this.month);
+      this.setState({displayMonth : this.monthNames[this.month]});
+      }
+      this.ticking = false;
+    });
+    }
+    this.ticking = true;
+  }
+
   handleCreateEvent() {
     this.props.dispatch(showEventForm());
   }
