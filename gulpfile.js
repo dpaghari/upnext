@@ -2,7 +2,7 @@
 var exec = require('child_process').exec, child;
 var colors = require('colors');
 var gulp = require('gulp');
-
+var webpack = require('webpack-stream');
 
     // browserify = require('browserify'),
     // uglify = require('gulp-uglify'),
@@ -19,6 +19,9 @@ var gulp = require('gulp');
 
 gulp.task('scripts', function () {
   // Future processing for scripts
+  gulp.watch("src/*.js", [
+    "webpack"
+  ]);
 });
 
 gulp.task('styles', function () {
@@ -38,16 +41,16 @@ gulp.task('sass:watch', function () {
   gulp.watch('scss/*.scss', ['styles']);
 });
 
-gulp.task("webpack", function(callback) {
-    // run webpack
-    webpack(require("./webpack.config.js"), function(err, stats) {
-        if(err) throw new gutil.PluginError("webpack", err);
-        gutil.log("[webpack]", stats.toString({
-            // output options
-        }));
-        callback();
-    });
-});
+// gulp.task("webpack", function(callback) {
+//     // run webpack
+//     webpack(require("./webpack.config.js"), function(err, stats) {
+//         if(err) throw new gutil.PluginError("webpack", err);
+//         gutil.log("[webpack]", stats.toString({
+//             // output options
+//         }));
+//         callback();
+//     });
+// });
 
 gulp.task("webpack-dev-server", function(callback) {
     // Start a webpack-dev-server
@@ -64,6 +67,16 @@ gulp.task("webpack-dev-server", function(callback) {
         // callback();
     });
 });
+
+
+gulp.task("webpack", function(callback) {
+  return gulp.src("src/index.js")
+      .pipe(webpack(require("./webpack.config.js")))
+      .pipe(gulp.dest("public/"));
+
+});
+
+
 
 gulp.task('zip_project', function() {
   child = exec("zip -r ./upnext.zip * -x '*.DS_Store' 'node_modules/*'", function(error, stdout, stderr) {

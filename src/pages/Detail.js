@@ -20,6 +20,8 @@ export default class Detail extends React.Component {
 
   componentWillMount() {
     const eventID = this.props.params.eventId;
+    const { appState, dispatch, events, users } = this.props.store;
+    
     this.fetchEventInfo(eventID).then((response) => {
       this.eventInfo = response.data;
       this.setState({gotEventInfo : true});
@@ -46,15 +48,32 @@ export default class Detail extends React.Component {
   }
   renderDetails() {
     if(this.state.gotEventInfo){
-      const { name, imgURL, details, location, date } = this.eventInfo;
+      const { name, imgURL, details, location, date, friends } = this.eventInfo;
       console.log(this.eventInfo);
       return (
         <div class="detail-event-info">
-        <h1>{name}</h1>
-        <p>{date}</p>
-        <img src={imgURL} alt="PLACEHOLDER IMAGE"/>
-        <p>{location}</p>
-        <p>{details}</p>
+          <div class="detail-event-header">
+          <div class="header-col-1">
+          <h1>{name}</h1>
+          <p>{location}</p>
+          <p>{date}</p>
+          <p>{details}</p>
+          </div>
+          <div class="header-col-2">
+          <img src={imgURL} alt="PLACEHOLDER IMAGE"/>
+          <div class="event-guests">
+            <ul>
+              <li class="event-host"><img src="" alt="host"/><span class="event-host-name">Daniel Pagharion</span></li>
+              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Nick Smith</span></li>
+              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Emily Anderson</span></li>
+              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Kelsey Raczak</span></li>
+            </ul>
+          </div>
+          </div>
+          </div>
+          <hr/>
+          <div class="detail-event-body">
+          </div>
         </div>
       );
     }

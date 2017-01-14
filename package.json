@@ -60,6 +60,7 @@
     "support-for": "^1.0.5",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stream": "^3.2.0"
   }
 }

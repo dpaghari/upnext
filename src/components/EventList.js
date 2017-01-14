@@ -46,6 +46,6 @@ export default class EventList extends React.Component {
   }
 
   renderEventLink() {
-    return <a onClick={this.handleCreateEvent.bind(this)} href="#" class="addLink">Add Event</a>;
+    return <a onClick={this.handleCreateEvent.bind(this)} href="#" class="addLink"><i class="fa fa-plus"></i></a>;
   }
 }

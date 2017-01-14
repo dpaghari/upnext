@@ -4,13 +4,103 @@
   justify-content: center;
   align-items: center;
   .detail-event-info {
+    margin: $space 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  hr {
-    width: 80%;
+    .detail-event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .header-col-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: $space;
+      }
+      .header-col-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .event-guests {
+          margin: $space 0px;
+          padding: 10px;
+          border: 1px solid $grayBorder;
+          max-width: 60%;
+          ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .event-host, .event-guest {
+              display: flex;
+              flex-direction: column;
+              img {
+                border-radius: 50%;
+                border: 1px solid #888;
+              }
+            }
+            .event-host {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              border-right: 1px solid $grayBorder;
+              padding-right: $space/2;
+              .event-host-name {
+                font-weight: 600;
+                font-size: 0.5em;
+              }
+              img {
+                height: $space * 2;
+                width: $space * 2;
+              }
+            }
+            .event-guest {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              padding: 0px $space/2;
+              .event-guest-name {
+                font-size: 0.3em;
+              }
+              img {
+                height: $space * 1.5;
+                width: $space * 1.5;
+              }
+            }
+
+          }
+        }
+      }
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        font-size: 1.2em;
+      }
+      img {
+        width: 640px;
+        height: 460px;
+
+      }
+    }
+
+    hr {
+      color: $grayBorder;
+      width: 80%;
+    }
+
+    .detail-event-body {
+      p {
+        font-size: 1em;
+      }
+    }
   }
 
   .detail-message-board {
