@@ -39,7 +39,11 @@ export default class EventEntry extends React.Component {
 
   render () {
     let { imgURL, name, host, date, details, location, friends, id, status } = this.props;
-    let pathToDetails = "/detail/" + id;
+    let pathToDetails = '/detail/1';
+    if(id) {
+      pathToDetails = "/detail/" + id;
+    }
+
     return (
       <li class="event">
         <div class="event-wrapper">
@@ -77,15 +81,16 @@ export default class EventEntry extends React.Component {
 
   renderFriends() {
     if(this.state.gotUserInfo){
-      
-      return _.map(JSON.parse(this.props.friends), (friend, index) => {
-        let pathToFriend = "/profiles/" + friend;
-        let { username, profile_picture } = this.friendsInfo[index];
-        if(profile_picture)
-        return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src={profile_picture}/></Link>
-        else
-        return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
-      });
+      if(this.props.friends) {
+        return _.map(JSON.parse(this.props.friends), (friend, index) => {
+          let pathToFriend = "/profiles/" + friend;
+          let { username, profile_picture } = this.friendsInfo[index];
+          if(profile_picture)
+          return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src={profile_picture}/></Link>
+          else
+          return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg"/></Link>
+        });
+      }
     }
     else
       return null;

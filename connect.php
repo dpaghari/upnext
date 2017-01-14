@@ -129,7 +129,7 @@ function create_new_event($db) {
 		"location" => $location,
 		"details" => $details
 	));
-
+ 	// To-do: Respond with inserted event's id 
 }
 // Get user details based on given id
 function get_user_details($db) {
