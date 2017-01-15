@@ -12,11 +12,11 @@ export default class Sidebar extends React.Component {
 
   render() {
 
-    const { appState, dispatch } = this.props;
+    const { appState, dispatch, users} = this.props;
 
     return (
       <section class="sidebar">
-        <Greeting dispatch={dispatch}/>
+        <Greeting users={users} dispatch={dispatch}/>
         {this.renderEventForm()}
       </section>
     );

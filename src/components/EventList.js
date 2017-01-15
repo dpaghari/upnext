@@ -62,15 +62,10 @@ export default class EventList extends React.Component {
 
     if (!this.ticking) {
     window.requestAnimationFrame(() => {
-      // doSomething(last_known_scroll_position);
-
-      // To-do: logic for changing month based on event in range
       if(last_known_scroll_position > this.marker) {
 
       this.marker = this.marker + 470;
       this.month++;
-      // this.month = last_known_scroll_position % 470;
-      console.log(this.month);
       this.setState({displayMonth : this.monthNames[this.month]});
       }
       this.ticking = false;

@@ -62,7 +62,7 @@ export default class EventForm extends React.Component {
     const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
     console.log(this.props.users.current_user_id);
     let newEvent = {
-      host: this.props.users.current_user_id,
+      host: this.props.users.current_user.id,
       name: eventName.value,
       event_date: new Date(eventDate.value).toUTCString(),
       location: eventLocation.value,

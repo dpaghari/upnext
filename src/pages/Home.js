@@ -18,6 +18,13 @@ export default class Home extends React.Component {
     this.fetchEvents();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+      if(this.props !== nextProps || this.state !== nextState) {
+        return true;
+      }
+      else return false;
+  }
+
   fetchEvents() {
     this.props.store.dispatch(fetchEvents());
   }

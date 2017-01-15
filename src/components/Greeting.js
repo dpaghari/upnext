@@ -7,10 +7,20 @@ export default class Greeting extends React.Component {
     super(props)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+      if(this.props !== nextProps || this.state !== nextState) {
+        return true;
+      }
+      else return false;
+  }
+
+
   render() {
-    let user = "Daniel";
-    let today = new Date().toDateString();
-    let pathToUser = '/profiles/1';
+    let { username, profile_url, profile_picture } = this.props.users.current_user;
+    // let user = "Daniel";
+    console.log(this.props.users);
+    // let today = new Date().toDateString();
+    let pathToUser = `/profiles/${profile_url}`;
     return (
       <div id="Greeting">
 
@@ -18,9 +28,9 @@ export default class Greeting extends React.Component {
         <div class="userInfo">
           <Link to={pathToUser}>
             <figure>
-              <img src="../../img/dan.jpg" alt="Profile Picture"/>
+              <img src={profile_picture} alt="Profile Picture"/>
             </figure>
-          <label class="userName">{user}</label>
+          <label class="userName">{username}</label>
           </Link>
         </div>
         <div class="userActions">

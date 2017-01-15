@@ -1,5 +1,5 @@
 const initialState = {
-  loggedIn: true,
+  loggedIn: false,
   eventForm : false,
   currentPage : "home"
 };
@@ -18,7 +18,7 @@ export default function reducer (state = initialState, action) {
     case "AUTH_SUCCESS" : {
       state = {
         ...state,
-        loggedIn: action.payload
+        loggedIn: true
       };
       break;
     }

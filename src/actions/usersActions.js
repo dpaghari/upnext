@@ -23,6 +23,8 @@ export function authUser({username, password}) {
              return ((el.username === enteredCreds.username) && (el.password === enteredCreds.password));
            });
 
+
+
            if(typeof result === "undefined") {
              dispatch({
                type: "AUTH_FAILED",
@@ -30,9 +32,18 @@ export function authUser({username, password}) {
              });
            }
            else {
+             let { id, username, profile_picture, profile_url } = result;
+             let currentUserInfo = {
+               id,
+               username,
+               profile_picture,
+               profile_url
+             };
+             console.log(currentUserInfo);
+
              dispatch({
                type: "AUTH_SUCCESS",
-               payload: true
+               payload: currentUserInfo
              });
            }
 

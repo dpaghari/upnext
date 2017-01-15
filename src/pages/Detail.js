@@ -17,11 +17,17 @@ export default class Detail extends React.Component {
       gotEventInfo : false
     }
   }
+  shouldComponentUpdate(nextProps, nextState) {
+      if(this.props !== nextProps || this.state !== nextState) {
+        return true;
+      }
+      else return false;
+  }
 
   componentWillMount() {
     const eventID = this.props.params.eventId;
     const { appState, dispatch, events, users } = this.props.store;
-    
+
     this.fetchEventInfo(eventID).then((response) => {
       this.eventInfo = response.data;
       this.setState({gotEventInfo : true});
@@ -38,7 +44,7 @@ export default class Detail extends React.Component {
     const { appState, dispatch, events, users } = this.props.store;
     return (
       <div id="DetailView">
-        <Sidebar />
+        <Sidebar users={users} appState={appState} dispatch={dispatch} />
         {this.renderDetails()}
 
         <hr/>

@@ -1,6 +1,6 @@
 const initialState = {
   users : [],
-  current_user_id : 2,
+  current_user : {},
   fetchedUsers: false,
   fetching: false,
   fetchedUserInfo: false
@@ -11,6 +11,13 @@ const initialState = {
 // Handles actions relating to user information
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
+    case "AUTH_SUCCESS" : {
+      state = {
+        ...state,
+        current_user: action.payload
+      };
+      break;
+    }
     case "CHANGE_NAME": {
       state = {
         ...state,
