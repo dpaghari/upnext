@@ -33,6 +33,9 @@ switch ($action) {
 	case 'fetch_event' :
 		fetchEventInfo($db);
 		break;
+	case 'fetch_event_comments' :
+		fetchEventComments($db);
+		break;
 
 	default:
 		# code...
@@ -85,6 +88,35 @@ function fetchEventInfo($db) {
 
 		}
 		echo json_encode($event);
+	}
+}
+
+function fetchEventComments($db) {
+	$eventID = isset($_GET["eventID"]) ? $_GET["eventID"] : null;
+
+	$comments = array();
+	if($eventID != null){
+		$stmt = $db->prepare(
+			"SELECT un_events.id, un_comments.event_id, un_comments.comment/*, users.**/
+			 FROM un_comments
+			 INNER JOIN un_events on un_comments.event_id = un_events.id
+			--  INNER JOIN un_users on un_comments.user_id = un_users.id
+			 WHERE un_comments.event_id = $eventID
+			"
+		);
+		$stmt->execute();
+
+		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$event_comment = array(
+				"id" => $row["id"],
+				"event_id"=> $row["event_id"],
+				"comment" => $row["comment"]
+			);
+
+			$comments[] = $event_comment;
+
+		}
+		echo json_encode($comments);
 	}
 }
 

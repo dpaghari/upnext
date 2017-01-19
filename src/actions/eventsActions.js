@@ -6,9 +6,7 @@ var userEndpoint = "../../connect.php?";
 
 export function fetchEvents() {
   return (dispatch) => {
-    // if I want to display from database
     axios.get(userEndpoint + "action=events")
-    // axios.get(userEndpoint)
          .then((response) =>  {
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",
@@ -26,22 +24,19 @@ export function fetchEvents() {
 }
 export function fetchEventInfo(id) {
   return (dispatch) => {
-    // if I want to display from database
     axios.get(userEndpoint + `action=fetch_event&eventID=${id}`)
-    // axios.get(userEndpoint)
-         .then((response) =>  {
-           dispatch({
-             type: "FETCH_EVENT_INFO_SUCCESS",
-             payload : response.data
-           });
-         })
-         .catch((error) => {
-           dispatch({
-             type: "FETCH_EVENT_INFO_REJECTED",
-             payload: error
-           })
-         });
-
+     .then((response) =>  {
+       dispatch({
+         type: "FETCH_EVENT_INFO_SUCCESS",
+         payload : response.data
+       });
+     })
+     .catch((error) => {
+       dispatch({
+         type: "FETCH_EVENT_INFO_REJECTED",
+         payload: error
+       })
+     });
   };
 }
 
@@ -68,6 +63,29 @@ export function createEvent({ name , event_date , location , details , imgURL, h
           details,
           imgURL
         }
+      });
+    });
+  };
+}
+
+
+export function fetchEventComments(eventID) {
+  return (dispatch) => {
+    axios.get(userEndpoint + `action=fetch_event_comments&eventID=${eventID}`)
+    .then((response) => {
+      let { id, event_id, comment } = response.data;
+      dispatch({
+        type: "FETCH_EVENT_COMMENTS_SUCCESS",
+        payload: {
+          id,
+          comments : response.data
+        }
+      });
+    })
+    .catch((response) => {
+      dispatch({
+        type: "FETCH_EVENT_COMMENTS_REJECTED",
+        payload: error
       });
     });
   };

@@ -27,6 +27,7 @@ export default function reducer(state = initialState, action) {
       };
       break;
     }
+
     case "FETCH_EVENTS_PENDING" : {
       state = {
         ...state,
@@ -61,6 +62,22 @@ export default function reducer(state = initialState, action) {
       break;
     }
     case "FETCH_EVENT_INFO_REJECTED" : {
+      state = {
+        ...state,
+        fetching: false,
+        error: action.payload
+      };
+      break;
+    }
+    case "FETCH_EVENT_COMMENTS_SUCCESS" : {
+      state = {
+        ...state,
+        fetching: false,
+        event_comments: action.payload
+      };
+      break;
+    }
+    case "FETCH_EVENT_COMMENTS_REJECTED" : {
       state = {
         ...state,
         fetching: false,
