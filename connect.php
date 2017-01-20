@@ -51,7 +51,7 @@ function fetchUsers($db) {
 	while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 		$userEntry = array(
-			"id" => $row["id"],
+			"user_id" => $row["user_id"],
 			"username" => $row["username"],
 			"password" => $row["password"],
 			"profile_url" => $row["profile_url"],
@@ -69,17 +69,17 @@ function fetchEventInfo($db) {
 
 	// $eventInfo = array();
 	if($eventID != null){
-		$stmt = $db->prepare("SELECT * from un_events WHERE id = $eventID");
+		$stmt = $db->prepare("SELECT * from un_events WHERE event_id = $eventID");
 		$stmt->execute();
 
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			$event = array(
-				"id" => $row["id"],
+				"event_id" => $row["event_id"],
 				"imgURL" => $row["img_url"],
 				"name" => $row["name"],
 				"host" => $row["host"],
 				"status" => $row["status"],
-				"date" => $row["date"],
+				"event_date" => $row["event_date"],
 				"location" => $row["location"],
 				"details" => $row["details"],
 				"friends" => $row["friends"],
@@ -97,23 +97,17 @@ function fetchEventComments($db) {
 	$comments = array();
 	if($eventID != null){
 		$stmt = $db->prepare(
-			"SELECT un_events.id, un_comments.event_id, un_comments.comment/*, users.**/
+			"SELECT un_events.event_id, un_comments.event_id, un_comments.comment, un_comments.comment_id, un_users.*
 			 FROM un_comments
-			 INNER JOIN un_events on un_comments.event_id = un_events.id
-			--  INNER JOIN un_users on un_comments.user_id = un_users.id
+			 INNER JOIN un_events on un_comments.event_id = un_events.user_id
+			 INNER JOIN un_users on un_comments.user_id = un_users.user_id
 			 WHERE un_comments.event_id = $eventID
 			"
 		);
 		$stmt->execute();
 
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-			$event_comment = array(
-				"id" => $row["id"],
-				"event_id"=> $row["event_id"],
-				"comment" => $row["comment"]
-			);
-
-			$comments[] = $event_comment;
+			$comments[] = $row;
 
 		}
 		echo json_encode($comments);
@@ -128,12 +122,12 @@ function fetchEvents($db) {
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		# code...
 		$eventEntry = array(
-			"id" => $row["id"],
+			"event_id" => $row["event_id"],
 			"imgURL" => $row["img_url"],
 			"name" => $row["name"],
 			"host" => $row["host"],
 			"status" => $row["status"],
-			"date" => $row["date"],
+			"event_date" => $row["event_date"],
 			"location" => $row["location"],
 			"details" => $row["details"],
 			"friends" => $row["friends"],
@@ -179,13 +173,13 @@ function create_new_event($db) {
 function get_user_details($db) {
 	$userID = isset($_GET["userID"]) ? $_GET["userID"] : null;
 	if($userID != null){
-		$stmt = $db->prepare("SELECT * FROM un_users WHERE id = :user_id");
+		$stmt = $db->prepare("SELECT * FROM un_users WHERE user_id = :user_id");
 		$stmt->execute(array(
 			"user_id" => $userID
 		));
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			$userDetails = array(
-				"id" => $row["id"],
+				"user_id" => $row["user_id"],
 				"username" => $row["username"],
 				"profile_url" => $row["profile_url"],
 				"profile_picture" => $row["profile_picture"],
@@ -198,18 +192,18 @@ function get_user_details($db) {
 }
 
 function get_friends_info($db) {
-	$userID = isset($_GET["friendIDs"]) ? json_decode($_GET["friendIDs"]) : null;
+	$userIDs = isset($_GET["friendIDs"]) ? json_decode($_GET["friendIDs"]) : null;
 
 	$friendsInfo = array();
-	if($userID != null){
-		$enum = implode(",", $userID);
+	if($userIDs != null){
+		$friendIDs = implode(",", $userIDs);
 
-		$stmt = $db->prepare("SELECT * FROM un_users WHERE id IN ($enum)");
+		$stmt = $db->prepare("SELECT * FROM un_users WHERE user_id IN ($friendIDs)");
 
 		$stmt->execute();
 		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			$userDetails = array(
-				"id" => $row["id"],
+				"user_id" => $row["user_id"],
 				"username" => $row["username"],
 				"profile_url" => $row["profile_url"],
 				"profile_picture" => $row["profile_picture"],

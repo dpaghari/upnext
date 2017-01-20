@@ -6,13 +6,13 @@ export default class EventEntry extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
 
-    let { id,  username , profile_picture } = this.props.userInfo;
+    let { user_id,  username , profile_picture } = this.props.userInfo;
     return (
       <div class="event-host-panel">
-      <Link onClick={this.handleEventClick.bind(this)} to={"/profiles/" + id}>
+      <Link onClick={this.handleEventClick.bind(this)} to={"/profiles/" + user_id}>
       <div class="img-wrapper">
       {this.renderHostPicture(profile_picture)}
       </div>

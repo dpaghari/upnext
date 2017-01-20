@@ -19,10 +19,12 @@ export default class EventEntry extends React.Component {
   }
 
   componentWillMount() {
-    let { imgURL, name, host, event_date, details, location, friends, id, status } = this.props;
+
+    let { host, friends } = this.props;
     let hostP = this.fetchUser(host);
     let friendsP = this.fetchFriendsInfo(friends);
     Promise.all([hostP, friendsP]).then((responses) => {
+      console.log(responses[1].data);
       this.userInfo = responses[0].data;
       this.friendsInfo = responses[1].data;
       this.setState({ gotUserInfo: true });
@@ -38,8 +40,8 @@ export default class EventEntry extends React.Component {
   }
 
   render () {
-    let { imgURL, name, host, event_date, details, location, friends, id, status } = this.props;
-    let pathToDetails = `/detail/${id}`;
+    let { event_id, imgURL, name, event_date, details, location } = this.props;
+    let pathToDetails = `/detail/${event_id}`;
 
     return (
       <li class="event">
@@ -81,6 +83,7 @@ export default class EventEntry extends React.Component {
 
   renderFriends() {
     if(this.state.gotUserInfo){
+
       if(this.props.friends) {
         return _.map(JSON.parse(this.props.friends), (friend, index) => {
           let pathToFriend = "/profiles/" + friend;

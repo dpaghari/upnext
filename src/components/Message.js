@@ -19,14 +19,14 @@ export default class Message extends React.Component {
 
 
   render () {
-    
-    let { id, comment } = this.props;
-    if(id && comment){
+
+    let { comment_id, comment } = this.props;
+    if(comment_id && comment){
       return (
         <li class="message-board-msg">
           <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
           <div class="user-comment">
-            <p>{id}</p>
+            <p>{comment_id}</p>
             <p>{comment}</p>
           </div>
         </li>

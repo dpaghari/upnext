@@ -18,7 +18,7 @@ export default class Greeting extends React.Component {
   render() {
     let { username, profile_url, profile_picture } = this.props.users.current_user;
     // let user = "Daniel";
-    console.log(this.props.users);
+    
     // let today = new Date().toDateString();
     let pathToUser = `/profiles/${profile_url}`;
     return (

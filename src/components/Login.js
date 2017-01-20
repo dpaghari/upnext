@@ -9,12 +9,20 @@ export default class Login extends React.Component {
   render() {
     return (
       <div class="Login">
-        <form id="Login-Form" onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" ref="user_name" placeholder="Username"/>
-          <input type="password" ref="user_pw" placeholder="Password"/>
-          <button type="submit" onClick={this.handleSubmit.bind(this)}>Login</button>
-          {<p><em>Just use un:Daniel and pw:hescool1 for now ;) </em></p>}
-        </form>
+        <div class="login-left">
+          <form id="Login-Form" onSubmit={this.handleSubmit.bind(this)}>
+            <input type="text" ref="user_name" placeholder="Username"/>
+            <input type="password" ref="user_pw" placeholder="Password"/>
+            <button type="submit" onClick={this.handleSubmit.bind(this)}>Login</button>
+            {<p><em>Just use un:Daniel and pw:hescool1 for now ;) </em></p>}
+          </form>
+        </div>
+        <div class="login-right">
+          <div class="brand">
+            <h1>Upnext</h1>
+            <i class="fa fa-arrow-circle-up" aria-hidden="true" title="Upnext"></i>
+          </div>
+        </div>
       </div>
     );
   }
@@ -27,6 +35,5 @@ export default class Login extends React.Component {
       username: user_name.value,
       password: user_pw.value
     }));
-    console.log("submitted");
   }
 }

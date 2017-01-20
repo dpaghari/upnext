@@ -8,6 +8,7 @@ export function fetchEvents() {
   return (dispatch) => {
     axios.get(userEndpoint + "action=events")
          .then((response) =>  {
+           
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",
              payload : response.data
@@ -26,6 +27,7 @@ export function fetchEventInfo(id) {
   return (dispatch) => {
     axios.get(userEndpoint + `action=fetch_event&eventID=${id}`)
      .then((response) =>  {
+
        dispatch({
          type: "FETCH_EVENT_INFO_SUCCESS",
          payload : response.data
@@ -51,11 +53,11 @@ export function createEvent({ name , event_date , location , details , imgURL, h
       event_date
     };
     axios.post(userEndpoint + "action=create_event", data).then((response) => {
-      // console.log(response.data);
+
       dispatch({
         type: "CREATE_EVENT",
         payload: {
-          id: response.data,
+          event_id: response.data,
           host,
           name,
           event_date,
@@ -73,11 +75,9 @@ export function fetchEventComments(eventID) {
   return (dispatch) => {
     axios.get(userEndpoint + `action=fetch_event_comments&eventID=${eventID}`)
     .then((response) => {
-      let { id, event_id, comment } = response.data;
       dispatch({
         type: "FETCH_EVENT_COMMENTS_SUCCESS",
         payload: {
-          id,
           comments : response.data
         }
       });

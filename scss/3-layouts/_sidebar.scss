@@ -6,10 +6,10 @@
   height: 100vh;
   background-color: $deepPurp;
   width: $sidebar-width;
-  position: absolute;
+  position: fixed;
   // this is the highest z index we will use EVER!!
   z-index: 9;
   padding: $space/4;
 
-  
+
 }

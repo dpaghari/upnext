@@ -60,9 +60,9 @@ export default class EventForm extends React.Component {
   addEvent(e) {
     e.preventDefault();
     const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
-    console.log(this.props.users.current_user_id);
+    
     let newEvent = {
-      host: this.props.users.current_user.id,
+      host: this.props.users.current_user.user_id,
       name: eventName.value,
       event_date: new Date(eventDate.value).toUTCString(),
       location: eventLocation.value,

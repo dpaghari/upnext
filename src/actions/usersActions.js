@@ -32,14 +32,14 @@ export function authUser({username, password}) {
              });
            }
            else {
-             let { id, username, profile_picture, profile_url } = result;
+             let { user_id, username, profile_picture, profile_url } = result;
              let currentUserInfo = {
-               id,
+               user_id,
                username,
                profile_picture,
                profile_url
              };
-             console.log(currentUserInfo);
+
 
              dispatch({
                type: "AUTH_SUCCESS",
@@ -74,7 +74,6 @@ export function fetchUsers() {
   return (dispatch) => {
     axios.get("/connect.php?action=users")
          .then((response) =>  {
-           console.log("Response", response);
            dispatch({
              type: "FETCH_USERS_FULFILLED",
              payload : response.data

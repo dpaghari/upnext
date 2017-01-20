@@ -12,7 +12,7 @@ export default class Sidebar extends React.Component {
 
   render() {
 
-    const { appState, dispatch, users} = this.props;
+    const { appState, dispatch, users } = this.props;
 
     return (
       <section class="sidebar">
@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
   }
 
   renderEventForm() {
-    // console.log(this.props);
+    
     const { appState, dispatch, users } = this.props;
     if(appState) {
       if(appState.eventForm)
