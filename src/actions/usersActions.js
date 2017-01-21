@@ -133,6 +133,12 @@ export function createUser({ user_name , user_pw, user_dob , user_profile_pictur
           profile_url: user_name
         }
       });
+    })
+    .catch((error)=> {
+      dispatch({
+        type: "CREATE_USER_REJECTED",
+        payload: error
+      })
     });
   };
 }

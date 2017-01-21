@@ -40,7 +40,7 @@ export default class MessageBoard extends React.Component {
           <img src={this.props.currentUser.profile_picture} alt="user_profile_picture"/>
           <div class="message_input">
             <p>{this.props.currentUser.username}</p>
-            <textarea ref="user_comment" rows="4" cols="50"></textarea>
+            <textarea ref="user_comment" rows="7" cols="60"></textarea>
             <button type="submit" class="addComment">
               Add Comment<i class="fa fa-plus"></i>
             </button>
@@ -74,5 +74,6 @@ export default class MessageBoard extends React.Component {
       profile_picture
     };
     this.props.dispatch(createComment(data));
+    user_comment.value = "";
   }
 }

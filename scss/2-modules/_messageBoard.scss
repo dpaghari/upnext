@@ -35,9 +35,14 @@
           resize: none;
           @include theme_input($notSoDark);
           margin: 10px 0px;
+          font-size: 1em;
+          box-sizing: border-box;
+          &:focus {
+            border:1px solid #ddd;
+          }
         }
         button.addComment {
-          width: 35%;
+          width: 40%;
           @include theme_button($mintyGreen);
           color: white;
           i {

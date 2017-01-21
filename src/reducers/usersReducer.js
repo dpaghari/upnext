@@ -1,6 +1,11 @@
 const initialState = {
   users : [],
-  current_user : {},
+  current_user : {
+    username: "Daniel",
+    user_id: 2,
+    profile_url: "daniel_pagharion",
+    profile_picture: "https://scontent.fsan1-1.fna.fbcdn.net/v/t31.0-8/14570662_10209105801136984_1521234224787965846_o.jpg?oh=e417ffc004a3441e64e969c99476e1a3&oe=58B138BA"
+  },
   fetchedUsers: false,
   fetching: false,
   fetchedUserInfo: false

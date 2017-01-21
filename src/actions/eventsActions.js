@@ -66,6 +66,12 @@ export function createEvent({ name , event_date , location , details , imgURL, h
           imgURL
         }
       });
+    })
+    .catch((error)=> {
+      dispatch({
+        type: "CREATE_EVENT_REJECTED",
+        payload: error
+      })
     });
   };
 }
@@ -90,6 +96,12 @@ export function createComment({ event_id, user_id, comment, profile_picture }) {
           profile_picture
         }
       });
+    })
+    .catch((error) => {
+      dispatch({
+        type: "CREATE_COMMENT_REJECTED",
+        payload: error
+      })
     });
   };
 }
