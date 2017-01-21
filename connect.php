@@ -24,6 +24,9 @@ switch ($action) {
 	case 'create_event' :
 		create_new_event($db);
 		break;
+	case 'create_user' :
+		create_new_user($db);
+		break;
 	case 'get_user' :
 		get_user_details($db);
 		break;
@@ -149,9 +152,6 @@ function create_new_event($db) {
 	$details = isset($_POST["details"]) ? $_POST["details"] : null;
 	$host = isset($_POST["host"]) ? $_POST["host"] : null;
 	$event_date = isset($_POST["event_date"]) ? $_POST["event_date"] : null;
-
-	echo json_encode($event_date);
-
 	$stmt = $db->prepare("INSERT INTO
 		un_events(name, img_url, status, location, details, host, event_date)
   	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date)");
@@ -163,6 +163,29 @@ function create_new_event($db) {
 		"event_date" => $event_date,
 		"location" => $location,
 		"details" => $details
+	));
+	$stmt = $db->prepare("SELECT LAST_INSERT_ID()");
+	$stmt->execute();
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	echo json_encode($row["LAST_INSERT_ID()"]);
+}
+function create_new_user($db) {
+
+	$_POST = json_decode(file_get_contents('php://input'), true);
+
+	$name = isset($_POST["user_name"]) ? $_POST["user_name"] : null;
+	$pw = isset($_POST["user_pw"]) ? $_POST["user_pw"] : null;
+	$dob = isset($_POST["user_dob"]) ? $_POST["user_dob"] : null;
+	$profile_picture = isset($_POST["user_profile_picture"]) ? $_POST["user_profile_picture"] : null;
+
+	$stmt = $db->prepare("INSERT INTO
+		un_users(username, password, profile_url, profile_picture)
+  	VALUES(:username, :password, :profile_url, :profile_picture)");
+	$stmt->execute(array(
+		"username" => $name,
+		"password" => $pw,
+		"profile_url" => $name,
+		"profile_picture" => $profile_picture
 	));
 	$stmt = $db->prepare("SELECT LAST_INSERT_ID()");
 	$stmt->execute();

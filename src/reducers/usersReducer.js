@@ -18,6 +18,14 @@ export default function usersReducer(state = initialState, action) {
       };
       break;
     }
+
+    case "CREATE_USER" : {
+      state = {
+        ...state,
+        new_user_id: action.payload
+      }
+    }
+
     case "CHANGE_NAME": {
       state = {
         ...state,

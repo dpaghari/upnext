@@ -106,3 +106,33 @@ export function fetchUserInfo({userID}) {
 
   };
 }
+
+
+export function createUser({ user_name , user_pw, user_dob , user_profile_picture }) {
+  return (dispatch) => {
+    var data = {
+      user_name,
+      user_pw,
+      user_dob,
+      user_profile_picture
+    };
+    axios.post(userEndpoint + "action=create_user", data).then((response) => {
+
+      dispatch({
+        type: "CREATE_USER",
+        payload: {
+          user_id: response.data,
+        }
+      });
+      dispatch({
+        type: "AUTH_SUCCESS",
+        payload: {
+          user_id: response.data,
+          username: user_name,
+          profile_picture: user_profile_picture,
+          profile_url: user_name
+        }
+      });
+    });
+  };
+}
