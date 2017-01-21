@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: $lightest;
   .detail-event-info {
     margin: $space 0px;
     display: flex;
@@ -102,27 +103,4 @@
       }
     }
   }
-
-  .detail-message-board {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .message-board-msg {
-      display: flex;
-      flex-direction: row;
-      border: 1px solid #555;
-      padding: 20px;
-      width: 100%;
-      img {
-        width: 100px;
-        height: 100px;
-      }
-      .user-comment {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
-
 }

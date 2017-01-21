@@ -47,8 +47,6 @@ export default class Detail extends React.Component {
       <div id="DetailView">
         <Sidebar users={users} appState={appState} dispatch={dispatch} />
         {this.renderDetails()}
-
-        <hr/>
         {this.renderMessageBoard()}
       </div>
     );
@@ -89,7 +87,6 @@ export default class Detail extends React.Component {
           </div>
           </div>
           </div>
-          <hr/>
           <div class="detail-event-body">
           </div>
         </div>

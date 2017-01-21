@@ -25,24 +25,31 @@ export default class MessageBoard extends React.Component {
 
     return (
       <div class="detail-message-board">
-        <form onSubmit={this.handleAddComment.bind(this)}>
-          <div class="comment_template">
-            <img src={this.props.currentUser.profile_picture} alt="user_profile_picture"/>
-            <div class="message_input">
-              <textarea ref="user_comment" rows="4" cols="6"></textarea>
-              <button type="submit" class="addComment">
-                Add Comment<i class="fa fa-plus"></i>
-              </button>
-            </div>
-          </div>
-
-        </form>
+        {this.renderAddCommentForm()}
         <ul class="message-board-list">
           {this.renderMessages()}
         </ul>
       </div>
     );
   }
+
+  renderAddCommentForm() {
+    return (
+      <form class="AddCommentForm" onSubmit={this.handleAddComment.bind(this)}>
+        <div class="comment_template">
+          <img src={this.props.currentUser.profile_picture} alt="user_profile_picture"/>
+          <div class="message_input">
+            <p>{this.props.currentUser.username}</p>
+            <textarea ref="user_comment" rows="4" cols="50"></textarea>
+            <button type="submit" class="addComment">
+              Add Comment<i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    );
+  }
+
 
   renderMessages() {
     if (this.props.comments) {
