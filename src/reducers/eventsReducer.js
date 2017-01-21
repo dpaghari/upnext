@@ -2,6 +2,7 @@ const initialState = {
   fetched : false,
   fetching: false,
   eventList: [],
+  commentList: [],
   error: null
 };
 
@@ -26,6 +27,29 @@ export default function reducer(state = initialState, action) {
         eventList: newEventList
       };
       break;
+    }
+    case "CREATE_COMMENT" : {
+
+      let newEntry = {
+        comment_id: action.payload.comment_id,
+        event_id: action.payload.event_id,
+        user_id: action.payload.user_id,
+        comment: action.payload.comment,
+        profile_picture: action.payload.profile_picture
+
+      };
+      let newCommentsList = [];
+      newCommentsList.push(newEntry);
+      if(state.event_comments)
+      newCommentsList = state.event_comments.comments.concat(newCommentsList);
+
+      state = {
+        ...state,
+        event_comments : {
+          comments: newCommentsList
+        },
+        new_comment_id: action.payload
+      }
     }
 
     case "FETCH_EVENTS_PENDING" : {

@@ -8,7 +8,7 @@ export function fetchEvents() {
   return (dispatch) => {
     axios.get(userEndpoint + "action=events")
          .then((response) =>  {
-           
+
            dispatch({
              type: "FETCH_EVENTS_FULFILLED",
              payload : response.data
@@ -70,6 +70,29 @@ export function createEvent({ name , event_date , location , details , imgURL, h
   };
 }
 
+export function createComment({ event_id, user_id, comment, profile_picture }) {
+  return (dispatch) => {
+    var data = {
+      event_id,
+      user_id,
+      comment,
+      profile_picture
+    };
+    axios.post(userEndpoint + "action=create_new_comment", data).then((response) => {
+
+      dispatch({
+        type: "CREATE_COMMENT",
+        payload: {
+          comment_id: response.data,
+          event_id,
+          user_id,
+          comment,
+          profile_picture
+        }
+      });
+    });
+  };
+}
 
 export function fetchEventComments(eventID) {
   return (dispatch) => {

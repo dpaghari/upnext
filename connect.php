@@ -22,6 +22,9 @@ switch ($action) {
 	case 'create_event' :
 		create_new_event($db);
 		break;
+	case 'create_new_comment' :
+		create_new_comment($db);
+		break;
 	case 'fetch_event' :
 		fetchEventInfo($db);
 		break;
@@ -109,8 +112,7 @@ function fetchEventComments($db) {
 			 FROM un_comments
 			 INNER JOIN un_events on un_comments.event_id = un_events.event_id
 			 INNER JOIN un_users on un_comments.user_id = un_users.user_id
-			 WHERE un_comments.event_id = $eventID
-			"
+			 WHERE un_comments.event_id = $eventID"
 		);
 		$stmt->execute();
 
@@ -125,10 +127,12 @@ function fetchEventComments($db) {
 
 function fetchEvents($db) {
 	$events = array();
-	$stmt = $db->prepare("SELECT * FROM un_events");
+	$stmt = $db->prepare(
+		"SELECT * FROM un_events"
+	);
 	$stmt->execute();
+
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		# code...
 		$eventEntry = array(
 			"event_id" => $row["event_id"],
 			"imgURL" => $row["img_url"],
@@ -174,6 +178,32 @@ function create_new_event($db) {
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	echo json_encode($row["LAST_INSERT_ID()"]);
 }
+
+function create_new_comment($db) {
+
+	$_POST = json_decode(file_get_contents('php://input'), true);
+
+	$event_id = isset($_POST["event_id"]) ? $_POST["event_id"] : null;
+	$user_id = isset($_POST["user_id"]) ? $_POST["user_id"] : null;
+	$comment = isset($_POST["comment"]) ? $_POST["comment"] : null;
+
+	$stmt = $db->prepare("INSERT INTO
+		un_comments(event_id, user_id, comment)
+  	VALUES(:event_id, :user_id, :comment)");
+	$stmt->execute(array(
+		"event_id" => $event_id,
+		"user_id" => $user_id,
+		"comment" => $comment
+	));
+	$stmt = $db->prepare("SELECT LAST_INSERT_ID()");
+	$stmt->execute();
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	echo json_encode($row["LAST_INSERT_ID()"]);
+}
+
+
+
+
 function create_new_user($db) {
 
 	$_POST = json_decode(file_get_contents('php://input'), true);

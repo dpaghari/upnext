@@ -55,10 +55,9 @@ export default class Detail extends React.Component {
   }
 
   renderMessageBoard() {
-    let { events, dispatch } = this.props.store;
-    console.log("render message board", events);
+    let { events, dispatch, users } = this.props.store;
     if(events.event_comments) {
-      return <MessageBoard dispatch={dispatch} comments={events.event_comments.comments} event_id={this.props.params.eventId}/>;
+      return <MessageBoard currentUser={users.current_user} dispatch={dispatch} comments={events.event_comments.comments} eventID={this.props.params.eventId}/>;
     }
     else {
       return null;
