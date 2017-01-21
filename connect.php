@@ -10,19 +10,30 @@ catch(Exception $e){
 	echo "An error has occurred";
 }
 
+
+
 $action = isset($_GET["action"]) ? $_GET["action"] : null;
 switch ($action) {
-	case 'users':
-		# code...
-		fetchUsers($db);
-		break;
 
+	// Event actions
 	case 'events':
 		fetchEvents($db);
 		break;
-
 	case 'create_event' :
 		create_new_event($db);
+		break;
+	case 'fetch_event' :
+		fetchEventInfo($db);
+		break;
+	case 'fetch_event_comments' :
+		fetchEventComments($db);
+		break;
+
+
+
+	// User actions
+	case 'users':
+		fetchUsers($db);
 		break;
 	case 'create_user' :
 		create_new_user($db);
@@ -32,12 +43,6 @@ switch ($action) {
 		break;
 	case 'get_friends_info' :
 		get_friends_info($db);
-		break;
-	case 'fetch_event' :
-		fetchEventInfo($db);
-		break;
-	case 'fetch_event_comments' :
-		fetchEventComments($db);
 		break;
 
 	default:
@@ -102,7 +107,7 @@ function fetchEventComments($db) {
 		$stmt = $db->prepare(
 			"SELECT un_events.event_id, un_comments.event_id, un_comments.comment, un_comments.comment_id, un_users.*
 			 FROM un_comments
-			 INNER JOIN un_events on un_comments.event_id = un_events.user_id
+			 INNER JOIN un_events on un_comments.event_id = un_events.event_id
 			 INNER JOIN un_users on un_comments.user_id = un_users.user_id
 			 WHERE un_comments.event_id = $eventID
 			"

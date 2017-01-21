@@ -20,14 +20,16 @@ export default class Message extends React.Component {
 
   render () {
 
-    let { comment_id, comment } = this.props;
+    let { comment_id, comment, profile_picture, profile_url, username } = this.props;
     if(comment_id && comment){
       return (
         <li class="message-board-msg">
-          <img src="https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg" placeholder="USER PROFILE PICTURE"/>
+          <Link to={`/profiles/${profile_url}`}>
+            <img src={profile_picture} alt={profile_url}/>
+          </Link>
           <div class="user-comment">
-            <p>{comment_id}</p>
-            <p>{comment}</p>
+            <p class="comment_user">{username}</p>
+            <p class="message">{comment}</p>
           </div>
         </li>
       );

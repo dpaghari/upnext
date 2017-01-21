@@ -14,8 +14,8 @@ export default class Login extends React.Component {
     return (
       <div class="Login">
         <div class="login-left">
+          {this.renderHeadline()}
           {this.renderLoginForm()}
-
         </div>
         <div class="login-right">
         <div class="brand">
@@ -27,16 +27,32 @@ export default class Login extends React.Component {
     );
   }
 
+  renderHeadline() {
+    if(!this.state.isRegistering){
+      return (
+        <div class="headline-wrapper">
+          <h2>Keep up with the latest events and adventures with friends.</h2>
+          <div class="home-icons">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <i class="fa fa-ticket" aria-hidden="true"></i>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <i class="fa fa-plane" aria-hidden="true"></i>
+          </div>
+        </div>
+      );
+    }
+    else
+      return null;
+  }
+
 
   renderLoginForm() {
     if(!this.state.isRegistering){
       return (
         <form id="Login-Form" onSubmit={this.handleSubmit.bind(this)}>
-
           <input type="text" ref="user_name" placeholder="Username" autoFocus/>
           <input type="password" ref="user_pw" placeholder="Password"/>
           <button class="loginBtn" type="submit" onClick={this.handleSubmit.bind(this)}>Login</button>
-          {<p><em>Just use un:Daniel and pw:hescool1 for now ;) </em></p>}
           <p>Not signed up? Create an account real quick</p>
           <button onClick={this.handleRegisterUser.bind(this)} class="registerBtn">Sign me up!</button>
         </form>
@@ -45,6 +61,7 @@ export default class Login extends React.Component {
     else {
       return (
         <form id="Login-Form" onSubmit={this.handleSubmit.bind(this)}>
+          <a class="login-back" onClick={this.handleBackButton.bind(this)} href="#"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
           <label for="user_name">Username:</label>
           <input type="text" ref="user_name" placeholder="Username" autoFocus/>
 
@@ -67,7 +84,10 @@ export default class Login extends React.Component {
         </form>
       )
     }
+
   }
+
+
 
 
   renderPWError() {
@@ -88,6 +108,10 @@ export default class Login extends React.Component {
     });
   }
 
+  handleBackButton(e) {
+    this.setState({ isRegistering: false });
+  }
+
   handleSubmit(e) {
 
     e.preventDefault();
@@ -101,6 +125,9 @@ export default class Login extends React.Component {
     else {
       const { user_name, user_pw, user_pw_confirm, user_dob, user_profile_picture } = this.refs;
       if(user_pw.value === user_pw_confirm.value){
+        this.setState({
+          showPWError: false
+        });
         this.props.dispatch(createUser({
           user_name : user_name.value,
           user_pw: user_pw.value,

@@ -21,7 +21,7 @@ export default class MessageBoard extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div class="detail-message-board">
         <ul class="message-board-list">
@@ -34,7 +34,7 @@ export default class MessageBoard extends React.Component {
   renderMessages() {
     if (this.props.comments) {
 
-      return _.map(this.props.comments, (comment, index) => <Message key={index} comment_id={comment.comment_id} comment={comment.comment} dispatch={this.props.dispatch}/>);
+      return _.map(this.props.comments, (comment, index) => <Message key={index} {...comment} dispatch={this.props.dispatch}/>);
     }
     else {
 

@@ -12,6 +12,25 @@
     display: inline-block;
     width: 40%;
     position: relative;
+    border-right: 2px solid $mintyGreen_h;
+    h2 {
+      color: white;
+      text-align: center;
+      font-size: 1.4em;
+      margin: $space*3 auto $space;
+      width: 85%;
+    }
+
+    .home-icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+      font-size: 2.3em;
+      width: 60%;
+      margin: $space/2 auto $space*3;
+    }
+
     #Login-Form {
       padding: 5px;
       display: flex;
@@ -19,15 +38,20 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 100%;
-
-
+      margin: $space * 2 auto $space;
+      .login-back {
+        position: fixed;
+        top: $space / 1.5;
+        left: $space / 1.5;
+        color: white;
+        font-size: 2em;
+      }
 
       input {
         font-size: 1.3em;
         width: 70%;
-        padding: 10px;
-        margin: 10px auto;
+        padding: $space / 2;
+        margin: $space / 2 auto;
         border-radius: 4px;
         @include box_shadow($mintyGreen_h);
         border-width: 0;
@@ -39,8 +63,8 @@
       }
 
       .new_user_profile_picture {
-        margin: 10px auto;
-        width: 75px;
+        margin: $space / 2 auto;
+        width: $space * 4;
         height: 75px;
         border-radius: 50%;
         border: 1px solid white;
@@ -49,23 +73,24 @@
       button {
         font-size: 1.5em;
         cursor: pointer;
-        padding: 10px 20px;
+        padding: $space / 2 $space;
         border-width: 0;
         border-radius: 4px;
-        margin: 10px 0px;
+        margin: $space / 2 0px;
         &.loginBtn{
           background: $blueGray;
+          margin-bottom: $space * 2;
           @include box_shadow($blueGray_h);
           &:hover {
             background: $blueGray_h;
           }
         }
         &.registerBtn {
-          background: $mintyGreen;
-          border: 2px solid white;
-          @include box_shadow($mintyGreen_h);
+          background: $agentOrange;
+          border: 1px solid $agentOrange_h;
+          @include box_shadow($agentOrange_h);
           &:hover {
-            background: $mintyGreen_h;
+            background: $agentOrange_h;
           }
         }
         &:hover {
