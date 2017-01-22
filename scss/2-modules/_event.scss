@@ -142,7 +142,10 @@
 
   .event-detail {
     p {
+      text-align: left;
+      margin-left: $space;
       color: lighten($notSoDark, 20%);
+      font-size: 0.9em;
     }
   }
 

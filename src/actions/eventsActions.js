@@ -117,7 +117,7 @@ export function fetchEventComments(eventID) {
         }
       });
     })
-    .catch((response) => {
+    .catch((error) => {
       dispatch({
         type: "FETCH_EVENT_COMMENTS_REJECTED",
         payload: error

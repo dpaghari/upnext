@@ -142,3 +142,23 @@ export function createUser({ user_name , user_pw, user_dob , user_profile_pictur
     });
   };
 }
+
+export function fetchFriendsInfo(friendsID) {
+  return (dispatch) => {
+    axios.get(`${userEndpoint}action=get_friends_info&friendIDs=${friendsID}`)
+    .then((response) => {
+      dispatch({
+        type: "FETCH_FRIENDSINFO_FULFILLED",
+        friendsInfo: response.data
+      });
+
+    })
+    .catch((error) => {
+      dispatch({
+        type: "FETCH_FRIENDSINFO_REJECTED",
+        error
+      })
+    });
+  };
+
+}

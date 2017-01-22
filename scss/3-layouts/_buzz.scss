@@ -8,6 +8,19 @@
   position: absolute;
   z-index: 8;
   border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  i {
+    text-align: center;
+    font-size: 2em;
+    transform: rotate(-30deg);
+    color: #ccc;
+  }
+  ul {
+    list-style-type: none;
+  }
 
   > ul li {
     width: 100%;

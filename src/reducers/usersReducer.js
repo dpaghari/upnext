@@ -8,7 +8,8 @@ const initialState = {
   },
   fetchedUsers: false,
   fetching: false,
-  fetchedUserInfo: false
+  fetchedUserInfo: false,
+  friendsInfo: []
 };
 
 
@@ -28,7 +29,8 @@ export default function usersReducer(state = initialState, action) {
       state = {
         ...state,
         new_user_id: action.payload
-      }
+      };
+      break;
     }
 
     case "CHANGE_NAME": {
@@ -77,14 +79,32 @@ export default function usersReducer(state = initialState, action) {
         ...state,
         fetchedUserInfo: true,
         userInfo : action.payload
-      }
+      };
+      break;
     }
     case "FETCH_USERINFO_REJECTED" : {
       state = {
         ...state,
         fetchedUserInfo: false,
         error : action.payload
-      }
+      };
+      break;
+    }
+    case "FETCH_FRIENDSINFO_FULFILLED" : {
+      state = {
+        ...state,
+        fetchedFriendsInfo: true,
+        friendsInfo : action.payload
+      };
+      break;
+    }
+    case "FETCH_FRIENDSINFO_REJECTED" : {
+      state = {
+        ...state,
+        fetchedFriendsInfo: false,
+        error : action.payload
+      };
+      break;
     }
 
   }

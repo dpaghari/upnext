@@ -16,6 +16,7 @@ export default class Buzz extends React.Component {
 
     return (
       <section class="buzz">
+          <i class="fa fa-bullhorn"></i>
           <ul>
             <li class="">
               <Link to={pathToUser} >

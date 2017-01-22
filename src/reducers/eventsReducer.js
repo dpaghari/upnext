@@ -2,7 +2,6 @@ const initialState = {
   fetched : false,
   fetching: false,
   eventList: [],
-  commentList: [],
   error: null
 };
 
@@ -49,7 +48,8 @@ export default function reducer(state = initialState, action) {
           comments: newCommentsList
         },
         new_comment_id: action.payload
-      }
+      };
+      break;
     }
 
     case "FETCH_EVENTS_PENDING" : {
