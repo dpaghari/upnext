@@ -54,7 +54,6 @@ export function authUser({username, password}) {
              type: "FETCH_USERS_REJECTED",
              payload: error
            });
-           console.log(error);
          });
   }
 

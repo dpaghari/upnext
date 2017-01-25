@@ -66,7 +66,7 @@ export default class Detail extends React.Component {
           <div class="header-col-1">
           <h1>{name}</h1>
           <p>{location}</p>
-          <p>{event_date}</p>
+          <p>{reformatted_date}</p>
           <p>{details}</p>
           </div>
           <div class="header-col-2">

@@ -10,19 +10,18 @@
   z-index: 10;
 
   #EventForm {
-
     z-index: 3;
     display: flex;
     flex-direction: column;
-    background: $lighterBlueGray;
+    background: white;
     color: $notSoDark;
     margin: 20px;
     border: 1px solid $notSoDark;
     padding: 10px 5px;
     width: 60%;
     text-align: center;
-    // height: 75vh;
     border-radius: 5px;
+    height: 100%;
 
     form {
       background: white;
@@ -30,15 +29,8 @@
     }
 
     button.addEvent {
-      margin: 10px 0px;
-      width: 40%;
-      padding: 25px;
-      box-shadow: 0px 1px 1px darken($mintyGreen, 5%);
-      background-color: $mintyGreen;
-      @include transition();
-      &:hover {
-        background-color: darken($mintyGreen, 10%);
-      }
+      @include theme_button($mintyGreen);
+      color: white;
     }
 
     input {
@@ -46,26 +38,42 @@
     }
     .eventMainInfo {
       display: flex;
-      justify-content: space-around;
-      background: $lighterBlueGray;
+      justify-content: center;
+      background: white;
       margin-bottom: 20px;
       fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         flex-shrink: 1;
         margin-right: 10px;
         margin-left: 10px;
-      }
-      margin-bottom: 20px;
-      input[name="eventName"] {
-        margin-right: 10px;
-      }
-      input[name="eventLocation"] {
+        border-width: 0;
 
-        margin-right: 10px;
       }
-      input[name="eventDate"] {
 
-        margin-right: 10px;
+      // input[name="eventName"] {
+      //
+      //   // margin-right: 10px;
+      //   @include theme_input(#ddd);
+      // }
+      // input[name="eventLocation"] {
+      //
+      //   // margin-right: 10px;
+      //   @include theme_input(#ddd);
+      // }
+      // input[name="eventDate"] {
+      //
+      //   // margin-right: 10px;
+      //   @include theme_input(#ddd);
+      // }
+      input {
+        @include theme_input(#ddd);
+        // margin: $space auto;
+        width: 100%;
       }
+
     }
     .eventDescription {
       display: flex;
@@ -76,8 +84,25 @@
       background: white;
       box-shadow: 0px 1px 1px #ffe;
       fieldset {
+        border-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 5px;
         width: 100%;
+        &.event-radios {
+          font-size: 1em;
+          display: flex;
+          justify-content: space-around;
+        }
+        textarea {
+          resize: none;
+          @include theme_input(#ddd);
+        }
+        input[type="text"]{
+          @include theme_input(#ddd);
+        }
         input[name="eventInvites"] {
           margin-top: 30px;
         }
@@ -85,11 +110,11 @@
 
     }
     img {
-      flex-grow: 1;
       width: 300px;
       float: right;
       height: 200px;
-      margin-right: 10px;
+      margin: 0 $space;
+      @include box_shadow(#ddd);
 
     }
 
@@ -111,7 +136,7 @@
     strong {
       font-size: 28px;
       margin: 10px 0px;
-      color: #ffe;
+      color: $notSoDark;
     }
     label {
       margin: 5px;

@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router";
 import { changePage } from "../actions/appStateActions";
 import { fetchUserInfo } from "../actions/usersActions";
+import { getDateString } from "../Util";
 import axios from "axios";
 
 import EventHost from "./EventHost";
@@ -41,6 +42,8 @@ export default class EventEntry extends React.Component {
 
   render () {
     let { event_id, imgURL, name, event_date, details, location } = this.props;
+
+    let reformatted_date = getDateString(event_date);
     let pathToDetails = `/detail/${event_id}`;
 
     return (
@@ -56,7 +59,7 @@ export default class EventEntry extends React.Component {
           <div class="event-desc">
             {this.renderHost()}
             <div class="event-info">
-              <span class="event-date">{event_date}</span>
+              <span class="event-date">{reformatted_date}</span>
               <span class="event-loc">{location}</span>
               <div class="event-friends">
                 <span class="friends-going">Going:</span>

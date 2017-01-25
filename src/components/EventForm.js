@@ -30,22 +30,22 @@ export default class EventForm extends React.Component {
           <input name="eventLocation" ref="eventLocation" type="text" placeholder="San Francisco, CA"/>
           <input name="eventDate" ref="eventDate" type="date"/>
           </fieldset>
-          <img src="" class="eventImgPreview"/>
+          <img src="" class="eventImgPreview" alt="Your event image"/>
         </div>
         <div class="eventDescription">
-        <fieldset>
-        <input onBlur={this.handleImgUpload.bind(this)} name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
-        <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-        <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
-        </fieldset>
-        <fieldset>
-        <label for="eventType">Private
-        <input name="eventType" ref="eventType" type="radio" value="private"/>
-        </label>
-        <label for="eventType">Public
-        <input name="eventType" ref="eventType" type="radio" value="public"/>
-        </label>
-        </fieldset>
+          <fieldset>
+          <input onBlur={this.handleImgUpload.bind(this)} name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
+          <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
+          <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
+          </fieldset>
+          <fieldset class="event-radios">
+          <label for="eventType">Private
+          <input name="eventType" ref="eventType" type="radio" value="private"/>
+          </label>
+          <label for="eventType">Public
+          <input name="eventType" ref="eventType" type="radio" value="public"/>
+          </label>
+          </fieldset>
         </div>
         <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
       </form>
@@ -60,7 +60,7 @@ export default class EventForm extends React.Component {
   addEvent(e) {
     e.preventDefault();
     const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
-    
+
     let newEvent = {
       host: this.props.users.current_user.user_id,
       name: eventName.value,

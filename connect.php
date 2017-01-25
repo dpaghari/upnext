@@ -1,5 +1,5 @@
 <?php
-try{
+try {
 	$db = new PDO( 'mysql:host=localhost:8889;
                   dbname=upnext;
                   charset=utf8',
@@ -47,12 +47,17 @@ switch ($action) {
 	case 'get_friends_info' :
 		get_friends_info($db);
 		break;
+	case 'delete_user' :
+		delete_user($db);
+		break;
 
 	default:
 		# code...
 		break;
 }
+function deleteUser($db) {
 
+}
 
 
 function fetchUsers($db) {
