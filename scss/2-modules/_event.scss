@@ -29,17 +29,17 @@
     z-index: -1;
     display: block;
     width: 100px;
-    // height: 20px;
+
     border-radius: 10px 0px;
     color: white;
     background: $mintyGreen;
     position: absolute;
     right: 0;
     top: 0;
-
-
   }
+
   .event-header {
+    background-color: $mintyGreen;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,7 +50,6 @@
     overflow: hidden;
     height: 20vh;
     min-height: 220px;
-
     position: relative;
 
     img {

@@ -25,7 +25,6 @@ export default class EventEntry extends React.Component {
     let hostP = this.fetchUser(host);
     let friendsP = this.fetchFriendsInfo(friends);
     Promise.all([hostP, friendsP]).then((responses) => {
-      console.log(responses[1].data);
       this.userInfo = responses[0].data;
       this.friendsInfo = responses[1].data;
       this.setState({ gotUserInfo: true });
@@ -42,25 +41,26 @@ export default class EventEntry extends React.Component {
 
   render () {
     let { event_id, imgURL, name, event_date, details, location } = this.props;
-
-    let reformatted_date = getDateString(event_date);
+    let reformatted_date;
+    if(event_date.value !== "")
+      reformatted_date = getDateString(event_date);
     let pathToDetails = `/detail/${event_id}`;
+
 
     return (
       <li class="event">
         <div class="event-wrapper">
-          {this.renderStatusBadge()}
           <Link onClick={this.handleEventClick.bind(this)} to={pathToDetails}>
           <div class="event-header">
-            <img src={imgURL} alt="yosemite" class=""/>
             <h2 class="event-headline">{name}</h2>
+            <img src={imgURL} class=""/>
           </div>
           </Link>
           <div class="event-desc">
             {this.renderHost()}
             <div class="event-info">
               <span class="event-date">{reformatted_date}</span>
-              <span class="event-loc">{location}</span>
+              <span class="event-loc">{location || ""}</span>
               <div class="event-friends">
                 <span class="friends-going">Going:</span>
                 <ul class="event-friendlist">

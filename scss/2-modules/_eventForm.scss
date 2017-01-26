@@ -22,11 +22,43 @@
     text-align: center;
     border-radius: 5px;
     height: 100%;
+    overflow: auto;
+
+    .errorMsg {
+      color: $lightRed;
+    }
 
     form {
       background: white;
       border-radius: 5px;
     }
+    .addedFriends {
+      .addedFriend {
+        background: $mintyGreen;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        padding: $space/2 $space/3;
+        display: inline-flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0px $space/6;
+        max-width: 200px;
+        border-radius: 4px;
+        @include box_shadow($mintyGreen_h);
+        img {
+          @include profile_picture();
+          width: $space * 1.5;
+          height: $space * 1.5;
+        }
+      }
+      input[name="eventInvites"] {
+        @include theme_input(#ddd);
+        margin-top: 30px;
+      }
+    }
+
 
     button.addEvent {
       @include theme_button($mintyGreen);
@@ -103,10 +135,10 @@
         input[type="text"]{
           @include theme_input(#ddd);
         }
-        input[name="eventInvites"] {
-          margin-top: 30px;
-        }
+
       }
+
+
 
     }
     img {

@@ -8,6 +8,11 @@ GoogleMapsLoader.LIBRARIES = ['places'];
 export default class EventForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showError : false,
+      errorMsg : "",
+      addedFriends : []
+    };
   }
 
 
@@ -22,6 +27,7 @@ export default class EventForm extends React.Component {
     return (
       <div id="EventForm">
       <strong>{headline}</strong>
+      {this.renderError()}
       <a class="closeEventForm" href="" onClick={this.handleHideEventForm.bind(this)}><i class="fa fa-close"></i></a>
       <form onSubmit={this.addEvent.bind(this)}>
         <div class="eventMainInfo">
@@ -36,21 +42,83 @@ export default class EventForm extends React.Component {
           <fieldset>
           <input onBlur={this.handleImgUpload.bind(this)} name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
           <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-          <input name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?"/>
-          </fieldset>
-          <fieldset class="event-radios">
-          <label for="eventType">Private
-          <input name="eventType" ref="eventType" type="radio" value="private"/>
-          </label>
-          <label for="eventType">Public
-          <input name="eventType" ref="eventType" type="radio" value="public"/>
-          </label>
+            <label for="eventType">Private
+            <input name="eventType" ref="eventType" type="radio" value="private"/>
+            </label>
+            <label for="eventType">Public
+            <input name="eventType" ref="eventType" type="radio" value="public"/>
+            </label>
           </fieldset>
         </div>
-        <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
       </form>
+        <div class="addedFriends">
+          {this.renderAddedFriends()}
+          {this.renderFriendInvites()}
+        </div>
+        <button class="addEvent" onClick={this.addEvent.bind(this)}>Add Event</button>
+
       </div>
     );
+  }
+
+
+  renderFriendInvites() {
+    return (
+    <form onSubmit={this.handleAddFriend.bind(this)}>
+      <input list="friends" name="eventInvites" ref="eventInvites" type="text" placeholder="Who to invite?" autoComplete="off"/>
+      <datalist id="friends">
+        {this.renderOptions()}
+      </datalist>
+      <button type="submit">Add to Guests</button>
+    </form>
+    );
+  }
+
+  renderAddedFriends() {
+    let { addedFriends } = this.state;
+    if(addedFriends.length > 0) {
+      return addedFriends.map((el, index) => {
+        return (
+          <a key={index} href="#" class="addedFriend" data-uid={el.id}>
+            <img src={el.profile_picture}/><span>{el.username}</span>
+          </a>
+        );
+      });
+    }
+  }
+
+
+
+  handleAddFriend(e) {
+    e.preventDefault();
+    let { eventInvites } = this.refs;
+    let { users } = this.props.users;
+
+    let match = users.find((el) => {
+      return el.username === eventInvites.value
+    });
+    if(match){
+      this.state.addedFriends.push(match);
+      this.setState({
+        addedFriends: this.state.addedFriends
+      });
+      eventInvites.value = "";
+    }
+
+  }
+
+
+  renderOptions() {
+    let { users } = this.props.users;
+    return users.map((user, index) => <option data-uid={user.user_id} class="friendOption" key={index} value={user.username}></option> );
+  }
+
+  renderError() {
+    if(this.state.showError)
+      return <span class="errorMsg">{this.state.errorMsg}</span>;
+    else {
+      return null;
+    }
   }
 
   handleImgUpload(e) {
@@ -61,6 +129,21 @@ export default class EventForm extends React.Component {
     e.preventDefault();
     const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
 
+    if(eventName.value === "") {
+
+      var errorMsg = "Please provide a name for your awesome event.";
+      this.setState({ showError: true , errorMsg });
+
+      return false;
+    }
+    if(eventDetails.value === "") {
+      var errorMsg = "Please provide a description for your super cool event.";
+      this.setState({ showError: true , errorMsg });
+      return false;
+    }
+
+    this.setState({ showError: false, errorMsg : "" });
+
     let newEvent = {
       host: this.props.users.current_user.user_id,
       name: eventName.value,
@@ -69,12 +152,40 @@ export default class EventForm extends React.Component {
       details: eventDetails.value,
       imgURL: eventImg.value
     };
-    this.props.dispatch(createEvent(newEvent));
 
+
+
+    this.props.dispatch(createEvent(newEvent));
     eventName.value = eventDate.value = eventLocation.value = eventDetails.value = eventImg.value = "";
     this.props.dispatch(hideEventForm());
-
   }
+
+
+  validateInput(input) {
+    var maxLength = 24;
+    var errors = [];
+    var result = {
+      errors,
+      valid : true
+    };
+
+    if(input === ""){
+      errors.push("empty");
+      result.valid = false;
+    }
+    if(input.indexOf(" ") > -1) {
+      errors.push("spaces");
+      result.valid = false;
+    }
+
+    if(input.length > maxLength) {
+      errors.push("maxchars");
+      result.valid = false;
+    }
+
+    return result;
+  }
+
 
   handleHideEventForm(e) {
     e.preventDefault();
