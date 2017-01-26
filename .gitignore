@@ -2,3 +2,5 @@ node_modules
 *.DS_Store
 *.log
 *.sql
+config.php
+production_config.php

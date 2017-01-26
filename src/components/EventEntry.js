@@ -11,7 +11,7 @@ import EventHost from "./EventHost";
 export default class EventEntry extends React.Component {
   constructor(props) {
     super(props);
-    this.hostEndpoint = "../../connect.php?";
+    this.hostEndpoint = "../../get.php?";
     this.userInfo = {};
     this.friendsInfo = {};
     this.state = {
