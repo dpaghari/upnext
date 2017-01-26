@@ -1,6 +1,6 @@
 import axios from "axios";
 // if I want to display from database
-var userEndpoint = "../../get.php?";
+var userEndpoint = "../../services/get.php?";
 // var userEndpoint = "../../connect.js?";
 // var userEndpoint = "../mockdb/events.json";
 

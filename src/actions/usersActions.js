@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const userEndpoint = "../../get.php?";
+const userEndpoint = "../../services/get.php?";
 // const userEndpoint = "/mockdb/users.json";
 
 export function authUser({username, password}) {
