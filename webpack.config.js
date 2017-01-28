@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
-
+require('babel-polyfill');
+require('babel-loader');
 
 module.exports = {
   devtool: 'inline-source-map',

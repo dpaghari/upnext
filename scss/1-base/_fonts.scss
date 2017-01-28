@@ -48,7 +48,7 @@ $type-scale: (
 
 // Headings base settings /////////////////////////////////
 $heading-type: (
-  font-family:  'Montserrat', sans-serif,
+  font-family:  ('Montserrat', 'sans-serif'),
   light: 200,
   regular: 400,
   bold: 700,
@@ -58,7 +58,7 @@ $heading-type: (
 
 // base body font /////////////////////////////////
 $body-type: (
-  font-family: 'Montserrat', sans-serif,
+  font-family: ('Montserrat', 'sans-serif'),
   regular: 300,
   semi-bold: 500,
   italic: italic

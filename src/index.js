@@ -7,13 +7,14 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import store from "./store";
 
-import Layout from 'pages/Layout';
-import Detail from 'pages/Detail';
-import Profile from 'pages/Profile';
-import Home from 'pages/Home';
-import Settings from 'pages/Settings';
-import Memories from 'pages/Memories';
-import EventMap from 'pages/EventMap';
+import Layout from './pages/Layout';
+import Detail from './pages/Detail';
+import Profile from './pages/Profile';
+import Home from './pages/Home';
+import Settings from './pages/Settings';
+import Memories from './pages/Memories';
+import EventMap from './pages/EventMap';
+
 
 const history = syncHistoryWithStore(browserHistory, store);
 

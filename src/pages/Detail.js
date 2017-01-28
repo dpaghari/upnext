@@ -4,6 +4,7 @@ import { fetchEvents, fetchEventComments, fetchEventInfo } from "../actions/even
 import MessageBoard from "../components/MessageBoard";
 import Sidebar from "../components/Sidebar";
 import { getDateString } from "../Util";
+import EventHost from "../components/EventHost";
 
 import axios from "axios";
 import { Link } from "react-router";
@@ -13,22 +14,30 @@ export default class Detail extends React.Component {
 
   constructor(props) {
     super(props);
-    this.eventInfo = {};
+    this.hostEndpoint = "../../services/get.php?";
+    this.userInfo = {};
+    this.friendsInfo = {};
     this.state = {
-      gotEventInfo : false
-    }
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-      if(this.props !== nextProps || this.state !== nextState) {
-        return true;
-      }
-      else return false;
+      gotUserInfo: false
+    };
   }
 
   componentWillMount() {
     const eventID = this.props.params.eventId;
     this.props.store.dispatch(fetchEventComments(eventID));
     this.props.store.dispatch(fetchEventInfo(eventID));
+
+  }
+
+  componentDidUpdate() {
+    let { eventInfo } = this.props.store.events;
+    let hostP = this.fetchUser(eventInfo.host);
+    let friendsP = this.fetchFriendsInfo(eventInfo.friends);
+    Promise.all([hostP, friendsP]).then((responses) => {
+      this.userInfo = responses[0].data;
+      this.friendsInfo = responses[1].data;
+      this.setState({ gotUserInfo: true });
+    });
   }
 
   render() {
@@ -55,6 +64,7 @@ export default class Detail extends React.Component {
   }
 
   renderDetails() {
+
     let { eventInfo } = this.props.store.events;
     if(eventInfo){
 
@@ -73,10 +83,8 @@ export default class Detail extends React.Component {
           <img src={imgURL} alt="Event Image"/>
           <div class="event-guests">
             <ul>
-              <li class="event-host"><img src="" alt="host"/><span class="event-host-name">Daniel Pagharion</span></li>
-              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Nick Smith</span></li>
-              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Emily Anderson</span></li>
-              <li class="event-guest"><img src="" alt="guest"/><span class="event-guest-name">Kelsey Raczak</span></li>
+              {this.renderHost()}
+              {this.renderFriends()}
             </ul>
           </div>
           </div>
@@ -88,6 +96,43 @@ export default class Detail extends React.Component {
     }
     else
       return null;
+  }
+
+  fetchUser(id) {
+    return axios.get(`${this.hostEndpoint}action=get_user&userID=${id}`);
+  }
+  fetchFriendsInfo(friendsID) {
+    // var friendsStr = JSON.stringify(friendsID);
+    return axios.get(`${this.hostEndpoint}action=get_friends_info&friendIDs=${friendsID}`);
+  }
+
+  renderFriends() {
+    if(this.state.gotUserInfo){
+
+      if(this.friendsInfo) {
+        let placeholderImg = "https://www.presentationpro.com/images/product/medium/slide/PPP_IFlat_LT3_Flat_Avatar_Placeholder_01_Circle.jpg";
+        return _.map(this.friendsInfo, (friend, index) => {
+          let pathToFriend = "/profiles/" + friend;
+          let { username, profile_picture } = this.friendsInfo[index];
+          if(profile_picture)
+          return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="event-guest friend-thumb"><img src={profile_picture || placeholderImg}/></Link>
+          //   else
+          // return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src="${placeholderImg}"/></Link>
+        });
+      }
+    }
+    else
+      return null;
+  }
+
+  renderHost() {
+    if(this.state.gotUserInfo && this.userInfo)
+      return <EventHost dispatch={this.props.dispatch} userInfo={this.userInfo}/>
+    else
+      return null;
+  }
+  handleFriendClick() {
+    this.props.dispatch(changePage("profiles"));
   }
 
 

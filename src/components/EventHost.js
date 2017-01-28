@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { changePage } from "../actions/appStateActions";
 
-export default class EventEntry extends React.Component {
+export default class EventHost extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,11 +12,11 @@ export default class EventEntry extends React.Component {
     let { user_id,  username , profile_picture } = this.props.userInfo;
     return (
       <div class="event-host-panel">
-      <Link onClick={this.handleEventClick.bind(this)} to={"/profiles/" + user_id}>
+      <Link class="event-host" onClick={this.handleEventClick.bind(this)} to={"/profiles/" + user_id}>
       <div class="img-wrapper">
       {this.renderHostPicture(profile_picture)}
       </div>
-      <h5 class="event-host">{username}</h5>
+      <h5 class="event-host-name">{username}</h5>
       </Link>
       </div>
     );

@@ -42,7 +42,7 @@ export default class EventEntry extends React.Component {
   render () {
     let { event_id, imgURL, name, event_date, details, location } = this.props;
     let reformatted_date;
-    if(event_date.value !== "")
+    if(event_date && event_date.value !== "")
       reformatted_date = getDateString(event_date);
     let pathToDetails = `/detail/${event_id}`;
 
