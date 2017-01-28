@@ -42,7 +42,7 @@ export function fetchEventInfo(id) {
   };
 }
 
-export function createEvent({ name , event_date , location , details , imgURL, host }) {
+export function createEvent({ name , event_date , location , details , imgURL, host, event_type }) {
   return (dispatch) => {
     var data = {
       name,
@@ -50,7 +50,8 @@ export function createEvent({ name , event_date , location , details , imgURL, h
       location,
       details,
       imgURL,
-      event_date
+      event_date,
+      event_type
     };
     axios.post(userEndpoint + "action=create_event", data).then((response) => {
 
@@ -63,7 +64,8 @@ export function createEvent({ name , event_date , location , details , imgURL, h
           event_date,
           location,
           details,
-          imgURL
+          imgURL,
+          event_type
         }
       });
     })

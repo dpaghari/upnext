@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import store from "./store";
 
-import Layout from './pages/Layout';
+import App from './pages/App';
 import Detail from './pages/Detail';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
@@ -20,7 +20,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 render(<Provider store={store}>
   <Router history={history}>
-    <Route path="/" component={Layout}>
+    <Route path="/" component={App}>
     <IndexRoute component={Home}/>
     <Route path="/detail/:eventId" component={Detail}></Route>
     <Route path="/profiles/:userId" component={Profile}></Route>

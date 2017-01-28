@@ -130,10 +130,10 @@ class ApiManager
     return $events;
   }
 
-  public function create_new_event($name, $img_url, $host, $event_date, $location, $details) {
+  public function create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type) {
     $sql = "INSERT INTO
-  		". $this->events_table ."(name, img_url, status, location, details, host, event_date)
-    	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date)";
+  		". $this->events_table ."(name, img_url, status, location, details, host, event_date, event_type)
+    	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date, :event_type)";
   	$stmt = $this->db->prepare($sql);
   	$stmt->execute(array(
   		"name" => $name,
@@ -142,7 +142,8 @@ class ApiManager
   		"status" => 0,
   		"event_date" => $event_date,
   		"location" => $location,
-  		"details" => $details
+  		"details" => $details,
+      "event_type" => $event_type
   	));
   	$stmt = $this->db->prepare("SELECT LAST_INSERT_ID()");
   	$stmt->execute();

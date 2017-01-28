@@ -42,12 +42,14 @@ export default class EventForm extends React.Component {
           <fieldset>
           <input onBlur={this.handleImgUpload.bind(this)} name="eventImg" ref="eventImg" placeholder="Event Image URL" type="text"/>
           <textarea name="eventDetails" ref="eventDetails" rows="4" placeholder="Event Description"/>
-            <label for="eventType">Private
-            <input name="eventType" ref="eventType" type="radio" value="private"/>
-            </label>
-            <label for="eventType">Public
-            <input name="eventType" ref="eventType" type="radio" value="public"/>
-            </label>
+            <div class="event-radios">
+              <label for="eventType">Private
+                <input name="eventType" ref="eventType" type="radio" value="1"/>
+              </label>
+              <label for="eventType">Public
+                <input name="eventType" ref="eventType" type="radio" value="0" defaultChecked="true"/>
+              </label>
+            </div>
           </fieldset>
         </div>
       </form>
@@ -70,6 +72,7 @@ export default class EventForm extends React.Component {
         {this.renderOptions()}
       </datalist>
       <button type="submit">Add to Guests</button>
+      <hr/>
     </form>
     );
   }
@@ -127,7 +130,7 @@ export default class EventForm extends React.Component {
 
   addEvent(e) {
     e.preventDefault();
-    const { eventName, eventDate, eventLocation, eventDetails, eventImg } = this.refs;
+    const { eventName, eventDate, eventLocation, eventDetails, eventImg, eventType } = this.refs;
 
     if(eventName.value === "") {
 
@@ -150,7 +153,8 @@ export default class EventForm extends React.Component {
       event_date: new Date(eventDate.value).toUTCString(),
       location: eventLocation.value,
       details: eventDetails.value,
-      imgURL: eventImg.value
+      imgURL: eventImg.value,
+      event_type: eventType.value
     };
 
 

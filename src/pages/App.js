@@ -12,7 +12,7 @@ return {
   userInfo: store.userInfo
 };
 })
-export default class Layout extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <main class="site-wrapper">

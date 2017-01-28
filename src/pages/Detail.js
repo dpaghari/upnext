@@ -22,12 +22,13 @@ export default class Detail extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const eventID = this.props.params.eventId;
     this.props.store.dispatch(fetchEventComments(eventID));
     this.props.store.dispatch(fetchEventInfo(eventID));
-
   }
+
+
 
   componentDidUpdate() {
     let { eventInfo } = this.props.store.events;
@@ -66,6 +67,7 @@ export default class Detail extends React.Component {
   renderDetails() {
 
     let { eventInfo } = this.props.store.events;
+    console.log(eventInfo);
     if(eventInfo){
 
       const { name, imgURL, details, location, event_date, friends } = eventInfo;
@@ -116,8 +118,6 @@ export default class Detail extends React.Component {
           let { username, profile_picture } = this.friendsInfo[index];
           if(profile_picture)
           return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="event-guest friend-thumb"><img src={profile_picture || placeholderImg}/></Link>
-          //   else
-          // return <Link title={username} onClick={this.handleFriendClick.bind(this)}  key={index} to={pathToFriend} class="friend-thumb"><img src="${placeholderImg}"/></Link>
         });
       }
     }

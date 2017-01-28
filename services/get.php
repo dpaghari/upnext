@@ -21,9 +21,10 @@ switch ($action) {
 		$event_date = isset($_POST["event_date"]) ? $_POST["event_date"] : null;
 		$location = isset($_POST["location"]) ? $_POST["location"] : null;
 		$details = isset($_POST["details"]) ? $_POST["details"] : null;
+		$event_type = isset($_POST["event_type"]) ? $_POST["event_type"] : 0;
 
 		$apiManager = new ApiManager();
-		$data = $apiManager->create_new_event($name, $img_url, $host, $event_date, $location, $details);
+		$data = $apiManager->create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type);
 		break;
 
 	case 'create_new_comment' :
