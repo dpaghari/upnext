@@ -10,7 +10,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "CREATE_EVENT" : {
       let newEntry = {
-        id: action.payload.event_id,
+        event_id: action.payload.event_id,
         name: action.payload.name,
         event_date: action.payload.event_date,
         location: action.payload.location,

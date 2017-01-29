@@ -26,11 +26,6 @@ export default class Detail extends React.Component {
     const eventID = this.props.params.eventId;
     this.props.store.dispatch(fetchEventComments(eventID));
     this.props.store.dispatch(fetchEventInfo(eventID));
-  }
-
-
-
-  componentDidUpdate() {
     let { eventInfo } = this.props.store.events;
     let hostP = this.fetchUser(eventInfo.host);
     let friendsP = this.fetchFriendsInfo(eventInfo.friends);
@@ -39,6 +34,12 @@ export default class Detail extends React.Component {
       this.friendsInfo = responses[1].data;
       this.setState({ gotUserInfo: true });
     });
+  }
+
+
+
+  componentDidUpdate() {
+
   }
 
   render() {

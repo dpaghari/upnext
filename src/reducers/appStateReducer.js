@@ -1,5 +1,5 @@
 const initialState = {
-  loggedIn: true,
+  loggedIn: false,
   eventForm : false,
   currentPage : "home"
 };

@@ -14,6 +14,13 @@ export default class Home extends React.Component {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+      if(this.props !== nextProps || this.state !== nextState) {
+        return true;
+      }
+      else return false;
+  }
+
   componentWillMount() {
     this.fetchEvents();
   }

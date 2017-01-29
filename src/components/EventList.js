@@ -23,7 +23,7 @@ export default class EventList extends React.Component {
   }
 
   render() {
-
+    console.log(this.props.event);
     return (
       <div id="Events">
         {this.renderEventLink()}
