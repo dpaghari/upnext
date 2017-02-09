@@ -146,6 +146,7 @@ export default class EventForm extends React.Component {
     }
 
     this.setState({ showError: false, errorMsg : "" });
+    let eventTypeVal = document.querySelector("input[name=eventType]").value;
     let newEvent = {
       host: this.props.users.current_user.user_id,
       name: eventName.value,
@@ -153,9 +154,8 @@ export default class EventForm extends React.Component {
       location: eventLocation.value,
       details: eventDetails.value,
       imgURL: eventImg.value,
-      event_type: eventType.value
+      event_type: eventTypeVal
     };
-    console.log(eventType.value);
 
 
 

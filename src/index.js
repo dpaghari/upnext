@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import Settings from './pages/Settings';
 import Memories from './pages/Memories';
 import EventMap from './pages/EventMap';
+import Invites from './pages/Invites';
 
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -24,6 +25,7 @@ render(<Provider store={store}>
     <IndexRoute component={Home}/>
     <Route path="/detail/:eventId" component={Detail}></Route>
     <Route path="/profiles/:userId" component={Profile}></Route>
+    // <Route path="/invites" component={Invites}></Route>
     <Route path="/eventmap" component={EventMap}></Route>
     <Route path="/settings" component={Settings}></Route>
     <Route path="/memories" component={Memories}></Route>

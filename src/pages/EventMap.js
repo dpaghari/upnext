@@ -14,9 +14,8 @@ export default class EventMap extends React.Component {
 
       let userCoords = {};
       let userIP;
-      jsonp("https://jsonip.com/", function(res) {
+      jsonp("https://ipinfo.io/", function(res) {
         userIP = res.ip;
-        // console.log(userIP);
         jsonp("http://www.tigeoip.com/?token=8765FRCfs!87&ip=" + userIP, function(innerRes) {
 
           userCoords.lat = innerRes.latitude;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { showEventForm } from "../actions/appStateActions";
+import { showEventForm, changePage } from "../actions/appStateActions";
 import { logOut } from "../actions/usersActions";
 
 export default class Greeting extends React.Component {
@@ -36,12 +36,12 @@ export default class Greeting extends React.Component {
         </div>
         <div class="userActions">
           <ul>
-            <li><a href="#"><i class="fa fa-bell" aria-hidden="true" title="Notifications"></i></a></li>
-            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true" title="Direct Messages"></i></a></li>
-            <li><a href="#"><i class="fa fa-gear" aria-hidden="true" title="Account Settings"></i></a></li>
-            <li><a href="#"><i class="fa fa-th-large" aria-hidden="true" title="Memories"></i></a></li>
-            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a></li>
-            <li><a onClick={this.handleLogout.bind(this)} href="#"><i class="fa fa-plus" aria-hidden="true" title="Logout"></i></a></li>
+            <li><Link onClick={this.handleGoToNotifications.bind(this)} to="/notifications"><i class="fa fa-bell" aria-hidden="true" title="Notifications"></i></Link></li>
+            <li><Link onClick={this.handleGoToInvites.bind(this)} to="/invites"><i class="fa fa-envelope" aria-hidden="true" title="Direct Messages"></i></Link></li>
+            <li><Link onClick={this.handleGoToSettings.bind(this)} to="/settings"><i class="fa fa-gear" aria-hidden="true" title="Account Settings"></i></Link></li>
+            <li><Link onClick={this.handleGoToMemories.bind(this)} to="/memories"><i class="fa fa-th-large" aria-hidden="true" title="Memories"></i></Link></li>
+            <li><Link onClick={this.handleGoToEventMap.bind(this)} to="/eventmap"><i class="fa fa-map-marker" aria-hidden="true" title="Event Map"></i></Link></li>
+            <li><Link onClick={this.handleLogout.bind(this)} href="#"><i class="fa fa-sign-out" aria-hidden="true" title="Logout"></i></Link></li>
             <li><a onClick={this.handleCreateEvent.bind(this)} href="#"><i class="fa fa-plus" aria-hidden="true" title="Add Event"></i></a></li>
 
           </ul>
@@ -55,5 +55,21 @@ export default class Greeting extends React.Component {
 
   handleLogout() {
     this.props.dispatch(logOut());
+    this.props.dispatch(changePage('home'));
+  }
+  handleGoToInvites() {
+    this.props.dispatch(changePage('invites'));
+  }
+  handleGoToEventMap() {
+    this.props.dispatch(changePage('eventmap'));
+  }
+  handleGoToNotifications() {
+    this.props.dispatch(changePage('notifications'));
+  }
+  handleGoToMemories() {
+    this.props.dispatch(changePage('memories'));
+  }
+  handleGoToSettings() {
+    this.props.dispatch(changePage('settings'));
   }
 }

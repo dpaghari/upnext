@@ -106,7 +106,7 @@ class ApiManager
 
   public function fetchEvents() {
     $events = array();
-    $sql = "SELECT * FROM " . $this->events_table;
+    $sql = "SELECT * FROM " . $this->events_table . " ORDER BY `event_date` ASC";
   	$stmt = $this->db->prepare($sql);
   	$stmt->execute();
 
