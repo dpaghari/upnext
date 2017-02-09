@@ -8,6 +8,7 @@ import promise from "redux-promise-middleware"
 
 
 const middleware = applyMiddleware(promise(), thunk, logger());
+// const middleware = applyMiddleware(promise(), thunk);
 
 import reducer from "./reducers";
 

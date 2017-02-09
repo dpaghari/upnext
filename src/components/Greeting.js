@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { showEventForm } from "../actions/appStateActions";
+import { logOut } from "../actions/usersActions";
 
 export default class Greeting extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class Greeting extends React.Component {
   render() {
     let { username, profile_url, profile_picture } = this.props.users.current_user;
     // let user = "Daniel";
-    
+
     // let today = new Date().toDateString();
     let pathToUser = `/profiles/${profile_url}`;
     return (
@@ -40,6 +41,7 @@ export default class Greeting extends React.Component {
             <li><a href="#"><i class="fa fa-gear" aria-hidden="true" title="Account Settings"></i></a></li>
             <li><a href="#"><i class="fa fa-th-large" aria-hidden="true" title="Memories"></i></a></li>
             <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a></li>
+            <li><a onClick={this.handleLogout.bind(this)} href="#"><i class="fa fa-plus" aria-hidden="true" title="Logout"></i></a></li>
             <li><a onClick={this.handleCreateEvent.bind(this)} href="#"><i class="fa fa-plus" aria-hidden="true" title="Add Event"></i></a></li>
 
           </ul>
@@ -49,5 +51,9 @@ export default class Greeting extends React.Component {
   }
   handleCreateEvent() {
     this.props.dispatch(showEventForm());
+  }
+
+  handleLogout() {
+    this.props.dispatch(logOut());
   }
 }

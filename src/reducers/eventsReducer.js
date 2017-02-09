@@ -9,14 +9,17 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "CREATE_EVENT" : {
+
+      let { event_id, name, event_date, location, details, imgURL, host } = action.payload;
+
       let newEntry = {
-        event_id: action.payload.event_id,
-        name: action.payload.name,
-        event_date: action.payload.event_date,
-        location: action.payload.location,
-        details: action.payload.details,
-        imgURL: action.payload.imgURL,
-        host: action.payload.host
+        event_id,
+        name,
+        event_date,
+        location,
+        details,
+        imgURL,
+        host
       };
       let newEventList = [];
       newEventList.push(newEntry);
@@ -29,12 +32,13 @@ export default function reducer(state = initialState, action) {
     }
     case "CREATE_COMMENT" : {
 
+      let { comment_id, event_id, user_id, comment, profile_picture } = action.payload;
       let newEntry = {
-        comment_id: action.payload.comment_id,
-        event_id: action.payload.event_id,
-        user_id: action.payload.user_id,
-        comment: action.payload.comment,
-        profile_picture: action.payload.profile_picture
+        comment_id,
+        event_id,
+        user_id,
+        comment,
+        profile_picture
 
       };
       let newCommentsList = [];

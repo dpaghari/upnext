@@ -146,16 +146,16 @@ export default class EventForm extends React.Component {
     }
 
     this.setState({ showError: false, errorMsg : "" });
-
     let newEvent = {
       host: this.props.users.current_user.user_id,
       name: eventName.value,
-      event_date: new Date(eventDate.value).toUTCString(),
+      event_date: eventDate.value,
       location: eventLocation.value,
       details: eventDetails.value,
       imgURL: eventImg.value,
       event_type: eventType.value
     };
+    console.log(eventType.value);
 
 
 

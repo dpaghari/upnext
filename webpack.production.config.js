@@ -1,5 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
+require('babel-polyfill');
+require('babel-loader');
+
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -8,8 +11,8 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname),
-    filename: 'public/bundle.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
   },
   resolve: {
     modulesDirectories: ['node_modules', 'src'],
