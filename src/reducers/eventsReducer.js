@@ -56,6 +56,14 @@ export default function reducer(state = initialState, action) {
       break;
     }
 
+    case "SENT_EVENT_INVITES" : {
+      state = {
+        ...state,
+        guest_ids: action.payload
+      }
+    }
+
+
     case "FETCH_EVENTS_PENDING" : {
       state = {
         ...state,

@@ -70,9 +70,7 @@ export function createEvent({ name , event_date , location , details , imgURL, h
           friends
         }
       });
-
-      
-
+      dispatch(sendInvites(friends, host, response.data));
     })
     .catch((error)=> {
       dispatch({
@@ -84,23 +82,26 @@ export function createEvent({ name , event_date , location , details , imgURL, h
 }
 
 export function sendInvites(guests, host, event_id) {
+  return (dispatch) => {
   let data = {
-    friends : JSON.stringify(guests),
+    friends : guests,
     host,
     event_id
   };
   axios.post(userEndpoint + "action=create_invites", data).then((response) => {
 
-    dispatch({
-      type: "SENT_EVENT_INVITES",
-      payload: {
-        invite_id: response.data,
-        host_id: host,
-        event_id
-      }
-    });
-  });
+      dispatch({
+        type: "SENT_EVENT_INVITES",
+        payload: {
+          invite_ids: response.data,
+          host_id: host,
+          event_id,
+          friends : guests
+        }
+      });
 
+  });
+  };
 }
 
 export function createComment({ event_id, user_id, comment, profile_picture }) {

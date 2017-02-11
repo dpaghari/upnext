@@ -170,7 +170,6 @@ export default class EventForm extends React.Component {
     };
 
     this.props.dispatch(createEvent(newEvent));
-    // this.props.dispatch(sendInvites(friends, host));
     eventName.value = eventDate.value = eventLocation.value = eventDetails.value = eventImg.value = "";
     this.props.dispatch(hideEventForm());
   }

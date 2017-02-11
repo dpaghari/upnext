@@ -7,6 +7,7 @@ import EventList from "../components/EventList";
 import EventForm from "../components/EventForm";
 import Sidebar from "../components/Sidebar";
 import { fetchEvents } from "../actions/eventsActions";
+import { fetchUsers } from "../actions/usersActions";
 
 export default class Home extends React.Component {
 
@@ -21,12 +22,21 @@ export default class Home extends React.Component {
       else return false;
   }
 
-  componentWillMount() {
+  init() {
     this.fetchEvents();
+    this.fetchUsers();
+  }
+
+  componentWillMount() {
+    this.init();
   }
 
   fetchEvents() {
     this.props.store.dispatch(fetchEvents());
+  }
+
+  fetchUsers() {
+    this.props.store.dispatch(fetchUsers());
   }
 
 

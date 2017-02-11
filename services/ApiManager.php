@@ -158,19 +158,29 @@ class ApiManager
   }
 
   public function create_new_invites($friends, $host, $event_id) {
-    $sql = "INSERT INTO" .
-      $this->invites_table . "(host_id, event_id, friend_id)
+    $invite_ids = array();
+    $sql = "INSERT INTO
+      " . $this->invites_table . "(host_id, event_id, friend_id)
       VALUES(:host_id, :event_id, :friend_id)";
-      for ($i=0; $i < $friends.length;  $i++) {
+      $len = count($friends);
+
+      for ($i=0; $i < $len; $i++) {
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array(
           "host_id" => $host,
           "event_id" => $event_id,
-          "friend_id" => $friends[i]
+          "friend_id" => $friends[$i]
         ));
+        $stmt = $this->db->prepare("SELECT LAST_INSERT_ID()");
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $invite_ids[] = $row["LAST_INSERT_ID()"];
       }
-
+      return $invite_ids;
   }
+
+
 
   public function create_new_comment($event_id, $user_id, $comment) {
 
