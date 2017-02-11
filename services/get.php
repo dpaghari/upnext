@@ -60,7 +60,7 @@ switch ($action) {
 		$data = $apiManager->fetchEventComments($eventID);
 		break;
 
-	// User actions
+		// User actions
 	case 'users':
 		$apiManager = new ApiManager();
 		$data = $apiManager->fetchUsers();
@@ -98,6 +98,14 @@ switch ($action) {
 		$userIDs = isset($_GET["friendIDs"]) ? json_decode($_GET["friendIDs"]) : null;
 		$apiManager = new ApiManager();
 		$data = $apiManager->get_users_info($userIDs);
+		break;
+
+	case 'get_user_event_invites' :
+		$_POST = json_decode(file_get_contents('php://input'), true);
+		$userID = isset($_POST["user_id"]) ? $_POST["user_id"] : null;
+		// $userID = isset($_GET["user_id"]) ? $_GET["user_id"] : null;
+		$apiManager = new ApiManager();
+		$data = $apiManager->get_user_event_invites($userID);
 		break;
 
 	case 'delete_user' :

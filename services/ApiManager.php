@@ -174,7 +174,7 @@ class ApiManager
         $stmt = $this->db->prepare("SELECT LAST_INSERT_ID()");
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
         $invite_ids[] = $row["LAST_INSERT_ID()"];
       }
       return $invite_ids;
@@ -308,6 +308,40 @@ class ApiManager
   	}
     return $friendsInfo;
   }
+
+  public function get_user_event_invites($userID) {
+    $invite_details = array();
+    if($userID != null) {
+      $sql =
+       "SELECT ". $this->invites_table . ".*," . $this->events_table . ".* " .
+       " FROM " . $this->invites_table . " INNER JOIN ". $this->users_table ." on ".$this->invites_table.".friend_id = ". $this->users_table .".user_id
+       INNER JOIN ". $this->events_table." on ".$this->invites_table.".event_id = ". $this->events_table.".event_id
+       WHERE ".$this->invites_table.".friend_id = :user_id";
+      $stmt = $this->db->prepare($sql);
+      $stmt->execute(array(
+        "user_id" => $userID
+      ));
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $invite_entry = array(
+          "invite_id" => $row["invite_id"],
+          "event_id" => $row["event_id"],
+          "host_id" => $row["host_id"],
+          "event_details" => array(
+            "name" => $row["name"],
+            "img_url" => $row["img_url"],
+            "event_date" => $row["event_date"],
+            "location" => $row["location"],
+            "details" => $row["details"],
+            "event_type" => $row["event_type"],
+            "friends" => $row["friends"]
+          )
+        );
+        $invite_details[] = $invite_entry;
+      }
+    }
+    return $invite_details;
+  }
+
 }
 
 

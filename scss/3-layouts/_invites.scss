@@ -1,0 +1,26 @@
+#InviteView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .invites-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .invites {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      .invite-entry {
+        border: 1px solid black;
+        @include box_shadow($notSoDark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

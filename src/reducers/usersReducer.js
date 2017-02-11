@@ -106,6 +106,20 @@ export default function usersReducer(state = initialState, action) {
       };
       break;
     }
+    case "GET_USER_EVENT_INVITES_FULFILLED" : {
+      state = {
+        ...state,
+        invitesInfo: action.payload
+      };
+      break;
+    }
+    case "GET_USER_EVENT_INVITES_REJECTED" : {
+      state = {
+        ...state,
+        error : action.payload
+      };
+      break;
+    }
 
   }
   return state;

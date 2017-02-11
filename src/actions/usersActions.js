@@ -140,3 +140,25 @@ export function fetchFriendsInfo(friendsID) {
   };
 
 }
+
+
+export function getUserEventInvites(userID) {
+  return (dispatch) => {
+    let data = {
+      user_id : userID
+    }
+    axios.post(`${userEndpoint}action=get_user_event_invites`, data)
+      .then((response)=> {
+        dispatch({
+          type: "GET_USER_EVENT_INVITES_FULFILLED",
+          payload: response.data
+        });
+      })
+      .catch((error)=> {
+        dispatch({
+          type: "GET_USER_EVENT_INVITES_REJECTED",
+          payload: error
+        });
+      });
+  }
+}
