@@ -22,9 +22,20 @@ switch ($action) {
 		$location = isset($_POST["location"]) ? $_POST["location"] : null;
 		$details = isset($_POST["details"]) ? $_POST["details"] : null;
 		$event_type = isset($_POST["event_type"]) ? $_POST["event_type"] : 0;
+		$friends = isset($_POST["friends"]) ? $_POST["friends"] : array();
 
 		$apiManager = new ApiManager();
-		$data = $apiManager->create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type);
+		$data = $apiManager->create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type, $friends);
+		break;
+
+	case 'create_invites' :
+		$_POST = json_decode(file_get_contents('php://input'), true);
+		$friends = isset($_POST["friends"]) ? json_decode($_POST["friends"]) : array();
+		$host = isset($_POST["host"]) ? $_POST["host"] : array();
+		$event_id = isset($_POST["event_id"]) ? $_POST["event_id"] : array();
+
+		$apiManager = new ApiManager();
+		$data = $apiManager->create_new_invites($friends, $host, $event_id);
 		break;
 
 	case 'create_new_comment' :
@@ -53,6 +64,15 @@ switch ($action) {
 	case 'users':
 		$apiManager = new ApiManager();
 		$data = $apiManager->fetchUsers();
+		break;
+
+	case 'auth_user':
+		$_POST = json_decode(file_get_contents('php://input'), true);
+		$username = isset($_POST["user_name"]) ? $_POST["user_name"] : null;
+		$pw = isset($_POST["pw"]) ? $_POST["pw"] : null;
+		$apiManager = new ApiManager();
+		$data = $apiManager->auth_user($username, $pw);
+
 		break;
 
 	case 'create_user' :

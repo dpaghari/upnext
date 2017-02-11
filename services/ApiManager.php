@@ -22,12 +22,14 @@ class ApiManager
 
         $this->users_table = $prefix . "un_users";
         $this->comments_table = $prefix . "un_comments";
+        $this->invites_table = $prefix . "un_invites";
 
       }
       else if(UN_ENV == "DEV"){
         $this->events_table = "un_events";
         $this->users_table = "un_users";
         $this->comments_table = "un_comments";
+        $this->invites_table = $prefix . "un_invites";
       }
 
     }
@@ -130,10 +132,13 @@ class ApiManager
     return $events;
   }
 
-  public function create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type) {
+  public function create_new_event($name, $img_url, $host, $event_date, $location, $details, $event_type, $friends) {
+
+
+
     $sql = "INSERT INTO
-  		". $this->events_table ."(name, img_url, status, location, details, host, event_date, event_type)
-    	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date, :event_type)";
+  		". $this->events_table ."(name, img_url, status, location, details, host, event_date, event_type, friends)
+    	VALUES(:name, :img_url, :status, :location, :details, :host, :event_date, :event_type, :friends)";
   	$stmt = $this->db->prepare($sql);
   	$stmt->execute(array(
   		"name" => $name,
@@ -143,12 +148,28 @@ class ApiManager
   		"event_date" => $event_date,
   		"location" => $location,
   		"details" => $details,
-      "event_type" => $event_type
+      "event_type" => $event_type,
+      "friends" => $friends
   	));
   	$stmt = $this->db->prepare("SELECT LAST_INSERT_ID()");
   	$stmt->execute();
   	$row = $stmt->fetch(PDO::FETCH_ASSOC);
   	return $row["LAST_INSERT_ID()"];
+  }
+
+  public function create_new_invites($friends, $host, $event_id) {
+    $sql = "INSERT INTO" .
+      $this->invites_table . "(host_id, event_id, friend_id)
+      VALUES(:host_id, :event_id, :friend_id)";
+      for ($i=0; $i < $friends.length;  $i++) {
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array(
+          "host_id" => $host,
+          "event_id" => $event_id,
+          "friend_id" => $friends[i]
+        ));
+      }
+
   }
 
   public function create_new_comment($event_id, $user_id, $comment) {
@@ -157,7 +178,7 @@ class ApiManager
   		". $this->comments_table ."(event_id, user_id, comment)
     	VALUES(:event_id, :user_id, :comment)";
 
-  	$stmt = $this->db->prepare();
+  	$stmt = $this->db->prepare($sql);
   	$stmt->execute(array(
   		"event_id" => $event_id,
   		"user_id" => $user_id,
@@ -173,13 +194,16 @@ class ApiManager
 
 
   public function create_new_user($name, $pw, $profile_picture) {
+
+    $hashPW = password_hash($pw, PASSWORD_DEFAULT);
+
     $sql = "INSERT INTO
   		". $this->users_table ."(username, password, profile_url, profile_picture)
     	VALUES(:username, :password, :profile_url, :profile_picture)";
   	$stmt = $this->db->prepare($sql);
   	$stmt->execute(array(
   		"username" => $name,
-  		"password" => $pw,
+  		"password" => $hashPW,
   		"profile_url" => $name,
   		"profile_picture" => $profile_picture
   	));
@@ -209,6 +233,45 @@ class ApiManager
   		}
   	}
     return $userDetails;
+  }
+  // Get user details based on given id
+  public function auth_user($username, $pw) {
+
+    $response = array(
+      "valid" => false,
+      "user_info" => array()
+    );
+
+  	if($username != null && $pw != null){
+      $sql = "SELECT * FROM ". $this->users_table ." WHERE username = :username";
+  		$stmt = $this->db->prepare($sql);
+  		$stmt->execute(array(
+  			"username" => $username
+  		));
+  		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  			$id = $row["user_id"];
+        $valid = password_verify($pw, $row["password"]);
+
+
+        $user_info = array(
+          "user_id" => $id,
+          "username" => $row["username"],
+          "profile_picture" => $row["profile_picture"],
+          "profile_url" => $row["profile_url"]
+        );
+  		}
+
+
+  	}
+
+    if($valid){
+      $response = array(
+        "valid" => $valid,
+        "user_info" => $user_info
+      );
+    }
+
+    return $response;
   }
 
   public function get_users_info($userIDs) {

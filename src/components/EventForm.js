@@ -1,5 +1,5 @@
 import React from "react";
-import { createEvent } from "../actions/eventsActions";
+import { createEvent, sendInvites } from "../actions/eventsActions";
 import { hideEventForm } from "../actions/appStateActions";
 const GoogleMapsLoader = require('google-maps'); // only for common js environments
 GoogleMapsLoader.KEY = 'AIzaSyALT683365k3JbNnmRDLUNY-PfFEyJDKiM';
@@ -147,19 +147,30 @@ export default class EventForm extends React.Component {
 
     this.setState({ showError: false, errorMsg : "" });
     let eventTypeVal = document.querySelector("input[name=eventType]").value;
+
+
+    let { addedFriends } = this.state;
+    let friendstoInvite = addedFriends.map((el) => {
+      console.log(el, el.user_id);
+      return el.user_id;
+    });
+    console.log(friendstoInvite);
+
+    let host = this.props.users.current_user.user_id;
+
     let newEvent = {
-      host: this.props.users.current_user.user_id,
+      host,
       name: eventName.value,
       event_date: eventDate.value,
       location: eventLocation.value,
       details: eventDetails.value,
       imgURL: eventImg.value,
-      event_type: eventTypeVal
+      event_type: eventTypeVal,
+      friends: JSON.stringify(friendstoInvite)
     };
 
-
-
     this.props.dispatch(createEvent(newEvent));
+    // this.props.dispatch(sendInvites(friends, host));
     eventName.value = eventDate.value = eventLocation.value = eventDetails.value = eventImg.value = "";
     this.props.dispatch(hideEventForm());
   }

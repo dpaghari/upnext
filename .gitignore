@@ -4,3 +4,5 @@ node_modules
 *.sql
 config.php
 production_config.php
+*.hot-update.js
+*.hot-update.json

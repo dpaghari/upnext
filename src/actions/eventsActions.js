@@ -42,7 +42,7 @@ export function fetchEventInfo(id) {
   };
 }
 
-export function createEvent({ name , event_date , location , details , imgURL, host, event_type }) {
+export function createEvent({ name , event_date , location , details , imgURL, host, event_type, friends }) {
   return (dispatch) => {
     var data = {
       name,
@@ -51,7 +51,8 @@ export function createEvent({ name , event_date , location , details , imgURL, h
       details,
       imgURL,
       event_date,
-      event_type
+      event_type,
+      friends
     };
     axios.post(userEndpoint + "action=create_event", data).then((response) => {
 
@@ -65,9 +66,13 @@ export function createEvent({ name , event_date , location , details , imgURL, h
           location,
           details,
           imgURL,
-          event_type
+          event_type,
+          friends
         }
       });
+
+      
+
     })
     .catch((error)=> {
       dispatch({
@@ -76,6 +81,26 @@ export function createEvent({ name , event_date , location , details , imgURL, h
       })
     });
   };
+}
+
+export function sendInvites(guests, host, event_id) {
+  let data = {
+    friends : JSON.stringify(guests),
+    host,
+    event_id
+  };
+  axios.post(userEndpoint + "action=create_invites", data).then((response) => {
+
+    dispatch({
+      type: "SENT_EVENT_INVITES",
+      payload: {
+        invite_id: response.data,
+        host_id: host,
+        event_id
+      }
+    });
+  });
+
 }
 
 export function createComment({ event_id, user_id, comment, profile_picture }) {

@@ -6,55 +6,34 @@ const userEndpoint = "../../services/get.php?";
 export function authUser({username, password}) {
 
   return (dispatch) => {
-    axios.get(userEndpoint + "action=users")
-         .then((response) =>  {
-
-           dispatch({
-             type: "FETCH_USERS_FULFILLED",
-             payload : response.data
-           });
-
-           let enteredCreds = {
-             username,
-             password
-           };
-           let userArr = response.data;
-           let result = userArr.find((el, idx) => {
-             return ((el.username === enteredCreds.username) && (el.password === enteredCreds.password));
-           });
-
-
-
-           if(typeof result === "undefined") {
-             dispatch({
-               type: "AUTH_FAILED",
-               payload: "Entered wrong credentials"
-             });
-           }
-           else {
-             let { user_id, username, profile_picture, profile_url } = result;
-             let currentUserInfo = {
-               user_id,
-               username,
-               profile_picture,
-               profile_url
-             };
-
-
-             dispatch({
-               type: "AUTH_SUCCESS",
-               payload: currentUserInfo
-             });
-           }
-
-
-         })
-         .catch((error) => {
-           dispatch({
-             type: "FETCH_USERS_REJECTED",
-             payload: error
-           });
-         });
+    let data = {
+      action: "auth_user",
+      user_name: username,
+      pw: password
+    };
+    axios.post(userEndpoint + "action=auth_user", data)
+     .then((response) =>  {
+      let result = response.data;
+      let { valid, user_info } = result;
+      if(valid){
+       dispatch({
+         type: "AUTH_SUCCESS",
+         payload: user_info
+       });
+      }
+      else {
+        dispatch({
+          type: "AUTH_FAILED",
+          payload: valid
+        });
+      }
+     })
+     .catch((error) => {
+       dispatch({
+         type: "AUTH_FAILED",
+         payload: error
+       });
+     });
   }
 
 }
@@ -71,7 +50,7 @@ export function logOut() {
 
 export function fetchUsers() {
   return (dispatch) => {
-    axios.get("/connect.php?action=users")
+    axios.get(userEndpoint + "action=users")
          .then((response) =>  {
            dispatch({
              type: "FETCH_USERS_FULFILLED",
